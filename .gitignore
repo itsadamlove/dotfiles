@@ -1,0 +1,8 @@
+.DS_Store
+public/assets
+node_modules
+.zeus.sock
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

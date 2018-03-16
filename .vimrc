@@ -1,0 +1,296 @@
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+" ================== General Config ===================
+
+"set number relativenumber                     " Relative Line numbers
+set number
+set backspace=indent,eol,start                " Allow backspace in insert mode
+set history=200                               " Store lots of :cmdline history
+set laststatus=2                              " Always display the status bar
+set showcmd                                   " Show incomplete cmds down the bottom
+set showmode                                  " Show current mode down the bottom
+set gcr=a:blinkon0                            " Disable cursor blink
+set novisualbell                              " No visual flash sound things
+set autoread                                  " Reload files changed outside vim
+set clipboard=unnamed                         " Allows the vim clipboard to work with the system keyboard
+set colorcolumn=80                            " show a column at 80 chars
+set ttimeoutlen=10                            " Fast Esc key
+let mapleader=" "                             " Map leader to space bar
+
+" This makes vim act like all other editors, buffers can exist in the
+" background without being in a window.
+" http://items.sjbach.com/319/configureing-vim-right
+set hidden
+
+" Update to make current version of vim not suck with ruby files due to regex
+" engine - tell it to use the old one
+set re=1
+
+" ==================== Swap Files ====================
+
+set noswapfile
+set nobackup
+set nowb
+
+" ================== Persistent Undo ==================
+
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+endif
+
+" ======================= Folds =======================
+
+set nofoldenable                            " Disable folding
+
+" ===================== Scrolling =====================
+
+set scrolloff=8 	                  	      " Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
+
+" ===================== Search =======================
+
+set incsearch                               " Find the next match as we type
+set hlsearch                                " Highlight searches by default
+set ignorecase                              " Ignore case when searching...
+set smartcase                               " ... Unless we type a capital
+
+" ===================== Indentation ==================
+set autoindent
+set smartindent
+set smarttab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+
+" Auto indent pasted text
+nnoremap p p=`]<C-o>
+nnoremap P P=`]<C-o>
+
+filetype on
+filetype plugin on
+filetype indent on
+
+set list listchars=tab:\ \ ,trail:·           " Display tabs and trailing spaces visually
+
+" ===================== Wrapping ==================
+
+set nowrap                                    " Don't wrap lines
+set linebreak                                 " Wrap lines at convenient points
+
+" Move normally between wrapped lines
+nmap j gj
+nmap k gk
+
+" ========================  Buffers ====================
+
+" Use buffers instead of tabs.
+
+" Move to the next buffer
+nmap <leader>l :bn<CR>
+
+" Move to the previous buffer
+nmap <leader>h :bp<CR>
+
+" Close current buffer but keep split (from vimBufkill)
+nmap <leader>w :BD<CR>
+
+" Close all buffers
+nmap <leader>q :bufdo bdelete<CR>
+
+" To open a new empty buffer
+nmap <leader>t :enew<cr>
+
+" switch between the last two files
+nnoremap <leader><leader> <c-^>
+
+" ========================  Splits ====================
+
+" Quicker movement between splits
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" Open new splits
+map vv <C-W>v
+map ss <C-W>s
+
+" Close Splits
+map W  <C-W>q
+
+" Open new split panes to right and bottom - feels more natural
+set splitbelow
+set splitright
+
+" Window Split Resizing
+nnoremap <leader>, :vertical resize +5<CR>
+nnoremap <leader>. :vertical resize -5<CR>
+nnoremap <leader>= <C-w>=
+nnoremap <silent> <Leader>[ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>] :exe "resize " . (winheight(0) * 2/3)<CR>
+
+autocmd VimResized * wincmd = " Automatically resize splits when resizing window
+
+" ====================== Save Settings ==================
+
+" Map save to leader s
+map <leader>s :w<CR>
+nmap <Leader>r :redraw!<Enter>
+
+" Remove trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
+
+" ====================== iTerm Settings ==================
+
+set mouse=a                                   " Mouse scrolling in iTerm
+set ttymouse=xterm2                           " Mouse setting for tmux
+set ttymouse=sgr
+
+" ====================== Plugins ========================
+
+" The following 3 lines are required for vundle
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" NerdTree File Browser
+Plugin 'scrooloose/nerdtree'
+
+" fzf Fuzy Finder
+" super awesome fuzzy finder for all the things (Replaced ctrl P)
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
+Plugin 'junegunn/fzf.vim'
+
+" Text Formatting
+Plugin 'tpope/vim-surround'                       " Easy way to swap & remove surrounding quotes or brackets
+Plugin 'jiangmiao/auto-pairs'                     " Auto pairs
+Plugin 'terryma/vim-multiple-cursors'             " Multiple cursor matching
+Plugin 'scrooloose/nerdcommenter'                 " Commenting Shorcuts
+Plugin 'djoshea/vim-autoread'                     " Auto reload unchanged buffers on disk change
+
+" Snippets [Ultisnips]
+Plugin 'SirVer/ultisnips'                         " Track the engine.
+Plugin 'honza/vim-snippets'                       " Snippets are separated from the engine.
+
+" AutoCompletion - Requires compiling
+Plugin 'Valloric/YouCompleteMe'                   " Auto Suggestions
+
+" SupeTab - To make snippets and auto complete work nicely together
+Plugin 'ervandew/supertab'                        " Use Tab for insert completion needs
+
+" Themes
+Plugin 'vim-airline/vim-airline'                  " Bottom Airline Bar
+Plugin 'vim-airline/vim-airline-themes'           " Airline themes
+Plugin 'morhetz/gruvbox'                          " Gruvbox Theme
+
+" Git
+Plugin 'tpope/vim-fugitive'                       " Git Wrapper
+Plugin 'airblade/vim-gitgutter'                   " Git gutter for vim
+
+" Layout
+Plugin 'qpkorr/vim-bufkill'                       " Allows for buffer closing without split closing
+Plugin 'christoomey/vim-tmux-navigator'           " Vim and tmux harmony
+
+" Markdown
+Plugin 'JamshedVesuna/vim-markdown-preview'       " Vim Markdown Generation
+
+" HTML
+Plugin 'slim-template/vim-slim.git'               " Syntax Highlighting for Slim
+
+" Javascript
+Plugin 'pangloss/vim-javascript'                  " Better JS Syntax
+Plugin 'mxw/vim-jsx'                              " Better JSX syntax
+Plugin 'othree/javascript-libraries-syntax.vim'   " Syntax for JS Libraries
+"Plugin 'othree/yajs.vim'                         " Yet another js syntax
+
+" Ruby
+Plugin 'tpope/vim-endwise'                        " Automatically add 'end' to things like loops
+Plugin 'tpope/vim-rails'                            " Better Rails Syntax
+Plugin 'KurtPreston/vim-autoformat-rails'           " Formatting fixes
+
+call vundle#end()
+
+" ====================== Theme Config ==================
+
+syntax enable
+set background=dark
+colorscheme gruvbox
+let g:airline_theme='gruvbox'
+let g:gruvbox_contrast_dark="medium"
+
+" Set vertical bar as cursor in insert mode
+if exists('$TMUX')
+  let &t_SI = "\<esc>Ptmux;\<esc>\<esc>]50;CursorShape=1\x7\<esc>\\"
+  let &t_EI = "\<esc>Ptmux;\<esc>\<esc>]50;CursorShape=0\x7\<esc>\\"
+else
+  let &t_SI = "\<esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<esc>]50;CursorShape=0\x7"
+endif
+
+" ====================== NERDTree Config ==================
+
+let NERDTreeShowHidden=1                      " Show hidden files
+map <C-f> :NERDTreeToggle<CR>
+
+" ============= AutoComplete & Snippets Config ===========
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" Auto CSS recommendations for YCM
+let g:ycm_semantic_triggers = {
+      \   'css': [ 're!^\s{2}', 're!:\s+' ],
+      \ }
+
+" ====================== FZF Config ==================
+
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-g>g :Ag<CR>
+nnoremap <C-g>c :Commands<CR>
+nnoremap <C-f>l :BLines<CR>
+nnoremap <C-p> :Files<CR>
+
+" Find word under cursor
+nnoremap <Leader>g :Ag <C-R><C-W><CR>
+
+" ====================== GitGutter Config ==================
+
+" Remove gitfutter mappings to free up 'h' key
+let g:gitgutter_map_keys = 0
+
+" ====================== Markdown Config ==================
+
+" Markdown use github
+let vim_markdown_preview_github=1
+let vim_markdown_preview_browser="Google Chrome"
+
+" ====================== Javascript Config ==================
+
+let g:jsx_ext_required = 0                     " Allow JSX in normal Javascript files
+
+" ====================== MacVim / GUI Changes ==========
+set guioptions-=l
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+set guifont=Ubuntu\ Mono\ derivative\ Powerline:h16
+set linespace=2
+
+set statusline=%=&P\ %f\ %m
+set fillchars=vert:\ ,stl:\ ,stlnc:\
+set noshowmode
