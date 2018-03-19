@@ -221,10 +221,17 @@ call vundle#end()
 " ====================== Theme Config ==================
 
 syntax enable
+set termguicolors
+set term=xterm-256color
 set background=dark
+
 colorscheme gruvbox
-let g:airline_theme='gruvbox'
 let g:gruvbox_contrast_dark="medium"
+
+let g:airline_theme='gruvbox'
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#fnamemod=':t'
 
 " Set vertical bar as cursor in insert mode
 if exists('$TMUX')
@@ -239,6 +246,7 @@ endif
 
 let NERDTreeShowHidden=1                      " Show hidden files
 map <C-f> :NERDTreeToggle<CR>
+map <Leader>f :NERDTreeToggle<CR>
 
 " ============= AutoComplete & Snippets Config ===========
 
