@@ -1,6 +1,7 @@
 [user]
-	name = itsadamlove
+	name = Adam Love
 	email = adam.love127@gmail.com
+  username = itsadamlove
 [url "ssh://git@heroku.com/"]
 	insteadOf = https://git.heroku.com/
 [core]
