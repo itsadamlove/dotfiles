@@ -204,6 +204,7 @@ Plugin 'JamshedVesuna/vim-markdown-preview'       " Vim Markdown Generation
 
 " HTML
 Plugin 'slim-template/vim-slim.git'               " Syntax Highlighting for Slim
+Plugin 'chrisbra/Colorizer'                       " Color Hex codes and color names
 
 " Javascript
 Plugin 'pangloss/vim-javascript'                  " Better JS Syntax
