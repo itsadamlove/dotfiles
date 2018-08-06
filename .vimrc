@@ -82,7 +82,7 @@ set list listchars=tab:\ \ ,trail:·           " Display tabs and trailing space
 
 " ===================== Wrapping ==================
 
-set nowrap                                    " Don't wrap lines
+"set nowrap                                    " Don't wrap lines
 set linebreak                                 " Wrap lines at convenient points
 
 " Move normally between wrapped lines
