@@ -181,7 +181,7 @@ Plugin 'SirVer/ultisnips'                         " Track the engine.
 Plugin 'honza/vim-snippets'                       " Snippets are separated from the engine.
 
 " AutoCompletion - Requires compiling
-Plugin 'Valloric/YouCompleteMe'                   " Auto Suggestions
+"Plugin 'Valloric/YouCompleteMe'                   " Auto Suggestions
 
 " SupeTab - To make snippets and auto complete work nicely together
 Plugin 'ervandew/supertab'                        " Use Tab for insert completion needs
@@ -190,6 +190,7 @@ Plugin 'ervandew/supertab'                        " Use Tab for insert completio
 Plugin 'vim-airline/vim-airline'                  " Bottom Airline Bar
 Plugin 'vim-airline/vim-airline-themes'           " Airline themes
 Plugin 'morhetz/gruvbox'                          " Gruvbox Theme
+"Plugin 'mhartington/oceanic-next'                 " Oceanic Next Colour Scheme
 
 " Git
 Plugin 'tpope/vim-fugitive'                       " Git Wrapper
@@ -210,7 +211,15 @@ Plugin 'chrisbra/Colorizer'                       " Color Hex codes and color na
 Plugin 'pangloss/vim-javascript'                  " Better JS Syntax
 Plugin 'mxw/vim-jsx'                              " Better JSX syntax
 Plugin 'othree/javascript-libraries-syntax.vim'   " Syntax for JS Libraries
+Plugin 'jelera/vim-javascript-syntax'
+
 "Plugin 'othree/yajs.vim'                         " Yet another js syntax
+
+" JSX / React
+Plugin 'mattn/emmet-vim'                          " Expend CSS selectors into JSX
+
+" Liniting
+Plugin 'w0rp/ale'                                 " Async Linting tool
 
 " Ruby
 Plugin 'tpope/vim-endwise'                        " Automatically add 'end' to things like loops
@@ -226,10 +235,17 @@ set termguicolors
 set term=xterm-256color
 set background=dark
 
+" Gruvbox
 colorscheme gruvbox
 let g:gruvbox_contrast_dark="medium"
-
 let g:airline_theme='gruvbox'
+
+" Oceanic Next
+"colorscheme OceanicNext
+"let g:oceanic_next_terminal_bold = 1
+"let g:oceanic_next_terminal_italic = 1
+"let g:airline_theme='oceanicnext'
+
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#fnamemod=':t'
@@ -252,9 +268,9 @@ map <Leader>f :NERDTreeToggle<CR>
 " ============= AutoComplete & Snippets Config ===========
 
 " make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -262,9 +278,9 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " Auto CSS recommendations for YCM
-let g:ycm_semantic_triggers = {
-      \   'css': [ 're!^\s{2}', 're!:\s+' ],
-      \ }
+"let g:ycm_semantic_triggers = {
+      "\   'css': [ 're!^\s{2}', 're!:\s+' ],
+      "\ }
 
 " ====================== FZF Config ==================
 
@@ -281,6 +297,7 @@ nnoremap <Leader>g :Ag <C-R><C-W><CR>
 
 " Remove gitfutter mappings to free up 'h' key
 let g:gitgutter_map_keys = 0
+set updatetime=100
 
 " ====================== Markdown Config ==================
 
@@ -291,6 +308,34 @@ let vim_markdown_preview_browser="Google Chrome"
 " ====================== Javascript Config ==================
 
 let g:jsx_ext_required = 0                     " Allow JSX in normal Javascript files
+
+" ====================== Emmet Config ==================
+
+let g:user_emmet_settings = {
+      \  'javascript.jsx' : {
+      \      'extends' : 'jsx',
+      \  },
+      \}
+
+" ====================== Ale Config ==================
+
+let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_fixers = {'javascript': ['eslint']}
+let g:ale_fix_on_save = 1
+
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+
+nmap <leader>d <Plug>(ale_fix)
+
+"hi ALEErrorSign guifg=#DF8C8C
+"hi ALEWarningSign guifg=#F2C38F
+"let g:ale_sign_column_always = 1
+"let g:airline#extendsions#ale#enabled = 1
+"let g:ale_lint_on_save = 1
+"let g:ale_lint_on_text_change = 0
 
 " ====================== MacVim / GUI Changes ==========
 set guioptions-=l

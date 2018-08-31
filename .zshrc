@@ -30,7 +30,7 @@ alias fundies="cd ~/Dropbox/Uni/FundamentalsOfCProgramming/"
 alias deep="cd ~/Dropbox/Uni/DeepNeuralNetworksAndAI/"
 alias jup="jupyter notebook"
 alias py="python"
-alias vi="mvim -v"
+#alias vi="mvim -v"
 alias py35="source activate py35"
 
 if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
