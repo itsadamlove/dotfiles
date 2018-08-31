@@ -181,7 +181,7 @@ Plugin 'SirVer/ultisnips'                         " Track the engine.
 Plugin 'honza/vim-snippets'                       " Snippets are separated from the engine.
 
 " AutoCompletion - Requires compiling
-"Plugin 'Valloric/YouCompleteMe'                   " Auto Suggestions
+Plugin 'Valloric/YouCompleteMe'                   " Auto Suggestions
 
 " SupeTab - To make snippets and auto complete work nicely together
 Plugin 'ervandew/supertab'                        " Use Tab for insert completion needs
@@ -268,9 +268,9 @@ map <Leader>f :NERDTreeToggle<CR>
 " ============= AutoComplete & Snippets Config ===========
 
 " make YCM compatible with UltiSnips (using supertab)
-"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-"let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -278,9 +278,9 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " Auto CSS recommendations for YCM
-"let g:ycm_semantic_triggers = {
-      "\   'css': [ 're!^\s{2}', 're!:\s+' ],
-      "\ }
+let g:ycm_semantic_triggers = {
+      \   'css': [ 're!^\s{2}', 're!:\s+' ],
+      \ }
 
 " ====================== FZF Config ==================
 
