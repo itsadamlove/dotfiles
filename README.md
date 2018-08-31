@@ -1,5 +1,7 @@
 # Adam Love's Dotfiles
 
+>> NOTE: Switch to vim plug, neovim & doplete --> https://medium.com/@alexlafroscia/writing-js-in-vim-4c971a95fd49
+
 iTerm2 with Zsh
 ![terminalScreenshot](https://user-images.githubusercontent.com/1585331/37510023-d9b0ccb6-294d-11e8-9e37-b8d589b5c824.gif)
 
