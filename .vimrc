@@ -12,7 +12,10 @@ set laststatus=2                              " Always display the status bar
 set showcmd                                   " Show incomplete cmds down the bottom
 set showmode                                  " Show current mode down the bottom
 set gcr=a:blinkon0                            " Disable cursor blink
-set novisualbell                              " No visual flash sound things
+"set novisualbell                              " No visual flash sound things
+"set noerrorbells
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 set autoread                                  " Reload files changed outside vim
 set clipboard=unnamed                         " Allows the vim clipboard to work with the system keyboard
 set colorcolumn=80                            " show a column at 80 chars
@@ -47,6 +50,10 @@ endif
 " ======================= Folds =======================
 
 set nofoldenable                            " Disable folding
+
+" ==================== Moving Lines ====================
+nmap - :m -2<CR>
+nmap = :m +1<CR>
 
 " ===================== Scrolling =====================
 
@@ -297,6 +304,8 @@ nnoremap <Leader>g :Ag <C-R><C-W><CR>
 
 " Remove gitfutter mappings to free up 'h' key
 let g:gitgutter_map_keys = 0
+let g:gitgutter_realtime = 1
+let g:gitgutter_eager = 1
 set updatetime=100
 
 " ====================== Markdown Config ==================
