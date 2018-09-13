@@ -3,7 +3,6 @@
 set nocompatible
 
 " ================== General Config ===================
-
 "set number relativenumber                     " Relative Line numbers
 set number
 set backspace=indent,eol,start                " Allow backspace in insert mode
@@ -155,6 +154,20 @@ nmap <Leader>r :redraw!<Enter>
 " Remove trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 
+" Map Control e to create/open file in current folder
+map <C-e> :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+
+"nnoremap <C-e> :e %:p:h
+" Create folders on file save
+function! s:MkNonExDir(file, buf)
+  if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+    let dir=fnamemodify(a:file, ':h')
+    if !isdirectory(dir)
+      call mkdir(dir, 'p')
+    endif
+  endif
+endfunction
+
 " ====================== iTerm Settings ==================
 
 set mouse=a                                   " Mouse scrolling in iTerm
@@ -181,14 +194,17 @@ Plugin 'tpope/vim-surround'                       " Easy way to swap & remove su
 Plugin 'jiangmiao/auto-pairs'                     " Auto pairs
 Plugin 'terryma/vim-multiple-cursors'             " Multiple cursor matching
 Plugin 'scrooloose/nerdcommenter'                 " Commenting Shorcuts
+Plugin 'prettier/vim-prettier'                    " Wrapper for prettier
 Plugin 'djoshea/vim-autoread'                     " Auto reload unchanged buffers on disk change
 
-" Snippets [Ultisnips]
-Plugin 'SirVer/ultisnips'                         " Track the engine.
-Plugin 'honza/vim-snippets'                       " Snippets are separated from the engine.
+if has('python3')
+  " Snippets [Ultisnips]
+  Plugin 'SirVer/ultisnips'                         " Track the engine.
+  Plugin 'honza/vim-snippets'                       " Snippets are separated from the engine.
 
-" AutoCompletion - Requires compiling
-Plugin 'Valloric/YouCompleteMe'                   " Auto Suggestions
+  " AutoCompletion - Requires compiling
+  Plugin 'Valloric/YouCompleteMe'                   " Auto Suggestions
+endif
 
 " SupeTab - To make snippets and auto complete work nicely together
 Plugin 'ervandew/supertab'                        " Use Tab for insert completion needs
@@ -238,7 +254,7 @@ call vundle#end()
 " ====================== Theme Config ==================
 
 syntax enable
-set termguicolors
+"set termguicolors
 set term=xterm-256color
 set background=dark
 
@@ -273,21 +289,22 @@ map <C-f> :NERDTreeToggle<CR>
 map <Leader>f :NERDTreeToggle<CR>
 
 " ============= AutoComplete & Snippets Config ===========
+if has('python3')
+  " make YCM compatible with UltiSnips (using supertab)
+  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+  let g:SuperTabDefaultCompletionType = '<C-n>'
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+  " better key bindings for UltiSnipsExpandTrigger
+  let g:UltiSnipsExpandTrigger = "<tab>"
+  let g:UltiSnipsJumpForwardTrigger = "<tab>"
+  let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
-" Auto CSS recommendations for YCM
-let g:ycm_semantic_triggers = {
-      \   'css': [ 're!^\s{2}', 're!:\s+' ],
-      \ }
+  " Auto CSS recommendations for YCM
+  let g:ycm_semantic_triggers = {
+        \   'css': [ 're!^\s{2}', 're!:\s+' ],
+        \ }
+endif
 
 " ====================== FZF Config ==================
 
@@ -331,20 +348,32 @@ let g:user_emmet_settings = {
 let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_fixers = {'javascript': ['eslint']}
 let g:ale_fix_on_save = 1
+let g:ale_lint_on_text_change = 'never'
+let g:airline#extendsions#ale#enabled = 1
 
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
+" Navigate between errors quickly
+" NEVER WANT TO REMAP <C-[> because is is synonymous with mapping <esc>
+nmap <silent> <Leader>k <Plug>(ale_previous_wrap)
+nmap <silent> <Leader>j <Plug>(ale_next_wrap)
+
 nmap <leader>d <Plug>(ale_fix)
 
 "hi ALEErrorSign guifg=#DF8C8C
 "hi ALEWarningSign guifg=#F2C38F
 "let g:ale_sign_column_always = 1
-"let g:airline#extendsions#ale#enabled = 1
 "let g:ale_lint_on_save = 1
-"let g:ale_lint_on_text_change = 0
+
+" ====================== Prettier Config ==================
+
+let g:prettier#exec_cmd_async = 1
+let g:prettier#config#print_width = 80
+let g:prettier#config#trailing_comma = 'none'
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
 
 " ====================== MacVim / GUI Changes ==========
 set guioptions-=l

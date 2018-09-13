@@ -5,17 +5,18 @@
 [url "ssh://git@heroku.com/"]
 	insteadOf = https://git.heroku.com/
 [core]
-       excludesfile = ~/.gitignore
+   excludesfile = ~/.gitignore
+   editor = vim
 [push]
-       default = matching
+   default = matching
 [alias]
-       s = status
-       st = stash
-       di = diff
-       dh = diff HEAD^
-       co = commit -m
-       ch = checkout
-       a = add
-       f = flow
-       hr = reset HEAD^ --hard
-       pt = push --tags
+   s = status
+   st = stash
+   di = diff
+   dh = diff HEAD^
+   co = commit -m
+   ch = checkout
+   a = add
+   f = flow
+   hr = reset HEAD^ --hard
+   pt = push --tags

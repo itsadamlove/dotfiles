@@ -32982,11 +32982,11 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>530 493 620 392 0 0 1680 1050 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>459 562 928 394 0 0 1680 1050 </string>
+	<string>2562 871 937 512 1680 0 2560 1440 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>1830 310 705 860 0 0 2560 1418 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>848 12 821 1025 0 0 1680 1050 </string>
+	<string>2023 186 736 578 1680 0 2560 1440 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>5 20 466 850 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -33821,7 +33821,7 @@
 			<key>Shortcut</key>
 			<string></string>
 			<key>Silence Bell</key>
-			<false/>
+			<true/>
 			<key>Smart Cursor Color</key>
 			<false/>
 			<key>Smart Selection Rules</key>
@@ -38164,7 +38164,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-08-31T12:31:17Z</date>
+	<date>2018-09-03T13:44:05Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
