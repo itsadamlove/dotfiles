@@ -308,11 +308,17 @@ endif
 
 " ====================== FZF Config ==================
 
-nnoremap <C-b> :Buffers<CR>
-nnoremap <C-g>g :Ag<CR>
-nnoremap <C-g>c :Commands<CR>
-nnoremap <C-f>l :BLines<CR>
 nnoremap <C-p> :Files<CR>
+
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-g>c :Commands<CR>
+
+nnoremap <C-g>g :Ag<CR>
+nnoremap <C-g>l :BLines<CR>
+nnoremap <C-g>c :BCommits<CR>
+nnoremap <C-g>b :Buffers<CR>
+nnoremap <C-g>p :GFiles<CR>
+nnoremap <C-g>? :GFiles?<CR>
 
 " Find word under cursor
 nnoremap <Leader>g :Ag <C-R><C-W><CR>
