@@ -48,7 +48,7 @@ endif
 
 " ======================= Folds =======================
 
-set nofoldenable                            " Disable folding
+"set nofoldenable                            " Disable folding
 
 " ==================== Moving Lines ====================
 nmap - :m -2<CR>
@@ -159,14 +159,7 @@ map <C-e> :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 
 "nnoremap <C-e> :e %:p:h
 " Create folders on file save
-function! s:MkNonExDir(file, buf)
-  if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-    let dir=fnamemodify(a:file, ':h')
-    if !isdirectory(dir)
-      call mkdir(dir, 'p')
-    endif
-  endif
-endfunction
+autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 
 " ====================== iTerm Settings ==================
 
@@ -189,13 +182,17 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plugin 'junegunn/fzf.vim'
 
+" File Actions
+Plugin 'tpope/vim-eunuch'                         " Vim wrapper for most common UNIX shell commands
+
 " Text Formatting
 Plugin 'tpope/vim-surround'                       " Easy way to swap & remove surrounding quotes or brackets
 Plugin 'jiangmiao/auto-pairs'                     " Auto pairs
 Plugin 'terryma/vim-multiple-cursors'             " Multiple cursor matching
 Plugin 'scrooloose/nerdcommenter'                 " Commenting Shorcuts
-Plugin 'prettier/vim-prettier'                    " Wrapper for prettier
+"Plugin 'prettier/vim-prettier'                    " Wrapper for prettier
 Plugin 'djoshea/vim-autoread'                     " Auto reload unchanged buffers on disk change
+Plugin 'luochen1990/rainbow'                      " Rainbow parentheses matching
 
 if has('python3')
   " Snippets [Ultisnips]
@@ -235,6 +232,10 @@ Plugin 'pangloss/vim-javascript'                  " Better JS Syntax
 Plugin 'mxw/vim-jsx'                              " Better JSX syntax
 Plugin 'othree/javascript-libraries-syntax.vim'   " Syntax for JS Libraries
 Plugin 'jelera/vim-javascript-syntax'
+
+" TypeScript
+"Plugin 'leafgarland/typescript-vim'               " TypeScript Syntax Highlighting
+Plugin 'HerringtonDarkholme/yats'
 
 "Plugin 'othree/yajs.vim'                         " Yet another js syntax
 
@@ -285,20 +286,26 @@ endif
 " ====================== NERDTree Config ==================
 
 let NERDTreeShowHidden=1                      " Show hidden files
-map <C-f> :NERDTreeToggle<CR>
+"map <C-f> :NERDTreeToggle<CR>
 map <Leader>f :NERDTreeToggle<CR>
 
 " ============= AutoComplete & Snippets Config ===========
+let g:ycm_path_to_python_interpreter = '/Users/adamlove/anaconda3/bin/python3'
 if has('python3')
   " make YCM compatible with UltiSnips (using supertab)
   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+  let g:ycm_key_list_accept_completion = ['<C-y>']
   let g:SuperTabDefaultCompletionType = '<C-n>'
 
   " better key bindings for UltiSnipsExpandTrigger
+  "let g:UltiSnipsExpandTrigger="<c-i>"
+  "let g:UltiSnipsJumpForwardTrigger="<c-f>"
+  "let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+
   let g:UltiSnipsExpandTrigger = "<tab>"
-  let g:UltiSnipsJumpForwardTrigger = "<tab>"
-  let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+  let g:UltiSnipsJumpForwardTrigger = "<c-f>"
+  let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
 
   " Auto CSS recommendations for YCM
   let g:ycm_semantic_triggers = {
@@ -310,7 +317,7 @@ endif
 
 nnoremap <C-p> :Files<CR>
 
-nnoremap <C-b> :Buffers<CR>
+"nnoremap <C-b> :Buffers<CR>
 nnoremap <C-g>c :Commands<CR>
 
 nnoremap <C-g>g :Ag<CR>
@@ -376,10 +383,18 @@ nmap <leader>d <Plug>(ale_fix)
 
 " ====================== Prettier Config ==================
 
-let g:prettier#exec_cmd_async = 1
-let g:prettier#config#print_width = 80
-let g:prettier#config#trailing_comma = 'none'
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+"let g:prettier#exec_cmd_async = 1
+"let g:prettier#config#print_width = 80
+"let g:prettier#config#trailing_comma = 'none'
+"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+
+" ====================== Eunuch Config ==================
+
+nnoremap <Leader>r :Move <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+
+" ====================== Rainbow Config ==================
+
+let g:rainbow_active = 10
 
 " ====================== MacVim / GUI Changes ==========
 set guioptions-=l
@@ -392,3 +407,13 @@ set linespace=2
 set statusline=%=&P\ %f\ %m
 set fillchars=vert:\ ,stl:\ ,stlnc:\
 set noshowmode
+
+" ==================== Custom Functions =================
+function! s:MkNonExDir(file, buf)
+  if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+    let dir=fnamemodify(a:file, ':h')
+    if !isdirectory(dir)
+      call mkdir(dir, 'p')
+    endif
+  endif
+endfunction

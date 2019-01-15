@@ -32979,14 +32979,16 @@
 	<string>685 411 621 306 0 0 1680 1028 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>88 273 606 456 0 0 1440 877 </string>
+	<key>NSWindow Frame SUStatusFrame</key>
+	<string>2760 983 400 129 1680 0 2560 1440 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>530 493 620 392 0 0 1680 1050 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>2562 871 937 512 1680 0 2560 1440 </string>
+	<string>675 535 918 452 0 0 1680 1050 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>1830 310 705 860 0 0 2560 1418 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>2023 186 736 578 1680 0 2560 1440 </string>
+	<string>191 129 736 578 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>5 20 466 850 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -33765,6 +33767,8 @@
 			<true/>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
+			<key>Prevent Opening in a Tab</key>
+			<true/>
 			<key>Prompt Before Closing 2</key>
 			<integer>0</integer>
 			<key>Right Option Key Sends</key>
@@ -38083,6 +38087,8 @@
 	</array>
 	<key>NoSyncConfirmBeta</key>
 	<true/>
+	<key>NoSyncHaveRequestedFullDiskAccess</key>
+	<true/>
 	<key>NoSyncHaveShownPromoWithId_4</key>
 	<true/>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
@@ -38164,7 +38170,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-09-03T13:44:05Z</date>
+	<date>2018-11-06T13:01:24Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
@@ -38188,6 +38194,8 @@
 	<key>SwitchWindowModifier</key>
 	<integer>6</integer>
 	<key>TabStyle</key>
+	<integer>1</integer>
+	<key>TabStyleWithAutomaticOption</key>
 	<integer>1</integer>
 	<key>TabViewType</key>
 	<integer>2</integer>
@@ -43313,7 +43321,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.2.0</string>
+	<string>3.2.5</string>
 	<key>kCPFavoritesUserDefaultsKey</key>
 	<array>
 		<data>

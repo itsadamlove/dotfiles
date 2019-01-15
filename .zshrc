@@ -4,6 +4,10 @@
 export TERM="xterm-256color"
 export ZSH=/Users/adamlove/.oh-my-zsh
 
+# Fix for python and YCM - dont know whats going on atm
+export DYLD_FORCE_FLAT_NAMESPACE=1
+export PATH="/Users/adamlove/anaconda3/bin:$PATH"
+
 
 # ====================== General Settings ========================
 
@@ -34,6 +38,8 @@ alias py="python"
 alias py35="source activate py35"
 alias npm-lint-react="npm install --save-dev eslint babel-eslint eslint-config-prettier eslint-plugin-import eslint-plugin-prettier eslint-plugin-react prettier"
 alias npm-lint-node="npm install --save-dev eslint babel-eslint eslint-config-prettier eslint-plugin-import eslint-plugin-prettier prettier eslint-plugin-mocha"
+alias journal="cd ~/Projects/RapidoJournal"
+alias startmon="cd ~/.mongodb && mongod --config ~/.mongodb/mongod.conf"
 
 if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
 	source /usr/local/share/chruby/chruby.sh
