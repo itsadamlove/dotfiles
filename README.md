@@ -183,7 +183,10 @@ brew install fzf
 $(brew --prefix)/opt/fzf/install
 ```
 
-### 6. Install YouCompleteMe
+### 6. Install Anaconda
+Use Anaconda for python3 install and python version management - do this before installing you complete me to avoid conflicts with system python - *avoid installing python with brew*
+
+### 7. Install YouCompleteMe
 If you don't use vim, you can ignore this step. If you're a hardcore vim user like me and you want an awesome code completion engine, then you'll want to checkout [youCompleteMe](https://github.com/Valloric/YouCompleteMe).
 
 Make sure you read the [install instructions](https://github.com/Valloric/YouCompleteMe#mac-os-x) for your operating system before you begin. YCM is a plugin with a compiled component, so it's not a good solution for remote work, but for local work, I love it. Also, be sure to check out the language support options and install what is best for you.
@@ -192,12 +195,12 @@ cd ~/.vim/bundle/YouCompleteMe
 ./install.py --clang-completer --js-completer --java-completer
 ```
 
-### 7. Run setup.sh
+### 8. Run setup.sh
 Clone this repository to your home directory, and run `setup.sh`.
 The `setup.sh` script will save your current dotfiles to `~/dotfiles_old`. It will then simlink your dotfiles to the ones in this repo.
 In order to use the vimrc you'll have to install [Vundle](https://github.com/VundleVim/Vundle.vim) and run `PluginInstall`
 
-### 8. Install Dev tools
+### 9. Install Dev tools
 The final step is to install all your other dev tools that you need. I'll get around to making a nice solution for this soon.
 - [ ] Chruby
 - [ ] Ruby Install
@@ -205,6 +208,14 @@ The final step is to install all your other dev tools that you need. I'll get ar
 - [ ] Redis
 - [ ] Node
 - [ ] Yarn
+- [ ] Docker
+- [ ] Mongo DB
+- [ ] Robo 3T
+- [ ] Office 365
+- [ ] Pixelmator
+- [ ] Image Optim
+- [ ] Figma
+- [ ] Sketch
 
 ## Other helpful tools for macOS
 As a small bonus I've included a view other applications that I use on a daily basis in macOS. They're awesome!
