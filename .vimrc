@@ -290,7 +290,7 @@ let NERDTreeShowHidden=1                      " Show hidden files
 map <Leader>f :NERDTreeToggle<CR>
 
 " ============= AutoComplete & Snippets Config ===========
-let g:ycm_path_to_python_interpreter = '/Users/adamlove/anaconda3/bin/python3'
+let g:ycm_path_to_python_interpreter = '/Users/adam/anaconda3/bin/python3'
 if has('python3')
   " make YCM compatible with UltiSnips (using supertab)
   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -311,6 +311,8 @@ if has('python3')
   let g:ycm_semantic_triggers = {
         \   'css': [ 're!^\s{2}', 're!:\s+' ],
         \ }
+
+  autocmd FileType javascript UltiSnipsAddFiletypes html
 endif
 
 " ====================== FZF Config ==================
