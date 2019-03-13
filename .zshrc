@@ -2,11 +2,11 @@
 
 # Path to your oh-my-zsh installation.
 export TERM="xterm-256color"
-export ZSH=/Users/adamlove/.oh-my-zsh
+export ZSH=/Users/adam/.oh-my-zsh
 
 # Fix for python and YCM - dont know whats going on atm
 export DYLD_FORCE_FLAT_NAMESPACE=1
-export PATH="/Users/adamlove/anaconda3/bin:$PATH"
+export PATH="/Users/adam/anaconda3/bin:$PATH"
 
 
 # ====================== General Settings ========================
@@ -52,27 +52,33 @@ export NVM_DIR="$HOME/.nvm"
 
 # Automatically call nvm use to load correct nvm settings when changing directory
 # place this after nvm initialization!
-#autoload -U add-zsh-hook
-#load-nvmrc() {
-#local node_version="$(nvm version)"
-#local nvmrc_path="$(nvm_find_nvmrc)"
+autoload -U add-zsh-hook
+load-nvmrc() {
+local node_version="$(nvm version)"
+local nvmrc_path="$(nvm_find_nvmrc)"
 
-#if [ -n "$nvmrc_path" ]; then
-  #local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+if [ -n "$nvmrc_path" ]; then
+  local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
 
-  #if [ "$nvmrc_node_version" = "N/A" ]; then
-    #nvm install
-  #elif [ "$nvmrc_node_version" != "$node_version" ]; then
-    #nvm use
-  #fi
-#elif [ "$node_version" != "$(nvm version default)" ]; then
-  #echo "Reverting to nvm default version"
-  #nvm use default
-#fi
-#}
-#add-zsh-hook chpwd load-nvmrc
-#load-nvmrc
+  if [ "$nvmrc_node_version" = "N/A" ]; then
+    nvm install
+  elif [ "$nvmrc_node_version" != "$node_version" ]; then
+    nvm use
+  fi
+elif [ "$node_version" != "$(nvm version default)" ]; then
+  echo "Reverting to nvm default version"
+  nvm use default
+fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
 
 source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=/Users/adam/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
