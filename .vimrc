@@ -235,7 +235,10 @@ Plugin 'jelera/vim-javascript-syntax'
 
 " TypeScript
 Plugin 'leafgarland/typescript-vim'               " TypeScript Syntax Highlighting
-"Plugin 'HerringtonDarkholme/yats'
+Plugin 'peitalin/vim-jsx-typescript'
+" JSX highlighting in typescirpt files
+
+" Plugin 'HerringtonDarkholme/yats'
 
 "Plugin 'othree/yajs.vim'                         " Yet another js syntax
 
