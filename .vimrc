@@ -1,5 +1,3 @@
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
 set nocompatible
 
 " ================== General Config ===================
@@ -20,10 +18,6 @@ set clipboard=unnamed                         " Allows the vim clipboard to work
 set colorcolumn=80                            " show a column at 80 chars
 set ttimeoutlen=10                            " Fast Esc key
 let mapleader=" "                             " Map leader to space bar
-
-" This makes vim act like all other editors, buffers can exist in the
-" background without being in a window.
-" http://items.sjbach.com/319/configureing-vim-right
 set hidden
 
 " Update to make current version of vim not suck with ruby files due to regex
@@ -157,7 +151,6 @@ autocmd BufWritePre * %s/\s\+$//e
 " Map Control e to create/open file in current folder
 map <C-e> :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 
-"nnoremap <C-e> :e %:p:h
 " Create folders on file save
 autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 
@@ -235,12 +228,8 @@ Plugin 'jelera/vim-javascript-syntax'
 
 " TypeScript
 Plugin 'leafgarland/typescript-vim'               " TypeScript Syntax Highlighting
-Plugin 'peitalin/vim-jsx-typescript'
-" JSX highlighting in typescirpt files
-
-" Plugin 'HerringtonDarkholme/yats'
-
-"Plugin 'othree/yajs.vim'                         " Yet another js syntax
+Plugin 'peitalin/vim-jsx-typescript'              " JSX highlighting in typescirpt files
+autocmd BufEnter *.tsx :setlocal filetype=typescript
 
 " JSX / React
 Plugin 'mattn/emmet-vim'                          " Expend CSS selectors into JSX
@@ -301,11 +290,6 @@ if has('python3')
   let g:ycm_key_list_accept_completion = ['<C-y>']
   let g:SuperTabDefaultCompletionType = '<C-n>'
 
-  " better key bindings for UltiSnipsExpandTrigger
-  "let g:UltiSnipsExpandTrigger="<c-i>"
-  "let g:UltiSnipsJumpForwardTrigger="<c-f>"
-  "let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-
   let g:UltiSnipsExpandTrigger = "<tab>"
   let g:UltiSnipsJumpForwardTrigger = "<c-f>"
   let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
@@ -316,6 +300,7 @@ if has('python3')
         \ }
 
   autocmd FileType javascript UltiSnipsAddFiletypes html
+  autocmd FileType typescript UltiSnipsAddFiletypes html
 endif
 
 " ====================== FZF Config ==================
@@ -364,7 +349,7 @@ let g:user_emmet_settings = {
 " ====================== Ale Config ==================
 
 let g:ale_linters = {'javascript': ['eslint']}
-let g:ale_fixers = {'javascript': ['eslint']}
+let g:ale_fixers = ['prettier', 'eslint']
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_change = 'never'
 let g:airline#extendsions#ale#enabled = 1
