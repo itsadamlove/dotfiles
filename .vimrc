@@ -222,16 +222,15 @@ Plugin 'chrisbra/Colorizer'                       " Color Hex codes and color na
 
 " Javascript
 Plugin 'pangloss/vim-javascript'                  " Better JS Syntax
-Plugin 'mxw/vim-jsx'                              " Better JSX syntax
 Plugin 'othree/javascript-libraries-syntax.vim'   " Syntax for JS Libraries
 Plugin 'jelera/vim-javascript-syntax'
 
 " TypeScript
 Plugin 'leafgarland/typescript-vim'               " TypeScript Syntax Highlighting
-Plugin 'peitalin/vim-jsx-typescript'              " JSX highlighting in typescirpt files
-autocmd BufEnter *.tsx :setlocal filetype=typescript
 
-" JSX / React
+" JSX / TSX
+Plugin 'maxmellon/vim-jsx-pretty'
+let g:vim_jsx_pretty_colorful_config = 1 " default 0
 Plugin 'mattn/emmet-vim'                          " Expend CSS selectors into JSX
 
 " Liniting
