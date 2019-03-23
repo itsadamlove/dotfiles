@@ -36,8 +36,16 @@ alias jup="jupyter notebook"
 alias py="python"
 #alias vi="mvim -v"
 alias py35="source activate py35"
-alias npm-lint-react="npm install --save-dev eslint babel-eslint eslint-config-prettier eslint-plugin-import eslint-plugin-prettier eslint-plugin-react prettier"
 alias npm-lint-node="npm install --save-dev eslint babel-eslint eslint-config-prettier eslint-plugin-import eslint-plugin-prettier prettier eslint-plugin-mocha"
+
+# Shortcuts because I cbf installing lint tools all the time
+alias lint="printf 'Hi Adam! These are the options you created for installing linting tools:\n- install_lint\n- install_lint--typescript\n- install_lint--react\n- install_lint--react--typescript\n'"
+
+alias install_lint="yarn add --dev babel-eslint eslint-config-airbnb eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier prettier && cp ~/dotfiles/lintFiles/javascript_eslintrc.js .eslintrc.js && cp ~/dotfiles/lintFiles/prettierrc.js .prettierrc.js"
+alias install_lint--typescript="yarn add --dev @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-airbnb eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier prettier && cp ~/dotfiles/lintFiles/typescript_eslintrc.js .eslintrc.js && cp ~/dotfiles/lintFiles/prettierrc.js .prettierrc.js"
+alias install_lint--react="yarn add --dev babel-eslint eslint-config-airbnb eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react prettier && cp ~/dotfiles/lintFiles/javascript_react_eslint.js .eslintrc.js && cp ~/dotfiles/lintFiles/prettierrc.js .prettierrc.js"
+alias install_lint--react--typescript="yarn add --dev @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-airbnb eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react prettier && cp ~/dotfiles/lintFiles/typescript_react_eslint.js .eslintrc.js && cp ~/dotfiles/lintFiles/prettierrc.js .prettierrc.js"
+
 alias journal="cd ~/Projects/RapidoJournal"
 alias startmon="cd ~/.mongodb && mongod --config ~/.mongodb/mongod.conf"
 
@@ -81,4 +89,3 @@ source $ZSH/oh-my-zsh.sh
 HEROKU_AC_ZSH_SETUP_PATH=/Users/adam/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
