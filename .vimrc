@@ -300,6 +300,7 @@ if has('python3')
 
   autocmd FileType javascript UltiSnipsAddFiletypes html
   autocmd FileType typescript UltiSnipsAddFiletypes html
+  autocmd FileType edge UltiSnipsAddFiletypes html
 endif
 
 " ====================== FZF Config ==================
@@ -406,3 +407,5 @@ function! s:MkNonExDir(file, buf)
     endif
   endif
 endfunction
+
+autocmd BufEnter *.png,*.jpg,*gif exec "! ~/.iterm2/imgcat ".expand("%") | :bw
