@@ -6,7 +6,7 @@ export ZSH=/Users/adam/.oh-my-zsh
 
 # Fix for python and YCM - dont know whats going on atm
 export DYLD_FORCE_FLAT_NAMESPACE=1
-export PATH="/Users/adam/anaconda3/bin:$PATH"
+# export PATH="/Users/adam/anaconda3/bin:$PATH"  # commented out by conda initialize
 
 
 # ====================== General Settings ========================
@@ -46,7 +46,13 @@ alias install_lint--typescript="yarn add --dev @typescript-eslint/eslint-plugin 
 alias install_lint--react="yarn add --dev eslint-config-airbnb eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react prettier && cp ~/dotfiles/lintFiles/javascript_react_eslint.js .eslintrc.js && cp ~/dotfiles/lintFiles/prettierrc.js .prettierrc.js"
 alias install_lint--react--typescript="yarn add --dev @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-airbnb eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react prettier && cp ~/dotfiles/lintFiles/typescript_react_eslint.js .eslintrc.js && cp ~/dotfiles/lintFiles/prettierrc.js .prettierrc.js"
 
-alias journal="cd ~/Projects/RapidoJournal"
+alias journal="cd ~/Projects/FoodBomb/Journal"
+alias fb="cd ~/Projects/FoodBomb/App"
+alias shop="cd ~/Projects/FoodBomb/App/frontend-shop/shop"
+alias reporting="cd ~/Projects/FoodBomb/App/frontend-reporting/reporting"
+alias backend="cd ~/Projects/FoodBomb/App/backend-phplayer/php"
+alias supplier="cd ~/Projects/FoodBomb/App/supplier"
+alias phptest="./vendor/bin/phpunit --testdox tests"
 alias startmon="cd ~/.mongodb && mongod --config ~/.mongodb/mongod.conf"
 
 if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
@@ -89,3 +95,19 @@ source $ZSH/oh-my-zsh.sh
 HEROKU_AC_ZSH_SETUP_PATH=/Users/adam/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/adam/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/adam/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/adam/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/adam/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
