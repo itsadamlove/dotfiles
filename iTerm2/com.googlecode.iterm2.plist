@@ -20,8 +20,6 @@
 	<false/>
 	<key>BadgeRightMargin</key>
 	<integer>10</integer>
-	<key>CGFontRenderingFontSmoothingDisabled</key>
-	<false/>
 	<key>CheckTestRelease</key>
 	<false/>
 	<key>ClosingHotkeySwitchesSpaces</key>
@@ -32969,42 +32967,34 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
-	<key>NSTouchBarConfig: regular</key>
-	<dict>
-		<key>CurrentItems</key>
-		<array>
-			<string>iTermTouchBarFunctionKeysScrollView</string>
-			<string>NSTouchBarItemIdentifierFlexibleSpace</string>
-			<string>NSTouchBarItemIdentifierOtherItemsProxy</string>
-		</array>
-		<key>DefaultItems</key>
-		<array>
-			<string>iTermTouchBarIdentifierManPage</string>
-			<string>iTermTouchBarIdentifierColorPreset</string>
-			<string>iTermTouchBarIdentifierFunctionKeys</string>
-			<string>NSTouchBarItemIdentifierFlexibleSpace</string>
-			<string>NSTouchBarItemIdentifierOtherItemsProxy</string>
-			<string>iTermTouchBarIdentifierAddMark</string>
-			<string>iTermTouchBarIdentifierPreviousMark</string>
-			<string>iTermTouchBarIdentifierNextMark</string>
-		</array>
-	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>1205 255 492 341 0 0 1920 1177 </string>
-	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>650 516 620 392 0 0 1920 1080 </string>
+	<string>943 302 505 447 0 0 1680 1050 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>622 350 937 514 0 0 1920 1200 </string>
-	<key>NSWindow Frame UKCrashReporter</key>
-	<string>910 376 592 584 0 0 1920 1200 </string>
+	<string>192 339 918 512 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>204 232 736 548 0 0 1920 1200 </string>
+	<string>233 83 736 548 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>247 132 570 452 0 0 1920 1177 </string>
+	<string>2 3 836 1044 0 0 1680 1050 </string>
+	<key>NSWindow Frame iTerm Window 10</key>
+	<string>401 514 570 452 0 0 1680 1050 </string>
+	<key>NSWindow Frame iTerm Window 11</key>
+	<string>422 491 570 452 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>373 79 570 452 0 0 1920 1177 </string>
+	<string>841 69 954 978 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>289 86 570 452 0 0 1920 1177 </string>
+	<string>2 596 650 451 0 0 1680 1050 </string>
+	<key>NSWindow Frame iTerm Window 4</key>
+	<string>2 18 834 1029 0 0 1680 1050 </string>
+	<key>NSWindow Frame iTerm Window 5</key>
+	<string>841 18 834 1029 0 0 1680 1050 </string>
+	<key>NSWindow Frame iTerm Window 6</key>
+	<string>199 0 730 536 0 0 1680 1050 </string>
+	<key>NSWindow Frame iTerm Window 7</key>
+	<string>115 480 570 452 0 0 1680 1050 </string>
+	<key>NSWindow Frame iTerm Window 8</key>
+	<string>359 560 570 452 0 0 1680 1050 </string>
+	<key>NSWindow Frame iTerm Window 9</key>
+	<string>841 17 836 1030 0 0 1680 1050 </string>
 	<key>NeverWarnAboutShortLivedSessions_A42FB2F1-7EE8-449A-B55B-FE057498EAE3</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_A42FB2F1-7EE8-449A-B55B-FE057498EAE3_selection</key>
@@ -33760,9 +33750,11 @@
 			<key>Name</key>
 			<string> </string>
 			<key>Non Ascii Font</key>
-			<string>SauceCodePowerline-Regular 12</string>
+			<string>SourceCodeProForPowerline-Regular 12</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
+			<key>Non-ASCII Ligatures</key>
+			<false/>
 			<key>Normal Font</key>
 			<string>UbuntuMonoDerivativePowerline-Regular 15</string>
 			<key>Only The Default BG Color Uses Transparency</key>
@@ -38089,18 +38081,16 @@
 			<string>/Users/adamlove</string>
 		</dict>
 	</array>
-	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
-	<true/>
-	<key>NoSyncHaveRequestedFullDiskAccess</key>
-	<true/>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>750B09EE-B9C0-48AD-B901-4F4913D4BF47</string>
-	<key>NoSyncPermissionToShowTip</key>
-	<false/>
+	<string>2C0599B6-E274-4FB7-A69B-3366E472026C</string>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>569548990.723701</real>
+	<real>579395695.82720006</real>
 	<key>OnlyWhenMoreTabs</key>
 	<false/>
 	<key>OpenArrangementAtStartup</key>
@@ -38162,11 +38152,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/final.xml?shard=37</string>
+	<string>https://iterm2.com/appcasts/final.xml?shard=85</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-02-12T22:57:54Z</date>
+	<date>2019-05-13T07:25:33Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -38203,10 +38193,10 @@
 	<true/>
 	<key>TmuxDashboardLimit</key>
 	<integer>10</integer>
+	<key>TmuxUsesDedicatedProfile</key>
+	<true/>
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<true/>
-	<key>UKCrashReporterLastCrashReportDate</key>
-	<real>1547961984</real>
 	<key>URLHandlersByGuid</key>
 	<dict/>
 	<key>UseBorder</key>
@@ -43317,7 +43307,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.2.7</string>
+	<string>3.2.9</string>
 	<key>kCPFavoritesUserDefaultsKey</key>
 	<array>
 		<data>
