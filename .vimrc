@@ -15,7 +15,7 @@ set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 set autoread                                  " Reload files changed outside vim
 set clipboard=unnamed                         " Allows the vim clipboard to work with the system keyboard
-set colorcolumn=80                            " show a column at 80 chars
+set colorcolumn=120                            " show a column at 80 chars
 set ttimeoutlen=10                            " Fast Esc key
 let mapleader=" "                             " Map leader to space bar
 set hidden
