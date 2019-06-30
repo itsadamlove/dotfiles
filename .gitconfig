@@ -1,23 +1,31 @@
 [user]
-	name = Adam Love
-	email = adam.love127@gmail.com
+  name = Adam Love
+  email = adam.love127@gmail.com
   username = itsadamlove
 [url "ssh://git@heroku.com/"]
-	insteadOf = https://git.heroku.com/
+  insteadOf = https://git.heroku.com/
 [core]
-   excludesfile = ~/.gitignore
-   editor = vim
+  excludesfile = ~/.gitignore
+  editor = vim
 [push]
-   default = matching
+  default = matching
 [alias]
-   s = status
-   st = stash
-   di = diff
-   dh = diff HEAD^
-   co = commit -m
-   ch = checkout
-   a = add
-   f = flow
-   hr = reset HEAD^ --hard
-   pt = push --tags
-   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  s = status
+  st = stash
+  d = diff
+  dh = diff HEAD^
+  ds = diff --staged
+  co = commit -m
+  ch = checkout
+  b = branch
+  rb = rebase
+  bm = branch --merged
+  m = merge --no-ff
+  a = add
+  f = fetch
+  hr = reset HEAD^ --hard
+  pt = push --tags
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  done = "!f(){ git rb master && CB=$(git rev-parse --abbrev-ref HEAD) && git co master && git m $CB && git b -d $CB; };f"
+  pu = "!f(){ git push origin HEAD && git push origin --tags; };f"
+  remove-merged-branches = "!f(){ git branch --merged | xargs git branch -d; };f"
