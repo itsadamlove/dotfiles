@@ -8,7 +8,7 @@
   excludesfile = ~/.gitignore
   editor = vim
 [push]
-  default = matching
+  default = simple
 [alias]
   s = status
   st = stash
