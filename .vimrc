@@ -70,6 +70,9 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 
+autocmd Filetype php setlocal shiftwidth=4 softtabstop=4 tabstop=4
+autocmd Filetype py setlocal shiftwidth=4 softtabstop=4 tabstop=4
+
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
