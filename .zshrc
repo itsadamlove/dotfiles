@@ -47,13 +47,21 @@ alias install_lint--react="yarn add --dev eslint-config-airbnb eslint-config-pre
 alias install_lint--react--typescript="yarn add --dev @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-airbnb eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react prettier && cp ~/dotfiles/lintFiles/typescript_react_eslint.js .eslintrc.js && cp ~/dotfiles/lintFiles/prettierrc.js .prettierrc.js"
 
 alias journal="cd ~/Projects/FoodBomb/Journal"
+
 alias fb="cd ~/Projects/FoodBomb/App"
 alias shop="cd ~/Projects/FoodBomb/App/frontend-shop/shop"
 alias reporting="cd ~/Projects/FoodBomb/App/frontend-reporting/reporting"
 alias backend="cd ~/Projects/FoodBomb/App/backend-phplayer/php"
-alias supplier="cd ~/Projects/FoodBomb/App/supplier"
+alias supplier-service="cd ~/Projects/FoodBomb/App/supplier"
+alias supplier-portal="cd ~/Projects/FoodBomb/App/supplier-portal/supplier"
+alias opencart="cd ~/Projects/FoodBomb/App/sh-foodbomb-dev"
 alias phptest="./vendor/bin/phpunit --testdox tests"
+alias dcu="docker-compose up"
+alias dcd="docker-compose down"
+alias pauls="cd ~/Projects/FoodBomb/App/frontend-legacy-supplier/supplier"
+
 alias startmon="cd ~/.mongodb && mongod --config ~/.mongodb/mongod.conf"
+alias alex="ssh -i ~/.ssh/spam_key foodbomb2@foodbomb2s-MacBook-Pro.local"
 
 if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
 	source /usr/local/share/chruby/chruby.sh
