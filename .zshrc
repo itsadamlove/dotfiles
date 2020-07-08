@@ -35,6 +35,7 @@ alias deep="cd ~/Dropbox/Uni/DeepNeuralNetworksAndAI/"
 alias jup="jupyter notebook"
 alias py="python"
 #alias vi="mvim -v"
+alias v="/usr/local/bin/vim"
 alias py35="source activate py35"
 alias npm-lint-node="npm install --save-dev eslint babel-eslint eslint-config-prettier eslint-plugin-import eslint-plugin-prettier prettier eslint-plugin-mocha"
 
@@ -50,6 +51,7 @@ alias journal="cd ~/Projects/FoodBomb/Journal"
 
 alias fb="cd ~/Projects/FoodBomb/App"
 alias shop="cd ~/Projects/FoodBomb/App/frontend-shop/shop"
+alias ui="cd ~/Projects/FoodBomb/App/bit-ui-library/ui-library"
 alias reporting="cd ~/Projects/FoodBomb/App/frontend-reporting/reporting"
 alias backend="cd ~/Projects/FoodBomb/App/backend-phplayer/php"
 alias backend-lib="cd ~/Projects/FoodBomb/App/foodbomb-backend-lib"
@@ -58,6 +60,7 @@ alias supplier-service="cd ~/Projects/FoodBomb/App/supplier"
 alias supplier-portal="cd ~/Projects/FoodBomb/App/supplier-portal/supplier"
 alias opencart="cd ~/Projects/FoodBomb/App/sh-foodbomb-dev"
 alias phptest="./vendor/bin/phpunit --testdox tests"
+alias phpfix="php php-cs-fixer.phar fix --allow-risky=yes -vvv app/"
 alias dcu="docker-compose up"
 alias dcd="docker-compose down"
 alias pauls="cd ~/Projects/FoodBomb/App/frontend-legacy-supplier/supplier"
@@ -124,3 +127,8 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
