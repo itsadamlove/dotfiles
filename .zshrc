@@ -54,6 +54,7 @@ alias shop="cd ~/Projects/FoodBomb/App/frontend-shop/shop"
 alias ui="cd ~/Projects/FoodBomb/App/bit-ui-library/ui-library"
 alias reporting="cd ~/Projects/FoodBomb/App/frontend-reporting/reporting"
 alias backend="cd ~/Projects/FoodBomb/App/backend-phplayer/php"
+alias infra="cd ~/Projects/FoodBomb/App/backend-infrastructure"
 alias backend-lib="cd ~/Projects/FoodBomb/App/foodbomb-backend-lib"
 alias orders="cd ~/Projects/FoodBomb/App/backend-orders"
 alias supplier-service="cd ~/Projects/FoodBomb/App/supplier"
@@ -62,6 +63,7 @@ alias opencart="cd ~/Projects/FoodBomb/App/sh-foodbomb-dev"
 alias phptest="./vendor/bin/phpunit --testdox tests"
 alias phpfix="php php-cs-fixer.phar fix --allow-risky=yes -vvv app/"
 alias dcu="docker-compose up"
+alias dcufast="DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1 BUILDKIT_PROGRESS=plain docker-compose up"
 alias dcd="docker-compose down"
 alias pauls="cd ~/Projects/FoodBomb/App/frontend-legacy-supplier/supplier"
 alias products="cd ~/Projects/FoodBomb/App/backend-products/app"
@@ -70,6 +72,9 @@ alias sql="cd ~/Projects/FoodBomb/App/sql-library/"
 alias startmon="cd ~/.mongodb && mongod --config ~/.mongodb/mongod.conf"
 alias alex="ssh -i ~/.ssh/spam_key foodbomb2@foodbomb2s-MacBook-Pro.local"
 alias cam="ssh -i ~/.ssh/spam_key cameronmercer1@192.168.10.107"
+
+# thefuck
+eval $(thefuck --alias)
 
 if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
 	source /usr/local/share/chruby/chruby.sh
