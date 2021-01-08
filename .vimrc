@@ -231,6 +231,10 @@ Plugin 'jelera/vim-javascript-syntax'
 " TypeScript
 Plugin 'leafgarland/typescript-vim'               " TypeScript Syntax Highlighting
 
+" Twig
+Plugin 'nelsyeung/twig.vim'                        " Twig Syntax
+Plugin 'beyondwords/vim-twig'
+
 " JSX / TSX
 Plugin 'maxmellon/vim-jsx-pretty'
 let g:vim_jsx_pretty_colorful_config = 1 " default 0
@@ -282,6 +286,14 @@ endif
 let NERDTreeShowHidden=1                      " Show hidden files
 "map <C-f> :NERDTreeToggle<CR>
 map <Leader>f :NERDTreeToggle<CR>
+
+" ====================== NERDTree Config ==================
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
 
 " ============= AutoComplete & Snippets Config ===========
 let g:ycm_path_to_python_interpreter = '/Users/adam/anaconda3/bin/python3'
