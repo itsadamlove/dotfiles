@@ -7,7 +7,8 @@ set backspace=indent,eol,start                " Allow backspace in insert mode
 set history=200                               " Store lots of :cmdline history
 set laststatus=2                              " Always display the status bar
 set showcmd                                   " Show incomplete cmds down the bottom
-set showmode                                  " Show current mode down the bottom
+set noshowmode                                  " Show current mode down the bottom
+set cursorline
 set gcr=a:blinkon0                            " Disable cursor blink
 "set novisualbell                              " No visual flash sound things
 "set noerrorbells
@@ -19,10 +20,15 @@ set colorcolumn=120                            " show a column at 80 chars
 set ttimeoutlen=10                            " Fast Esc key
 let mapleader=" "                             " Map leader to space bar
 set hidden
+set confirm
 
 " Update to make current version of vim not suck with ruby files due to regex
 " engine - tell it to use the old one
 set re=1
+
+" =================== Spell Checking ====================
+set spelllang=en_au
+set spell
 
 " ==================== Swap Files ====================
 
@@ -50,7 +56,7 @@ nmap = :m +1<CR>
 
 " ===================== Scrolling =====================
 
-set scrolloff=8 	                  	      " Start scrolling when we're 8 lines away from margins
+set scrolloff=12 	                  	      " Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
@@ -141,6 +147,10 @@ nnoremap <silent> <Leader>[ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>] :exe "resize " . (winheight(0) * 2/3)<CR>
 
 autocmd VimResized * wincmd = " Automatically resize splits when resizing window
+
+" ====================== Line Movement ==================
+xnoremap K :move '<-2<CR>gv-gv
+xnoremap J :move '>+1<CR>gv-gv
 
 " ====================== Save Settings ==================
 
@@ -247,6 +257,10 @@ Plugin 'w0rp/ale'                                 " Async Linting tool
 Plugin 'tpope/vim-endwise'                        " Automatically add 'end' to things like loops
 Plugin 'tpope/vim-rails'                            " Better Rails Syntax
 Plugin 'KurtPreston/vim-autoformat-rails'           " Formatting fixes
+
+" Goyo
+Plugin 'junegunn/goyo.vim'                            " Distraction free writing
+Plugin 'junegunn/limelight.vim'                       " Focus current paragraph
 
 call vundle#end()
 
@@ -381,11 +395,6 @@ nmap <silent> <Leader>j <Plug>(ale_next_wrap)
 
 nmap <leader>d <Plug>(ale_fix)
 
-"hi ALEErrorSign guifg=#DF8C8C
-"hi ALEWarningSign guifg=#F2C38F
-"let g:ale_sign_column_always = 1
-"let g:ale_lint_on_save = 1
-
 " ====================== Prettier Config ==================
 
 "let g:prettier#exec_cmd_async = 1
@@ -393,7 +402,7 @@ nmap <leader>d <Plug>(ale_fix)
 "let g:prettier#config#trailing_comma = 'none'
 "autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
 
-" ====================== Eunuch Config ==================
+" ====================== Move Current File ==================
 
 nnoremap <Leader>r :Move <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
 
@@ -411,7 +420,6 @@ set linespace=2
 
 set statusline=%=&P\ %f\ %m
 set fillchars=vert:\ ,stl:\ ,stlnc:\
-set noshowmode
 
 " ==================== Custom Functions =================
 function! s:MkNonExDir(file, buf)
@@ -424,3 +432,36 @@ function! s:MkNonExDir(file, buf)
 endfunction
 
 autocmd BufEnter *.png,*.jpg,*gif exec "! ~/.iterm2/imgcat ".expand("%") | :bw
+
+" ====================== Source Dotfiles ====================
+map <C-s> :source ~/.vimrc<CR>
+
+" ====================== Goyo Settings ====================
+map <ENTER> :Goyo<CR>
+
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+function! s:goyo_enter()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+  set noshowcmd
+  set scrolloff=999
+  set nocursorline
+  Limelight
+endfunction
+
+function! s:goyo_leave()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+  set showcmd
+  set scrolloff=12
+  set cursorline
+  Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
