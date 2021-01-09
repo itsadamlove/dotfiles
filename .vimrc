@@ -15,7 +15,9 @@ set gcr=a:blinkon0                            " Disable cursor blink
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 set autoread                                  " Reload files changed outside vim
-set clipboard=unnamed                         " Allows the vim clipboard to work with the system keyboard
+if !has('nvim')
+  set clipboard=unnamed                         " Allows the vim clipboard to work with the system keyboard
+endif
 set colorcolumn=120                            " show a column at 80 chars
 set ttimeoutlen=10                            " Fast Esc key
 let mapleader=" "                             " Map leader to space bar
@@ -169,9 +171,11 @@ autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 
 " ====================== iTerm Settings ==================
 
-set mouse=a                                   " Mouse scrolling in iTerm
-set ttymouse=xterm2                           " Mouse setting for tmux
-set ttymouse=sgr
+if !has('nvim')
+  set mouse=a                                   " Mouse scrolling in iTerm
+  set ttymouse=xterm2                           " Mouse setting for tmux
+  set ttymouse=sgr
+endif
 
 " ====================== Plugins ========================
 
@@ -199,6 +203,7 @@ Plugin 'scrooloose/nerdcommenter'                 " Commenting Shorcuts
 "Plugin 'prettier/vim-prettier'                    " Wrapper for prettier
 Plugin 'djoshea/vim-autoread'                     " Auto reload unchanged buffers on disk change
 Plugin 'luochen1990/rainbow'                      " Rainbow parentheses matching
+Plugin 'Yggdroot/indentLine'                      " Lines on indentation level
 
 if has('python3')
   " Snippets [Ultisnips]
@@ -240,6 +245,7 @@ Plugin 'jelera/vim-javascript-syntax'
 
 " TypeScript
 Plugin 'leafgarland/typescript-vim'               " TypeScript Syntax Highlighting
+Plugin 'HerringtonDarkholme/yats.vim'
 
 " Twig
 Plugin 'nelsyeung/twig.vim'                        " Twig Syntax
@@ -262,14 +268,22 @@ Plugin 'KurtPreston/vim-autoformat-rails'           " Formatting fixes
 Plugin 'junegunn/goyo.vim'                            " Distraction free writing
 Plugin 'junegunn/limelight.vim'                       " Focus current paragraph
 
+if has('nvim')
+  Plugin 'glacambre/firenvim'                      " nvim in browser fields
+endif
+
 call vundle#end()
 
 " ====================== Theme Config ==================
 
 syntax enable
 "set termguicolors
-set term=xterm-256color
-set background=dark
+"
+"
+if !has('nvim')
+  set term=xterm-256color
+  set background=dark
+endif
 
 " Gruvbox
 colorscheme gruvbox
@@ -285,6 +299,7 @@ let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#fnamemod=':t'
+let g:airline_detect_spell=0
 
 " Set vertical bar as cursor in insert mode
 if exists('$TMUX')
@@ -438,7 +453,6 @@ map <C-s> :source ~/.vimrc<CR>
 
 " ====================== Goyo Settings ====================
 map <ENTER> :Goyo<CR>
-
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
 function! s:goyo_enter()
@@ -461,6 +475,7 @@ function! s:goyo_leave()
   set scrolloff=12
   set cursorline
   Limelight!
+  AirlineRefresh!
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
