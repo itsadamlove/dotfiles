@@ -80,6 +80,7 @@ set expandtab
 
 autocmd Filetype php setlocal shiftwidth=4 softtabstop=4 tabstop=4
 autocmd Filetype py setlocal shiftwidth=4 softtabstop=4 tabstop=4
+autocmd Filetype json let g:indentLine_enabled = 0
 
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
@@ -171,8 +172,8 @@ autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 
 " ====================== iTerm Settings ==================
 
+set mouse=a                                   " Mouse scrolling in iTerm
 if !has('nvim')
-  set mouse=a                                   " Mouse scrolling in iTerm
   set ttymouse=xterm2                           " Mouse setting for tmux
   set ttymouse=sgr
 endif
