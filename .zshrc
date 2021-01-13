@@ -50,27 +50,30 @@ alias install_lint--react--typescript="yarn add --dev @typescript-eslint/eslint-
 
 alias journal="cd ~/Projects/FoodBomb/Journal"
 
+# Foodbomb Repos
 alias fb="cd ~/Projects/FoodBomb/App"
-alias shop="cd ~/Projects/FoodBomb/App/frontend-shop/shop"
-alias ui="cd ~/Projects/FoodBomb/App/bit-ui-library/app"
-alias reporting="cd ~/Projects/FoodBomb/App/frontend-reporting/reporting"
 alias backend="cd ~/Projects/FoodBomb/App/backend-phplayer/php"
+alias ui="cd ~/Projects/FoodBomb/App/bit-ui-library/app"
+alias shop="cd ~/Projects/FoodBomb/App/frontend-shop/shop"
+alias supplier="cd ~/Projects/FoodBomb/App/supplier-portal/app"
+alias delivery="cd ~/Projects/FoodBomb/App/delivery-preferences"
+alias staff="cd ~/Projects/FoodBomb/App/staff-portal/app"
+
+alias reporting="cd ~/Projects/FoodBomb/App/frontend-reporting/reporting"
 alias infra="cd ~/Projects/FoodBomb/App/backend-infrastructure"
 alias backend-lib="cd ~/Projects/FoodBomb/App/foodbomb-backend-lib"
 alias orders="cd ~/Projects/FoodBomb/App/backend-orders"
-alias supplier-service="cd ~/Projects/FoodBomb/App/supplier"
-alias supplier-portal="cd ~/Projects/FoodBomb/App/supplier-portal/app"
 alias opencart="cd ~/Projects/FoodBomb/App/sh-foodbomb-dev"
+alias products="cd ~/Projects/FoodBomb/App/backend-products/app"
+alias pauls="ECHO 'ITS CALLED STAFF, YOU MORON!'"
+alias admin="ECHO 'ITS CALLED STAFF, YOU MORON!'"
+
 alias phptest="./vendor/bin/phpunit --testdox tests"
 alias phpfix="docker exec -ti backend-phplayer_php_1 sh ./cs-script.sh"
+
 alias dcu="docker-compose up"
 alias dcufast="DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1 BUILDKIT_PROGRESS=plain docker-compose up"
 alias dcd="docker-compose down"
-alias staff="cd ~/Projects/FoodBomb/App/staff-portal/app"
-alias pauls="ECHO 'ITS CALLED STAFF, YOU MORON!'"
-alias admin="ECHO 'ITS CALLED STAFF, YOU MORON!'"
-alias products="cd ~/Projects/FoodBomb/App/backend-products/app"
-alias sql="cd ~/Projects/FoodBomb/App/sql-library/"
 
 alias startmon="cd ~/.mongodb && mongod --config ~/.mongodb/mongod.conf"
 alias alex="ssh -i ~/.ssh/spam_key foodbomb2@foodbomb2s-MacBook-Pro.local"
