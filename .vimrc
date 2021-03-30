@@ -252,9 +252,18 @@ Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'nelsyeung/twig.vim'                        " Twig Syntax
 Plugin 'beyondwords/vim-twig'
 
+" Liquid                                           " Liquid Syntax
+Plugin 'tpope/vim-liquid'
+
+" Django
+" Plugin 'lambdalisue/vim-django-support' " This shit is slow
+Plugin 'nvie/vim-flake8'
+Plugin 'tell-k/vim-autopep8'
+
 " JSX / TSX
 Plugin 'maxmellon/vim-jsx-pretty'
 let g:vim_jsx_pretty_colorful_config = 1 " default 0
+
 Plugin 'mattn/emmet-vim'                          " Expend CSS selectors into JSX
 
 " Liniting
@@ -270,7 +279,7 @@ Plugin 'junegunn/goyo.vim'                            " Distraction free writing
 Plugin 'junegunn/limelight.vim'                       " Focus current paragraph
 
 if has('nvim')
-  Plugin 'glacambre/firenvim'                      " nvim in browser fields
+  " Plugin 'glacambre/firenvim'                      " nvim in browser fields
 endif
 
 call vundle#end()
@@ -346,6 +355,7 @@ if has('python3')
   autocmd FileType javascript UltiSnipsAddFiletypes html
   autocmd FileType typescript UltiSnipsAddFiletypes html
   autocmd FileType edge UltiSnipsAddFiletypes html
+  autocmd FileType liquid UltiSnipsAddFiletypes html
 endif
 
 " ====================== FZF Config ==================
@@ -391,10 +401,15 @@ let g:user_emmet_settings = {
       \  },
       \}
 
+" ====================== Flake 8 Config ==================
+let g:flake8_show_in_gutter = 1
+let g:flake8_show_quickfix = 0
+autocmd BufWritePost *.py call flake8#Flake8()
+
 " ====================== Ale Config ==================
 
-let g:ale_linters = {'javascript': ['eslint']}
-let g:ale_fixers = ['prettier', 'eslint']
+let g:ale_linters = {'javascript': ['eslint'], 'python': ['flake8']}
+let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'python': ['autopep8'], '*': ['remove_trailing_lines', 'trim_whitespace']}
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_change = 'never'
 let g:airline#extendsions#ale#enabled = 1
