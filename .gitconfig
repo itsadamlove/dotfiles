@@ -2,6 +2,8 @@
   name = Adam Love
   email = adam.love127@gmail.com
   username = itsadamlove
+[includeIf "gitdir/i:~/Projects/Foodbomb/"]
+  path = ~/.gitconfig-foodbomb
 [url "ssh://git@heroku.com/"]
   insteadOf = https://git.heroku.com/
 [core]
