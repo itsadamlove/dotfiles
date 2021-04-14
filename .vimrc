@@ -259,6 +259,8 @@ Plugin 'tpope/vim-liquid'
 " Plugin 'lambdalisue/vim-django-support' " This shit is slow
 Plugin 'nvie/vim-flake8'
 Plugin 'tell-k/vim-autopep8'
+Plugin 'vim-python/python-syntax'
+Plugin 'psf/black'
 
 " JSX / TSX
 Plugin 'maxmellon/vim-jsx-pretty'
@@ -401,6 +403,19 @@ let g:user_emmet_settings = {
       \  },
       \}
 
+" ====================== Python Config ==================
+let g:python_highlight_all = 1
+
+" ====================== AutoPep8 Config ==================
+let g:autopep8_max_line_length=120
+let g:autopep8_aggressive=2
+let g:autopep8_disable_show_diff=0
+let g:autopep8_on_save = 1
+
+" ====================== Black Config ==================
+autocmd BufWritePre *.py execute ':Black'
+let g:black_linelength=120
+
 " ====================== Flake 8 Config ==================
 let g:flake8_show_in_gutter = 1
 let g:flake8_show_quickfix = 0
@@ -408,8 +423,8 @@ autocmd BufWritePost *.py call flake8#Flake8()
 
 " ====================== Ale Config ==================
 
-let g:ale_linters = {'javascript': ['eslint'], 'python': ['flake8']}
-let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'python': ['autopep8'], '*': ['remove_trailing_lines', 'trim_whitespace']}
+let g:ale_linters = {'javascript': ['eslint'], 'python': ['flake8'], 'markdown': ['remark-lint']}
+let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'python': ['autopep8'], '*': ['remove_trailing_lines', 'trim_whitespace'], 'markdown': ['remark-lint']}
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_change = 'never'
 let g:airline#extendsions#ale#enabled = 1

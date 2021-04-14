@@ -60,8 +60,8 @@ alias supplier="cd ~/Projects/FoodBomb/App/supplier-portal/app"
 alias delivery="cd ~/Projects/FoodBomb/App/delivery-preferences"
 alias delivery-api="cd ~/Projects/FoodBomb/App/delivery-preferences-api"
 alias delivery-api-bash="cd ~/Projects/FoodBomb/App/delivery-preferences-api && docker-compose exec api entrypoint.sh bash"
-alias delivery-api-test="cd ~/Projects/FoodBomb/App/delivery-preferences-api && docker-compose exec api pipenv run pytest"
-alias delivery-api-watch="cd ~/Projects/FoodBomb/App/delivery-preferences-api && docker-compose exec api pipenv run ptw"
+alias delivery-api-test="cd ~/Projects/FoodBomb/App/delivery-preferences-api && docker-compose exec api pipenv run pytest --verbose -s"
+alias delivery-api-watch="cd ~/Projects/FoodBomb/App/delivery-preferences-api && docker-compose exec api pipenv run ptw --verbose --runner 'pytest -s -vv --color=yes'"
 alias staff="cd ~/Projects/FoodBomb/App/staff-portal/app"
 alias supplier-api="cd ~/Projects/Foodbomb/App/supplier-api/"
 alias venue-api="cd ~/Projects/FoodBomb/App/venue-api"
@@ -79,8 +79,12 @@ alias admin="ECHO 'ITS CALLED STAFF, YOU MORON!'"
 alias duck="cd ~/Projects/theDuck"
 alias sequel="cd ~/Projects/sequel/sequelShopifyTheme"
 
+alias codacy="codacy-analysis-cli analyze --verbose"
+
 alias phptest="./vendor/bin/phpunit --testdox tests"
 alias phpfix="docker exec -ti backend-phplayer_php_1 sh ./cs-script.sh"
+
+alias master="git ch master"
 
 alias dcu="docker-compose up"
 alias dcufast="DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1 BUILDKIT_PROGRESS=plain docker-compose up"
