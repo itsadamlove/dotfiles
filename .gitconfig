@@ -32,3 +32,5 @@
   done = "!f(){ git rb master && CB=$(git rev-parse --abbrev-ref HEAD) && git co master && git m $CB && git b -d $CB; };f"
   pu = "!f(){ git push origin HEAD && git push origin --tags; };f"
   remove-merged-branches = "!f(){ git branch --merged | xargs git branch -d; };f"
+[pull]
+	rebase = false
