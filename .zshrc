@@ -81,7 +81,7 @@ alias sequel="cd ~/Projects/sequel/sequelShopifyTheme"
 
 alias codacy="codacy-analysis-cli analyze --verbose"
 
-alias phptest="./vendor/bin/phpunit --testdox tests"
+alias phptest="docker exec -ti backend-phplayer_php_1 sh ./vendor/bin/phpunit --testdox tests"
 alias phpfix="docker exec -ti backend-phplayer_php_1 sh ./cs-script.sh"
 
 alias master="git ch master"
