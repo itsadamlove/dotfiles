@@ -222,7 +222,8 @@ Plugin 'ervandew/supertab'                        " Use Tab for insert completio
 Plugin 'vim-airline/vim-airline'                  " Bottom Airline Bar
 Plugin 'vim-airline/vim-airline-themes'           " Airline themes
 Plugin 'morhetz/gruvbox'                          " Gruvbox Theme
-"Plugin 'mhartington/oceanic-next'                 " Oceanic Next Colour Scheme
+Plugin 'lifepillar/vim-gruvbox8'                  " Gruvbox 8
+" Plugin 'mhartington/oceanic-next'                 " Oceanic Next Colour Scheme
 
 " Git
 Plugin 'tpope/vim-fugitive'                       " Git Wrapper
@@ -264,12 +265,16 @@ Plugin 'psf/black'
 
 " JSX / TSX
 Plugin 'maxmellon/vim-jsx-pretty'
+Plugin 'peitalin/vim-jsx-typescript'
 let g:vim_jsx_pretty_colorful_config = 1 " default 0
 
 Plugin 'mattn/emmet-vim'                          " Expend CSS selectors into JSX
 
 " Liniting
 Plugin 'w0rp/ale'                                 " Async Linting tool
+
+" GraphQL
+Plugin 'jparise/vim-graphql'                          " GraphQL
 
 " Ruby
 Plugin 'tpope/vim-endwise'                        " Automatically add 'end' to things like loops
@@ -281,6 +286,10 @@ Plugin 'junegunn/goyo.vim'                            " Distraction free writing
 Plugin 'junegunn/limelight.vim'                       " Focus current paragraph
 
 if has('nvim')
+  " Plugin 'mhartington/nvim-typescript'
+  " Plugin 'eddyekofo94/gruvbox-flat.nvim'
+  " Plugin 'Shougo/deoplete.nvim'
+  " Plugin 'Shougo/denite.nvim'
   " Plugin 'glacambre/firenvim'                      " nvim in browser fields
 endif
 
@@ -299,14 +308,20 @@ endif
 
 " Gruvbox
 colorscheme gruvbox
-let g:gruvbox_contrast_dark="medium"
 let g:airline_theme='gruvbox'
+let g:gruvbox_contrast_dark="medium"
+
+" Gruvbox8
+" colorscheme gruvbox8_hard
+" colorscheme gruvbox8
+" let g:gruvbox_filetype_hi_groups = 1
+" let g:gruvbox_plugin_hi_groups = 1
 
 " Oceanic Next
-"colorscheme OceanicNext
-"let g:oceanic_next_terminal_bold = 1
-"let g:oceanic_next_terminal_italic = 1
-"let g:airline_theme='oceanicnext'
+" colorscheme OceanicNext
+" let g:oceanic_next_terminal_bold = 1
+" let g:oceanic_next_terminal_italic = 1
+" let g:airline_theme='oceanicnext'
 
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
