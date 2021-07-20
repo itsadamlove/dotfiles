@@ -77,7 +77,7 @@ alias admin="ECHO 'ITS CALLED STAFF, YOU MORON!'"
 
 
 alias duck="cd ~/Projects/theDuck"
-alias sequel="cd ~/Projects/sequel/sequelShopifyTheme"
+alias sequel="cd ~/Projects/sequel/nextPrototype/sequel-marketing"
 
 alias codacy="codacy-analysis-cli analyze --verbose"
 
