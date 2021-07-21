@@ -70,13 +70,13 @@ set ignorecase                              " Ignore case when searching...
 set smartcase                               " ... Unless we type a capital
 
 " ===================== Indentation ==================
-set autoindent
-set smartindent
+set expandtab
 set smarttab
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
-set expandtab
+set autoindent
+set smartindent
 
 autocmd Filetype php setlocal shiftwidth=4 softtabstop=4 tabstop=4
 autocmd Filetype py setlocal shiftwidth=4 softtabstop=4 tabstop=4
@@ -100,6 +100,8 @@ set linebreak                                 " Wrap lines at convenient points
 " Move normally between wrapped lines
 nmap j gj
 nmap k gk
+
+" TODO: we got to here in nvim config
 
 " ========================  Buffers ====================
 
@@ -212,7 +214,7 @@ if has('python3')
   Plugin 'honza/vim-snippets'                       " Snippets are separated from the engine.
 
   " AutoCompletion - Requires compiling
-  Plugin 'Valloric/YouCompleteMe'                   " Auto Suggestions
+  " Plugin 'Valloric/YouCompleteMe'                   " Auto Suggestions
 endif
 
 " SupeTab - To make snippets and auto complete work nicely together
@@ -352,28 +354,29 @@ let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 
 " ============= AutoComplete & Snippets Config ===========
-let g:ycm_path_to_python_interpreter = '/Users/adam/anaconda3/bin/python3'
-if has('python3')
-  " make YCM compatible with UltiSnips (using supertab)
-  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-  let g:ycm_key_list_accept_completion = ['<C-y>']
-  let g:SuperTabDefaultCompletionType = '<C-n>'
-
-  let g:UltiSnipsExpandTrigger = "<tab>"
-  let g:UltiSnipsJumpForwardTrigger = "<c-f>"
-  let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
-
-  " Auto CSS recommendations for YCM
-  let g:ycm_semantic_triggers = {
-        \   'css': [ 're!^\s{2}', 're!:\s+' ],
-        \ }
-
-  autocmd FileType javascript UltiSnipsAddFiletypes html
-  autocmd FileType typescript UltiSnipsAddFiletypes html
-  autocmd FileType edge UltiSnipsAddFiletypes html
-  autocmd FileType liquid UltiSnipsAddFiletypes html
-endif
+" NOTE: Disabling YCM as I've moved to neovim
+"let g:ycm_path_to_python_interpreter = '/Users/adam/anaconda3/bin/python3'
+"if has('python3')
+" " make YCM compatible with UltiSnips (using supertab)
+" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+" let g:ycm_key_list_accept_completion = ['<C-y>']
+" let g:SuperTabDefaultCompletionType = '<C-n>'
+"
+" let g:UltiSnipsExpandTrigger = "<tab>"
+" let g:UltiSnipsJumpForwardTrigger = "<c-f>"
+" let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
+"
+" " Auto CSS recommendations for YCM
+" let g:ycm_semantic_triggers = {
+"       \   'css': [ 're!^\s{2}', 're!:\s+' ],
+"       \ }
+"
+" autocmd FileType javascript UltiSnipsAddFiletypes html
+" autocmd FileType typescript UltiSnipsAddFiletypes html
+" autocmd FileType edge UltiSnipsAddFiletypes html
+" autocmd FileType liquid UltiSnipsAddFiletypes html
+" endif
 
 " ====================== FZF Config ==================
 

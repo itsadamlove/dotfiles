@@ -460,7 +460,7 @@
   },
   "Cursor Type" : 2,
   "Blur" : true,
-  "Normal Font" : "UbuntuMonoDerivativePowerline-Regular 15",
+  "Normal Font" : "UbuntuMonoNerdFontCompleteM-Regular 15",
   "Vertical Spacing" : 1.1000000000000001,
   "Disable Printing" : false,
   "Ansi 7 Color" : {
@@ -511,12 +511,13 @@
     "Green Component" : 0.16078431372549021
   },
   "Transparency" : 0,
+  "Unicode Version" : 8,
   "Screen" : -2,
   "HotKey Characters Ignoring Modifiers" : " ",
   "Bound Hosts" : [
 
   ],
-  "Non Ascii Font" : "SourceCodeProForPowerline-Regular 12",
+  "Non Ascii Font" : "UbuntuMonoNerdFontCompleteM-Regular 15",
   "Ansi 13 Color" : {
     "Red Component" : 0.82745099067687988,
     "Color Space" : "Calibrated",
