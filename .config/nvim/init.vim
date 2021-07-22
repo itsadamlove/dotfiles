@@ -554,7 +554,7 @@ highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
 " Navigate between errors quickly
-" TODO: do we want these ?
+" NOTE: These have been replaces with the COC implementations
 " nmap <silent> <Leader>k <Plug>(ale_previous_wrap)
 " nmap <silent> <Leader>j <Plug>(ale_next_wrap)
 " nmap <leader>d <Plug>(ale_fix)
@@ -651,9 +651,9 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 
 " TODO: remap these
 " Use `[` and `]` to navigate diagnostics
+nmap <silent> <leader>k <Plug>(coc-diagnostic-prev)
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [ <Plug>(coc-diagnostic-prev)
-nmap <silent> ] <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>j <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
