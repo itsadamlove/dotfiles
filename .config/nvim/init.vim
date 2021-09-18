@@ -38,8 +38,8 @@ Plug 'preservim/nerdcommenter'
 
 " NerdTree File Browser
 Plug 'scrooloose/nerdtree'
-" NerdTree file highlighting
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" NerdTree file highlighting -> NOTE: this plugin is slow AF
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " Show Git status in nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
@@ -542,22 +542,17 @@ autocmd BufWritePost *.py call flake8#Flake8()
 " prettier support and is pretty great.
 " However, ALE has sooo many more linters. So I'm going to try and figure out
 " how to run both of them nicely together
+
 let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['eslint'], 'python': ['flake8'], 'markdown': ['remark-lint'], 'css': ['stylelint'], 'scss': ['stylelint'], 'json': ['fixjson']}
-let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'typescript': ['prettier', 'eslint'], 'python': ['autopep8'], '*': ['remove_trailing_lines', 'trim_whitespace'], 'markdown': ['remark-lint'], 'css': ['stylelint', 'prettier'], 'scss': ['stylelint', 'prettier'], 'json': ['fixjson']}
+let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'html': ['prettier'], 'typescript': ['prettier', 'eslint'], 'python': ['autopep8'], '*': ['remove_trailing_lines', 'trim_whitespace'], 'markdown': ['remark-lint'], 'css': ['stylelint', 'prettier'], 'scss': ['stylelint', 'prettier'], 'json': ['fixjson']}
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_change = 'never'
 let g:airline#extendsions#ale#enabled = 1
 
-let g:ale_sign_error = '✘'
+let g:ale_sign_error = 'a✘'
 let g:ale_sign_warning = '⚠'
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
-
-" Navigate between errors quickly
-" NOTE: These have been replaces with the COC implementations
-" nmap <silent> <Leader>k <Plug>(ale_previous_wrap)
-" nmap <silent> <Leader>j <Plug>(ale_next_wrap)
-" nmap <leader>d <Plug>(ale_fix)
 
 " ====================================================
 " ============== CONFIGURATION FOR COC ===============
@@ -572,7 +567,9 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-pyright',
   \ 'coc-phpls',
-  \ 'coc-php-cs-fixer'
+  \ 'coc-php-cs-fixer',
+  \ 'coc-css',
+  \ 'coc-stylelint'
   \ ]
 
 if executable('intelephense')
