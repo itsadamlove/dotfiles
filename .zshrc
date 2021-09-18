@@ -154,10 +154,15 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
 export BAT_THEME="gruvbox-dark"
 export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+
+# Allow mosh incoming connections
+fw='/usr/libexec/ApplicationFirewall/socketfilterfw'
+mosh_sym='/usr/local/bin/mosh-server'
+mosh_abs='/usr/local/Cellar/mosh/1.3.2_16/bin/mosh-server'
+"$fw" --add "$mosh_sym" > /dev/null
+"$fw" --add "$mosh_abs" > /dev/null
+"$fw" --unblockapp "$mosh_sym" > /dev/null
+"$fw" --unblockapp "$mosh_abs" > /dev/null

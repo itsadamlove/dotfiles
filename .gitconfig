@@ -1,6 +1,6 @@
 [user]
-  name = Adam Love
-  email = adam.love127@gmail.com
+	name = Adam Love
+	email = adam.love127@gmail.com
   username = itsadamlove
 [includeIf "gitdir/i:~/Projects/Foodbomb/"]
   path = ~/.gitconfig-foodbomb
