@@ -3,6 +3,7 @@
   "eslint.alwaysShowStatus": true,
   "coc.preferences.formatOnSaveFiletypes": ["*"],
   "php-cs-fixer.rules": "@PSR13,ordered_imports,no_unused_imports",
+  "php-cs-fixer.config": ".php_cs",
   "intelephense.licenceKey": "enterkeyhere",
   "snippets.extends": {
     "cpp": ["c"],
