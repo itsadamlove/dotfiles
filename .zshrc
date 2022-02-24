@@ -21,7 +21,7 @@ ZSH_THEME="avit"
 # ====================== Plugin Settings ========================
 
 # Plugins
-plugins=(git rails zeus zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git rails zeus zsh-syntax-highlighting zsh-autosuggestions ssh-agent)
 
 # ====================== Alias Settings ========================
 
@@ -54,6 +54,7 @@ alias journal="cd ~/Projects/FoodBomb/Journal"
 alias fb="cd ~/Projects/FoodBomb/App"
 alias backend="cd ~/Projects/FoodBomb/App/backend-phplayer/php"
 alias ui="cd ~/Projects/FoodBomb/App/bit-ui-library/app"
+alias uistore="cd ~/Projects/FoodBomb/App/firebase/functions"
 alias shop="cd ~/Projects/FoodBomb/App/frontend-shop/app"
 alias venue="cd ~/Projects/FoodBomb/App/frontend-shop/app"
 alias supplier="cd ~/Projects/FoodBomb/App/supplier-portal/app"
@@ -65,6 +66,9 @@ alias delivery-api-watch="cd ~/Projects/FoodBomb/App/delivery-preferences-api &&
 alias staff="cd ~/Projects/FoodBomb/App/staff-portal/app"
 alias supplier-api="cd ~/Projects/Foodbomb/App/supplier-api/"
 alias venue-api="cd ~/Projects/FoodBomb/App/venue-api"
+alias manageCompleteOrders="curl -X POST -H 'Content-type: application/json' -H 'Authorization: FAKE_INTERNAL_API_KEY' http://localhost:9000/cronJobDispatcher.php\?function\=manageCompleteOrders"
+alias sendInvoices="curl -X POST -H 'Content-type: application/json' -H 'Authorization: FAKE_INTERNAL_API_KEY' http://localhost:9000/cronJobDispatcher.php\?function\=sendInvoices"
+alias sendOrderEmails="curl -X POST -H 'Content-type: application/json' -H 'Authorization: FAKE_INTERNAL_API_KEY' http://localhost:9000/api/internal/jobs/send-new-order-email-to-venue && curl -X POST -H 'Content-type: application/json' -H 'Authorization: FAKE_INTERNAL_API_KEY' http://localhost:9000/api/internal/jobs/send-new-order-email-to-supplier"
 
 alias reporting="cd ~/Projects/FoodBomb/App/frontend-reporting/reporting"
 alias infra="cd ~/Projects/FoodBomb/App/backend-infrastructure"
@@ -78,6 +82,8 @@ alias admin="ECHO 'ITS CALLED STAFF, YOU MORON!'"
 
 alias duck="cd ~/Projects/theDuck"
 alias sequel="cd ~/Projects/sequel/nextPrototype/sequel-marketing"
+alias scalar="cd ~/Projects/ScalarPlaceholder"
+alias dadalearn="cd ~/Projects/DadaLearn/dadalearn"
 
 alias codacy="codacy-analysis-cli analyze --verbose"
 
@@ -159,11 +165,22 @@ export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 export BAT_THEME="gruvbox-dark"
 export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 
-# Allow mosh incoming connections
-fw='/usr/libexec/ApplicationFirewall/socketfilterfw'
-mosh_sym='/usr/local/bin/mosh-server'
-mosh_abs='/usr/local/Cellar/mosh/1.3.2_16/bin/mosh-server'
-"$fw" --add "$mosh_sym" > /dev/null
-"$fw" --add "$mosh_abs" > /dev/null
-"$fw" --unblockapp "$mosh_sym" > /dev/null
-"$fw" --unblockapp "$mosh_abs" > /dev/null
+export PATH=/usr/local/bin:$PATH
+
+# firewall is blocking mosh
+alias firepower='sudo /usr/libexec/ApplicationFirewall/socketfilterfw'
+fix_mosh_server() {
+  # temporarily shut firewall off
+  firepower --setglobalstate off
+
+  # add symlinked location to firewall
+  firepower --add $(which mosh-server)
+  firepower --unblockapp $(which mosh-server)
+
+  # add homebrew location to firewall
+  firepower --add $(brew --prefix)/Cellar/mosh/1.3.2_2/bin/mosh-server
+  firepower --unblockapp $(brew --prefix)/Cellar/mosh/1.3.2_2/bin/mosh-server
+
+  # re-enable firewall
+  firepower --setglobalstate on
+}
