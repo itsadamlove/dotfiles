@@ -178,9 +178,15 @@ fix_mosh_server() {
   firepower --unblockapp $(which mosh-server)
 
   # add homebrew location to firewall
-  firepower --add $(brew --prefix)/Cellar/mosh/1.3.2_2/bin/mosh-server
-  firepower --unblockapp $(brew --prefix)/Cellar/mosh/1.3.2_2/bin/mosh-server
+  firepower --add $(brew --prefix)/Cellar/mosh/1.3.2_18/bin/mosh-server
+  firepower --unblockapp $(brew --prefix)/Cellar/mosh/1.3.2_18/bin/mosh-server
 
   # re-enable firewall
   firepower --setglobalstate on
 }
+
+# Created by `pipx` on 2022-03-04 02:58:30
+export PATH="$PATH:/Users/adam/.local/bin"
+
+# Created by `pipx` on 2022-03-04 02:58:33
+export PATH="$PATH:/Users/adam/Library/Python/3.9/bin"

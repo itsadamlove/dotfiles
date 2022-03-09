@@ -238,6 +238,20 @@ The final step is to install all your other dev tools that you need. I'll get ar
 
 As a small bonus I've included a view other applications that I use on a daily basis in macOS. They're awesome!
 
+### Awesome CLI Things
+
+- [EXA](https://the.exa.website) a modern replacement fo rthe venerable file-listing command line program `ls`
+- [Delta](https://github.com/dandavision/delta) syntax-highlighting pager for git, diff and grep output
+- [Dust](https://github.com/bootandy/dust) Like `du` but more intuitive
+- [Duf](https://github.com/muesli/duf) A better `df` alternative
+- [broot](https://github.com/Canop/broot) Directory navigation
+- [ripgrap](https://github.com/BurntSushi/ripgrep) `grep` alternative that respects gitignore
+- [gtop](https://github.com/aksakalli/gtop) system monitoring
+- [gping](https://github.com/orf/gping) Ping with a graph
+- [procs](https://github.com/dalance/procs) `ps` replacement
+- [httppie](https://github.com/httpie/httpie) CLI http client
+- [curlie](https://github.com/rs/curlie) `curl` meets `httppie`
+
 ### Alfred
 
 [Alfred](https://www.alfredapp.com/) is like spotlight for your mac but on steriods. It enables you to launch applications, find files, run conversions, search the web, calculate, control system commands, control your music and much, much more. You can even build your own scripts known as _workflows_ or [download pre-built workflows](https://www.alfredapp.com/workflows/). I've become that depenedent on Alfred that I can't use a Mac without it.
