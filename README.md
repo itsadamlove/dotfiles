@@ -121,6 +121,17 @@ $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/inst
 
 **OPTIONAL**: Install brew cask and install everything else through there without needing GUI
 
+// TODO: add brew cask instructions
+```bash
+brew install ripgrep
+brew install fd
+```
+
+```
+brew install jq
+
+```
+
 ### 3. Install iTerm2 (macOS)
 
 iTerm2 is a terminal replacement for macOS. It's got some great [features](https://www.iterm2.com/features.html) and is super customisable.

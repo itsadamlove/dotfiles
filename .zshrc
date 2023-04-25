@@ -54,8 +54,11 @@ alias journal="cd ~/Projects/FoodBomb/Journal"
 alias fb="cd ~/Projects/FoodBomb/App"
 alias backend="cd ~/Projects/FoodBomb/App/backend-phplayer/php"
 alias ui="cd ~/Projects/FoodBomb/App/bit-ui-library/app"
+alias ui2="cd /Users/adam/Projects/FoodBomb/App/bit-ui-library-v2"
 alias uistore="cd ~/Projects/FoodBomb/App/firebase/functions"
 alias shop="cd ~/Projects/FoodBomb/App/frontend-shop/app"
+alias reports="cd ~/Projects/FoodBomb/App/reports-service"
+alias delivery-run="cd ~/Projects/FoodBomb/App/delivery-run-tracker/"
 alias venue="cd ~/Projects/FoodBomb/App/frontend-shop/app"
 alias supplier="cd ~/Projects/FoodBomb/App/supplier-portal/app"
 alias delivery="cd ~/Projects/FoodBomb/App/delivery-preferences"
@@ -72,6 +75,7 @@ alias sendOrderEmails="curl -X POST -H 'Content-type: application/json' -H 'Auth
 
 alias reporting="cd ~/Projects/FoodBomb/App/frontend-reporting/reporting"
 alias infra="cd ~/Projects/FoodBomb/App/backend-infrastructure"
+alias mumv-infra="cd ~/Projects/FoodBomb/App/mumv-infra"
 alias backend-lib="cd ~/Projects/FoodBomb/App/foodbomb-backend-lib"
 alias orders="cd ~/Projects/FoodBomb/App/backend-orders"
 alias opencart="cd ~/Projects/FoodBomb/App/sh-foodbomb-dev"
@@ -81,15 +85,22 @@ alias admin="ECHO 'ITS CALLED STAFF, YOU MORON!'"
 
 
 alias duck="cd ~/Projects/theDuck"
+alias supplier-duck="cd ~/Projects/supplier-duck"
+alias venue-duck="cd ~/Projects/venue-duck"
 alias sequel="cd ~/Projects/sequel/nextPrototype/sequel-marketing"
+alias ssh-sequel='cd /Users/adam/Documents/ScalarLabs/Clients/Sequel && ssh -i "ec2-strapi-key-pair-2.pem" ubuntu@ec2-54-215-96-5.us-west-1.compute.amazonaws.com'
+alias sequel-cms="cd ~/Projects/sequel/sequel-cms"
+alias sequel-cms-site="Open https://cms.trysequel.com/admin/"
 alias scalar="cd ~/Projects/ScalarPlaceholder"
 alias dadalearn="cd ~/Projects/DadaLearn/dadalearn"
 
 alias codacy="codacy-analysis-cli analyze --verbose"
 
-alias phpcontainer="docker exec -ti backend-phplayer_php_1 bash"
-alias phptest="docker exec -ti backend-phplayer_php_1 sh ./vendor/bin/phpunit --testdox tests"
-alias phpfix="docker exec -ti backend-phplayer_php_1 sh ./cs-script.sh"
+alias phpcontainer="docker-compose exec php bash"
+alias phptest="docker-compose exec php bash ./vendor/bin/phpunit --testdox tests"
+# alias phptest="docker exec -ti backend-phplayer_php_1 sh ./vendor/bin/phpunit --testdox tests"
+alias phpfix="docker-compose exec php bash ./cs-script.sh"
+# alias phpfix="docker exec -ti backend-phplayer_php_1 sh ./cs-script.sh"
 
 alias master="git ch master"
 
@@ -190,3 +201,7 @@ export PATH="$PATH:/Users/adam/.local/bin"
 
 # Created by `pipx` on 2022-03-04 02:58:33
 export PATH="$PATH:/Users/adam/Library/Python/3.9/bin"
+
+# bit
+export PATH="$PATH:/Users/adam/bin"
+# bit end

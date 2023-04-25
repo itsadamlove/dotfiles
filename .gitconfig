@@ -28,6 +28,7 @@
   fp = fetch --prune
   hr = reset HEAD^ --hard
   pt = push --tags
+  cp = cherry
   wip = "!f(){ git add . && git co "WIP" -n; };f"
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   done = "!f(){ git rb master && CB=$(git rev-parse --abbrev-ref HEAD) && git co master && git m $CB && git b -d $CB; };f"
