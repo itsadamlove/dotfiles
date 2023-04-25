@@ -1,7 +1,7 @@
 {
   "eslint.autoFixOnSave": true,
   "eslint.alwaysShowStatus": true,
-  "coc.preferences.formatOnSaveFiletypes": ["*"],
+  "coc.preferences.formatOnSaveFiletypes": ["*", "prisma"],
   "php-cs-fixer.rules": "@PSR12,ordered_imports,no_unused_imports",
   "php-cs-fixer.toolPath": "~/.config/coc/extensions/coc-php-cs-fixer-data/php-cs-fixer",
   "intelephense.licenceKey": "enterkeyhere",

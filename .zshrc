@@ -54,8 +54,10 @@ alias journal="cd ~/Projects/FoodBomb/Journal"
 alias fb="cd ~/Projects/FoodBomb/App"
 alias backend="cd ~/Projects/FoodBomb/App/backend-phplayer/php"
 alias ui="cd ~/Projects/FoodBomb/App/bit-ui-library/app"
+alias ui2="cd ~/Projects/FoodBomb/App/bit-ui-library-v2"
 alias uistore="cd ~/Projects/FoodBomb/App/firebase/functions"
 alias shop="cd ~/Projects/FoodBomb/App/frontend-shop/app"
+alias menu-costing="cd ~/Projects/Foodbomb/App/menu-costing-app"
 alias delivery-run="cd ~/Projects/FoodBomb/App/delivery-run-tracker/"
 alias venue="cd ~/Projects/FoodBomb/App/frontend-shop/app"
 alias reports="cd ~/Projects/FoodBomb/App/reports-service"
@@ -107,6 +109,9 @@ alias dcd="docker-compose down"
 alias startmon="cd ~/.mongodb && mongod --config ~/.mongodb/mongod.conf"
 alias alex="ssh -i ~/.ssh/spam_key foodbomb2@foodbomb2s-MacBook-Pro.local"
 alias cam="ssh -i ~/.ssh/spam_key cameronmercer1@192.168.10.107"
+
+
+alias bit="bbit"
 
 # thefuck
 eval $(thefuck --alias)
@@ -197,3 +202,13 @@ export PATH="$PATH:/Users/adam/.local/bin"
 
 # Created by `pipx` on 2022-03-04 02:58:33
 export PATH="$PATH:/Users/adam/Library/Python/3.9/bin"
+
+# bit
+export PATH="$PATH:/Users/adam/bin"
+# bit end
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/adam/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/adam/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/adam/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/adam/google-cloud-sdk/completion.zsh.inc'; fi
