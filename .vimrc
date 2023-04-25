@@ -225,6 +225,7 @@ Plugin 'vim-airline/vim-airline'                  " Bottom Airline Bar
 Plugin 'vim-airline/vim-airline-themes'           " Airline themes
 Plugin 'morhetz/gruvbox'                          " Gruvbox Theme
 Plugin 'lifepillar/vim-gruvbox8'                  " Gruvbox 8
+Plugin 'rebelot/kanagawa.nvim'
 " Plugin 'mhartington/oceanic-next'                 " Oceanic Next Colour Scheme
 
 " Git
@@ -309,9 +310,9 @@ if !has('nvim')
 endif
 
 " Gruvbox
-colorscheme gruvbox
-let g:airline_theme='gruvbox'
-let g:gruvbox_contrast_dark="medium"
+colorscheme kanagawa
+let g:airline_theme='kanagawa'
+" let g:gruvbox_contrast_dark="medium"
 
 " Gruvbox8
 " colorscheme gruvbox8_hard
