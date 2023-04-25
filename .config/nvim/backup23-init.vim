@@ -86,6 +86,9 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'peitalin/vim-jsx-typescript'
 let g:vim_jsx_pretty_colorful_config = 1 " default 0
 
+" Prisma
+Plug 'pantharshit00/vim-prisma'
+
 " Twig Syntax
 Plug 'nelsyeung/twig.vim'
 Plug 'beyondwords/vim-twig'
@@ -101,10 +104,10 @@ Plug 'tpope/vim-rails'
 Plug 'KurtPreston/vim-autoformat-rails'
 
 " Python Syntax & Formatting
-Plug 'nvie/vim-flake8'
-Plug 'tell-k/vim-autopep8'
-Plug 'vim-python/python-syntax'
-Plug 'psf/black'
+" Plug 'nvie/vim-flake8'
+" Plug 'tell-k/vim-autopep8'
+" Plug 'vim-python/python-syntax'
+" Plug 'psf/black'
 
 " Fancy Icons NOTE: this must be last
 Plug 'ryanoasis/vim-devicons'
@@ -518,23 +521,23 @@ let g:python_highlight_all = 1
 
 " ================== AutoPep8 Config ==================
 
-let g:autopep8_max_line_length=120
-let g:autopep8_aggressive=2
-let g:autopep8_disable_show_diff=0
-let g:autopep8_on_save = 1
+" let g:autopep8_max_line_length=120
+" let g:autopep8_aggressive=2
+" let g:autopep8_disable_show_diff=0
+" let g:autopep8_on_save = 1
 
 
 " ================== Black Config =====================
 
-autocmd BufWritePre *.py execute ':Black'
-let g:black_linelength=120
+" autocmd BufWritePre *.py execute ':Black'
+" let g:black_linelength=120
 
 
 " =================== Flake 8 Config ==================
 
-let g:flake8_show_in_gutter = 1
-let g:flake8_show_quickfix = 0
-autocmd BufWritePost *.py call flake8#Flake8()
+" let g:flake8_show_in_gutter = 1
+" let g:flake8_show_quickfix = 0
+" autocmd BufWritePost *.py call flake8#Flake8()
 
 
 " =================== ALE Config =====================
@@ -544,7 +547,7 @@ autocmd BufWritePost *.py call flake8#Flake8()
 " how to run both of them nicely together
 
 let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['eslint'], 'python': ['flake8'], 'markdown': ['remark-lint'], 'css': ['stylelint'], 'scss': ['stylelint'], 'json': ['fixjson']}
-let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'html': ['prettier'], 'typescript': ['prettier', 'eslint'], 'python': ['autopep8'], '*': ['remove_trailing_lines', 'trim_whitespace'], 'markdown': ['remark-lint'], 'css': ['stylelint', 'prettier'], 'scss': ['stylelint', 'prettier'], 'json': ['fixjson']}
+let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'html': ['prettier'], 'typescript': ['prettier', 'eslint'], 'python': ['autopep8'], '*': ['remove_trailing_lines', 'trim_whitespace'], 'markdown': ['remark-lint'], 'css': ['stylelint', 'prettier'], 'scss': ['stylelint', 'prettier'], 'json': ['fixjson'], 'prisma': ['prettier']}
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_change = 'never'
 let g:airline#extendsions#ale#enabled = 1
@@ -569,7 +572,8 @@ let g:coc_global_extensions = [
   \ 'coc-phpls',
   \ 'coc-php-cs-fixer',
   \ 'coc-css',
-  \ 'coc-stylelint'
+  \ 'coc-stylelint',
+  \ 'coc-prisma'
   \ ]
 
 if executable('intelephense')
