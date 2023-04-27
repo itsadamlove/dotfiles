@@ -38,7 +38,6 @@ require("lazy").setup({
     end
   },
   { "tpope/vim-endwise"},
-  { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
   { 'kazhala/close-buffers.nvim' },
   {'eandrju/cellular-automaton.nvim'},
   {
@@ -104,8 +103,8 @@ require("lazy").setup({
 -- Multi Cursors
 'mg979/vim-visual-multi',
 -- ColorSchemes
-{ "savq/melange-nvim", priority = 1000, lazy = false },
-{ "ellisonleao/gruvbox.nvim", priority = 1000, lazy = false },
+{ "savq/melange-nvim" },
+{ "ellisonleao/gruvbox.nvim" },
 {
   'rose-pine/neovim',
   lazy = false,
@@ -114,6 +113,8 @@ require("lazy").setup({
     -- vim.cmd('colorscheme rose-pine')
   end
 },
-"rebelot/kanagawa.nvim"
+{ "rebelot/kanagawa.nvim", priority = 1000, lazy = false },
+-- Bufferline
+  { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons', priority = 1000, lazy = false}
 })
 

@@ -44,8 +44,8 @@ require('bufferline').setup {
     end,
     color_icons = false,
     show_buffer_icons = true,
-    show_buffer_close_icons = true,
-    separator_style = "slant", -- slant, think, thin, slope
+    show_buffer_close_icons = false,
+    separator_style = "slope", -- slant, think, thin, slope
     always_show_bufferline = true,
     offsets = {{filetype = "NvimTree", text = "Project Files"  }}
 
