@@ -8,7 +8,7 @@ require("nvim-tree").setup({
   },
   filters = {
     dotfiles = true,
-  }
+  },
 })
 
 -- vim.keymap.set('n', '<c-n>', ':NvimTreeFindFileToggle<CR>')
