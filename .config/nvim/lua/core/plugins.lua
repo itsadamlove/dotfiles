@@ -68,6 +68,7 @@ require("lazy").setup({
 		"gennaro-tedesco/nvim-jqx",
 		ft = { "json", "yaml" },
 	},
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v2.x",
@@ -113,7 +114,6 @@ require("lazy").setup({
 	},
 	{ "jose-elias-alvarez/null-ls.nvim" },
 	{ "MunifTanjim/prettier.nvim" },
-	{ "nanotee/sqls.nvim" },
 	{ "ckipp01/stylua-nvim" },
 	{ "nvim-telescope/telescope-ui-select.nvim" },
 	"NvChad/nvim-colorizer.lua",
@@ -148,4 +148,8 @@ require("lazy").setup({
 		priority = 1000,
 		lazy = false,
 	},
+	-- Tmux
+	{ "christoomey/vim-tmux-navigator" },
+	-- Notify
+	{ "rcarriga/nvim-notify" }, -- Update install notification
 })

@@ -18,12 +18,6 @@ end)
 -- (Optional) Configure lua language server for neovim
 require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
-require("lspconfig").sqls.setup({
-	on_attach = function(client, bufnr)
-		require("sqls").on_attach(client, bufnr)
-	end,
-})
-
 vim.cmd([[
 let g:UltiSnipsJumpForwardTrigger='<Tab>'
 let g:UltiSnipsJumpBackwardTrigger='<S-Tab>'

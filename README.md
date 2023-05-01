@@ -135,6 +135,8 @@ brew install stylua
 
 ```
 npm install -g @fsouza/prettierd
+npm install -g sql-language-server
+python3 -m pip install flake8
 ```
 
 ### 3. Install iTerm2 (macOS)
