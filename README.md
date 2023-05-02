@@ -131,6 +131,10 @@ brew install fd
 ```
 brew install jq
 brew install stylua
+
+brew tap epk/epk
+brew install --cask font-sf-mono-nerd-font
+brew install jesseduffield/lazygit/lazygit
 ```
 
 ```
