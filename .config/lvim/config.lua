@@ -1,3 +1,19 @@
+-- TODO
+-- Somethings still arent working
+-- 1. Formatting on save (prettier in js files)
+-- 2. Snippets in react (typing p tags is a nightmare)
+-- 3. The filedraw on start up is horrible
+-- 4. Code actions take a really long time
+-- 5. PHP CS Fixer is still a nightmare and not working
+-- 6. OrganiseImports is not bound - need to figure this out
+-- 7. Maybe I want to re-enable the warnings inline because the gutter warnings might not be enough
+-- 8. Bufferbar styling
+-- 9. Tmux line styling
+-- 10. Fuzzy search within project
+-- 11. React specific linting - highlighting useCallback Errors
+-- 12. Debugging
+-- 13. Co pilot
+
 --[[
  THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
  `lvim` is the global options object
@@ -109,62 +125,7 @@ code_actions.setup({
 	},
 })
 
-function CommonOnAttach(client, bufnr)
-	client.languages = {
-		"javascriptreact",
-		"javascript",
-		"typescriptreact",
-		"typescript",
-		"vue",
-	}
-end
-
-lsp_installer.on_server_ready(function(server)
-	local opts = {
-		on_attach = CommonOnAttach,
-	}
-
-	if server.name == "tsserver" then
-		opts.on_attach = function(client, bufnr)
-			client.resolved_capabilities.document_formatting = false
-		end
-		opts.settings = {
-			format = {
-				enable = false,
-			},
-		}
-	end
-
-	if server.name == "eslint" then
-		opts.on_attach = function(client, bufnr)
-			-- neovim's LSP client does not currently support dynamic capabilities registration, so we need to set
-			-- the resolved capabilities of the eslint server ourselves!
-			client.resolved_capabilities.document_formatting = true
-			CommonOnAttach(client, bufnr)
-		end
-		opts.settings = {
-			format = {
-				enable = true,
-			}, -- this will enable formatting
-		}
-	end
-
-	server:setup(opts)
-end)
-
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
-
--- attempt to fix auto save
--- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
--- 	pattern = { "*" },
--- 	callback = function()
--- 		require("lvim.lsp.utils").format({
--- 			async = false,
--- 		})
-
--- 		vim.api.nvim_command([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
--- 	end,
--- })
 
 -- vim.api.nvim_create_autocmd("FileType", {
 --   pattern = "zsh",
