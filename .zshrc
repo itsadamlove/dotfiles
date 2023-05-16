@@ -205,3 +205,6 @@ export PATH="$PATH:/Users/adam/Library/Python/3.9/bin"
 # bit
 export PATH="$PATH:/Users/adam/bin"
 # bit end
+
+# Postgres (Sploot)
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"

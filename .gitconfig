@@ -8,7 +8,7 @@
   insteadOf = https://git.heroku.com/
 [core]
   excludesfile = ~/.gitignore
-  editor = vim
+  editor = lvim
 [push]
   default = simple
 [alias]

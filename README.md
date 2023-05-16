@@ -135,6 +135,17 @@ brew install stylua
 brew tap epk/epk
 brew install --cask font-sf-mono-nerd-font
 brew install jesseduffield/lazygit/lazygit
+
+brew tap homebrew/cask-fonts
+brew search nerd-font
+brew install --cask font-fira-code-nerd-font
+brew install --cask font-victor-mono-nerd-font
+brew install --cask font-iosevka-nerd-font-mono
+brew install --cask font-hack-nerd-font
+
+brew install code-minimap
+
+composer global require friendsofphp/php-cs-fixer
 ```
 
 ```
