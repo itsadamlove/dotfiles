@@ -7,13 +7,15 @@
   "contributes": {
     "snippets": [
       {
-        "language": "javascriptreact",
+        "language": ["javascriptreact", "typescriptreact"],
         "path": "./js-react.json"
       },
       {
         "language": [
           "javascript",
-          "javascriptreact"
+          "typescript",
+          "javascriptreact",
+          "typescriptreact"
         ],
         "path": "./javascript.json"
       },

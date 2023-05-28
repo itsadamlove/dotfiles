@@ -5,15 +5,6 @@ vim.keymap.set("", "<leader>s", ":w<CR>")
 -- Create / open a file in the current foleder
 vim.api.nvim_set_keymap("n", "<c-e>", ":e " .. vim.fn.escape(vim.fn.expand("%:p:h"), " ") .. "/", { noremap = true })
 
-function Organise_imports()
-	local params = {
-		command = "_typescript.organizeImports",
-		arguments = { vim.api.nvim_buf_get_name(0) },
-		title = "",
-	}
-	vim.lsp.buf.execute_command(params)
-end
-
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
@@ -36,6 +27,10 @@ lvim.builtin.which_key.mappings["sb"] = { ":Telescope buffers<CR>", "Buffers" }
 lvim.builtin.which_key.mappings["a"] = {
 	name = "LSP",
 	a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+	o = {
+		"<cmd>lua vim.lsp.buf.execute_command({command = '_typescript.organizeImports', arguements = { vim.fn.expand('%:p')}})<cr>",
+		"Organise Imports",
+	},
 	d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
 	w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
 	f = { "<cmd>lua require('lvim.lsp.utils').format()<cr>", "Format" },
@@ -66,7 +61,6 @@ lvim.builtin.which_key.mappings["a"] = {
 		"Workspace Symbols",
 	},
 	e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
-	o = { "<cmd>Organise_imports", "Organise Imports" },
 }
 
 -- Clipboard
