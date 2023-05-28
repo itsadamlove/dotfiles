@@ -20,6 +20,14 @@ lvim.plugins = {
 	{ "prisma/vim-prisma" },
 	-- Multi Cursors
 	{ "mg979/vim-visual-multi" },
+	-- Co Pilot
+	{ "zbirenbaum/copilot.lua" },
+	{
+		"zbirenbaum/copilot-cmp",
+		config = function()
+			require("copilot_cmp").setup()
+		end,
+	},
 
 	-- {
 	--   "folke/trouble.nvim",

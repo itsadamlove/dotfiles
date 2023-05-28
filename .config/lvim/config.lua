@@ -162,12 +162,10 @@ end
 -- 	end,
 -- })
 
--- Require default snippets
+-- Require snippets
 require("luasnip/loaders/from_vscode").load({
 	paths = {
 		"~/.config/lvim/snippets/vscode-es7-javascript-react-snippets",
 		"~/.config/lvim/snippets/my-snippets",
 	},
 })
--- Require custom snippets
--- require("luasnip/loaders/from_vscode").load({ paths = { "~/.config/lvim/snippets/my-snippets" } })
