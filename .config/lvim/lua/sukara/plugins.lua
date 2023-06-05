@@ -4,6 +4,7 @@ lvim.plugins = {
 	{ "wfxr/minimap.vim" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
 	{ "kazhala/close-buffers.nvim" },
+	{ "tpope/vim-surround" },
 	{ "tpope/vim-fugitive" },
 	-- Autoclose and autorename html tag
 	{
