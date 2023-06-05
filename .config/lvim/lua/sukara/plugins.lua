@@ -3,7 +3,6 @@ lvim.plugins = {
 	{ "rebelot/kanagawa.nvim" },
 	{ "wfxr/minimap.vim" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
-	{ "vimwiki/vimwiki" },
 	{ "kazhala/close-buffers.nvim" },
 	{ "tpope/vim-fugitive" },
 	-- Autoclose and autorename html tag

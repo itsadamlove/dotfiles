@@ -1,14 +1,12 @@
 lvim.leader = "space"
 -- Saving
 vim.opt.confirm = true
-vim.keymap.set("", "<leader>s", ":w<CR>")
+-- vim.keymap.set("", "<leader>s", ":w<CR>")
 -- Create / open a file in the current foleder
 vim.api.nvim_set_keymap("n", "<c-e>", ":e " .. vim.fn.escape(vim.fn.expand("%:p:h"), " ") .. "/", { noremap = true })
 
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
--- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
--- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 
 -- -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["c"] = { ":BDelete this<CR>", "Close Buffer" }
@@ -16,13 +14,16 @@ lvim.builtin.which_key.mappings["C"] = { "<C-w>q<CR>", "Close Split" }
 lvim.builtin.which_key.mappings["n"] = { ":nohlsearch<CR>", "No Highlight" }
 lvim.builtin.which_key.mappings["h"] = { ":bp<CR>", "Left Buffer" }
 lvim.builtin.which_key.mappings["l"] = { ":bn<CR>", "Right Buffer" }
-lvim.builtin.which_key.mappings["space"] = { "<c-^>", "Recent file" }
+lvim.builtin.which_key.mappings["<leader>"] = { "<c-^>", "Recent file" }
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["bt"] = { ":enew<CR>", "New Buffer " }
 lvim.builtin.which_key.mappings["gL"] = { ":Git blame<CR>", "Blame file" }
 lvim.builtin.which_key.mappings["sg"] = { ":Telescope git_status<CR>", "Git Status" }
 lvim.builtin.which_key.mappings["sF"] = { ":Telescope git_status<CR>", "Find Tracked Files" }
 lvim.builtin.which_key.mappings["sb"] = { ":Telescope buffers<CR>", "Buffers" }
+lvim.builtin.which_key.mappings["w"] = { "<cmd>lua vim.lsp.buf.format()<CR>:w<CR>", "Format & Save" }
+-- TODO: move this into an action of some sort
+-- vim.lsp.buf.format()
 
 lvim.builtin.which_key.mappings["a"] = {
 	name = "LSP",
