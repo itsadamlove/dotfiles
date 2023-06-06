@@ -83,12 +83,14 @@ formatters.setup({
 		name = "prettier",
 		extra_args = { "--print-width", "120" },
 	},
+	{ name = "stylelint" },
 })
 
 local linters = require("lvim.lsp.null-ls.linters")
 linters.setup({
 	{ name = "flake8", filetypes = { "python" } },
 	{ name = "eslint_d" },
+	{ name = "stylelint" },
 })
 
 local code_actions = require("lvim.lsp.null-ls.code_actions")
