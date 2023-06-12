@@ -28,6 +28,9 @@ lvim.plugins = {
 			require("copilot_cmp").setup()
 		end,
 	},
+	{
+		"brenoprata10/nvim-highlight-colors",
+	},
 
 	-- {
 	--   "folke/trouble.nvim",
