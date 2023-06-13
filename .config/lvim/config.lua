@@ -84,6 +84,7 @@ formatters.setup({
 		extra_args = { "--print-width", "120" },
 	},
 	{ name = "stylelint" },
+	{ name = "sql_formatter" },
 })
 
 local linters = require("lvim.lsp.null-ls.linters")
