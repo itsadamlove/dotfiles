@@ -24,6 +24,16 @@ lvim.builtin.which_key.mappings["sb"] = { ":Telescope buffers<CR>", "Buffers" }
 lvim.builtin.which_key.mappings["w"] = { "<cmd>lua vim.lsp.buf.format()<CR>:w<CR>", "Format & Save" }
 -- TODO: move this into an action of some sort
 -- vim.lsp.buf.format()
+--
+local function organise_imports()
+	local param = {
+		command = "_typescript.organizeImports",
+		arguments = { vim.api.nvim_buf_get_name(0) },
+		title = "",
+	}
+
+	vim.lsp.bug.execute_command(param)
+end
 
 lvim.builtin.which_key.mappings["a"] = {
 	name = "LSP",

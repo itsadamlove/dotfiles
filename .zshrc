@@ -52,6 +52,7 @@ alias journal="cd ~/Projects/FoodBomb/Journal"
 
 # Foodbomb Repos
 alias fb="cd ~/Projects/FoodBomb/App"
+alias yehnah="cd ~/Projects/yeh-nah"
 alias backend="cd ~/Projects/FoodBomb/App/backend-phplayer/php"
 alias ui="cd ~/Projects/FoodBomb/App/bit-ui-library/app"
 alias ui2="cd /Users/adam/Projects/FoodBomb/App/bit-ui-library-v2"

@@ -158,6 +158,9 @@ python3 -m pip install flake8
 npm install -g sql-formatter
 ```
 
+
+Install the recursive fonts: https://www.recursive.design/
+
 ### 3. Install iTerm2 (macOS)
 
 iTerm2 is a terminal replacement for macOS. It's got some great [features](https://www.iterm2.com/features.html) and is super customisable.

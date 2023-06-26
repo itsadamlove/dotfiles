@@ -31,6 +31,7 @@ require("sukara.plugins")
 -- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 -- -- Change theme settings
 lvim.colorscheme = "kanagawa"
+-- lvim.colorscheme = "kanagawa-lotus"
 
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
@@ -97,6 +98,7 @@ linters.setup({
 local code_actions = require("lvim.lsp.null-ls.code_actions")
 code_actions.setup({
 	{
+		-- 	name = "eslint",
 		name = "eslint_d",
 		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
 	},
@@ -111,14 +113,6 @@ code_actions.setup({
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
-local function organize_imports()
-	local params = {
-		command = "_typescript.organizeImports",
-		arguments = { vim.api.nvim_buf_get_name(0) },
-		title = "",
-	}
-	vim.lsp.buf.execute_command(params)
-end
 
 -- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 -- require("null-ls").setup({
