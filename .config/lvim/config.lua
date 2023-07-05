@@ -86,6 +86,7 @@ formatters.setup({
 	},
 	{ name = "stylelint" },
 	{ name = "sql_formatter" },
+	{ name = "phpcsfixer" },
 })
 
 local linters = require("lvim.lsp.null-ls.linters")
@@ -102,6 +103,7 @@ code_actions.setup({
 		name = "eslint_d",
 		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
 	},
+	-- { name = "phpcs" },
 })
 
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
