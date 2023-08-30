@@ -22,24 +22,12 @@ lvim.builtin.which_key.mappings["sg"] = { ":Telescope git_status<CR>", "Git Stat
 lvim.builtin.which_key.mappings["sF"] = { ":Telescope git_status<CR>", "Find Tracked Files" }
 lvim.builtin.which_key.mappings["sb"] = { ":Telescope buffers<CR>", "Buffers" }
 lvim.builtin.which_key.mappings["w"] = { "<cmd>lua vim.lsp.buf.format()<CR>:w<CR>", "Format & Save" }
--- TODO: move this into an action of some sort
--- vim.lsp.buf.format()
---
-local function organise_imports()
-	local param = {
-		command = "_typescript.organizeImports",
-		arguments = { vim.api.nvim_buf_get_name(0) },
-		title = "",
-	}
-
-	vim.lsp.bug.execute_command(param)
-end
 
 lvim.builtin.which_key.mappings["a"] = {
 	name = "LSP",
 	a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
 	o = {
-		"<cmd>lua vim.lsp.buf.execute_command({command = '_typescript.organizeImports', arguements = { vim.fn.expand('%:p')}})<cr>",
+		"<cmd>OrganizeImports<cr>",
 		"Organise Imports",
 	},
 	d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },

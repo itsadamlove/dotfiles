@@ -1,0 +1,7 @@
+{
+  "codeActionsOnSave": {
+    "source.organizeImports.ts": true,
+    // or just
+    "source.organizeImports": true
+  }
+}
