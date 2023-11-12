@@ -94,6 +94,8 @@ alias sequel-cms="cd ~/Projects/sequel/sequel-cms"
 alias sequel-cms-site="Open https://cms.trysequel.com/admin/"
 alias scalar="cd ~/Projects/ScalarPlaceholder"
 alias dadalearn="cd ~/Projects/DadaLearn/dadalearn"
+alias sortd="cd ~/Projects/sortd"
+alias sploot="cd ~/Projects/sploot"
 
 alias codacy="codacy-analysis-cli analyze --verbose"
 
