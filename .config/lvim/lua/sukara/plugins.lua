@@ -39,6 +39,9 @@ lvim.plugins = {
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
+	-- Python Specific
+	{ "AckslD/swenv.nvim" },
+	{ "stevearc/dressing.nvim" },
 
 	-- {
 	--   "folke/trouble.nvim",

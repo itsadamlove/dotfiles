@@ -73,6 +73,7 @@ lvim.builtin.treesitter.ensure_installed = {
 	"comment",
 	"markdown_inline",
 	"regex",
+	"prisma",
 }
 
 -- -- linters, formatters and code actions <https://www.lunarvim.org/docs/languages#lintingformatting>
