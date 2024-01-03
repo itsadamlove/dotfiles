@@ -25,7 +25,7 @@ vim.opt.wb = false
 lvim.log.level = "info"
 lvim.format_on_save = {
 	enabled = true,
-	pattern = "*.lua",
+	-- pattern = "*.lua",
 	timeout = 1000,
 }
 

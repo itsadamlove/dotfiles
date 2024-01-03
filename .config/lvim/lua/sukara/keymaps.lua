@@ -23,8 +23,9 @@ lvim.builtin.which_key.mappings["sF"] = { ":Telescope git_status<CR>", "Find Tra
 lvim.builtin.which_key.mappings["sb"] = { ":Telescope buffers<CR>", "Buffers" }
 lvim.builtin.which_key.mappings["w"] = { "<cmd>lua vim.lsp.buf.format()<CR>:w<CR>", "Format & Save" }
 lvim.builtin.which_key.mappings["v"] = {
-	name = "Python",
+	name = "Virtual Env",
 	c = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Choose Env" },
+	s = { "<cmd>lua require('swenv.api').get_current_venv()<cr>", "Show Env" },
 }
 
 lvim.builtin.which_key.mappings["a"] = {
