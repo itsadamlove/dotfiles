@@ -8,6 +8,10 @@ vim.api.nvim_set_keymap("n", "<c-e>", ":e " .. vim.fn.escape(vim.fn.expand("%:p:
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
+lvim.lsp.buffer_mappings.normal_mode["gd"] = nil
+lvim.keys.normal_mode["gd"] = ":Telescope lsp_definitions<CR>"
+lvim.lsp.buffer_mappings.normal_mode["gk"] = lvim.lsp.buffer_mappings.normal_mode["K"]
+
 -- -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["c"] = { ":BDelete this<CR>", "Close Buffer" }
 lvim.builtin.which_key.mappings["C"] = { "<C-w>q<CR>", "Close Split" }
