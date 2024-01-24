@@ -211,3 +211,6 @@ export PATH="$PATH:/Users/adam/bin"
 
 # Postgres (Sploot)
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

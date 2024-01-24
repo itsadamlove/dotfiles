@@ -92,7 +92,7 @@ formatters.setup({
 
 local linters = require("lvim.lsp.null-ls.linters")
 linters.setup({
-	{ name = "flake8", filetypes = { "python" } },
+	{ name = "flake8", filetypes = { "python" }, extra_args = { "--max-line-length", "120" } },
 	{ name = "eslint_d" },
 	{ name = "stylelint" },
 })
