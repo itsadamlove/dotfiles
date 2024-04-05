@@ -46,6 +46,10 @@ lvim.plugins = {
 	--   "folke/trouble.nvim",
 	--   cmd = "TroubleToggle",
 	-- },
+	-- Vim support for VSCode remote container development
+	{
+		"jamestthompson3/nvim-remote-containers",
+	},
 }
 
 -- Load snippets
