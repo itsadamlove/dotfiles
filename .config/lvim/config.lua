@@ -76,6 +76,8 @@ lvim.builtin.treesitter.ensure_installed = {
 	"prisma",
 }
 
+lvim.builtin.nvimtree.setup.filters.custom = { "node_modules", "\\.cache", "Pods", "ios-sourcemap.json" }
+
 -- -- linters, formatters and code actions <https://www.lunarvim.org/docs/languages#lintingformatting>
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
