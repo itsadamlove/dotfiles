@@ -119,10 +119,10 @@ alias cam="ssh -i ~/.ssh/spam_key cameronmercer1@192.168.10.107"
 # thefuck
 eval $(thefuck --alias)
 
-if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
-	source /usr/local/share/chruby/chruby.sh
-	source /usr/local/share/chruby/auto.sh
-fi
+# if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
+# 	source /usr/local/share/chruby/chruby.sh
+# 	source /usr/local/share/chruby/auto.sh
+# fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -213,5 +213,10 @@ export PATH="$PATH:/Users/adam/bin"
 # Postgres (Sploot)
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
+eval "$(rbenv init - zsh)"
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# export PATH="$PATH:$HOME/.rvm/bin"
+
+# Shopify Hydrogen alias to local projects
+alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
