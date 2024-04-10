@@ -95,6 +95,7 @@ alias sequel-cms-site="Open https://cms.trysequel.com/admin/"
 alias scalar="cd ~/Projects/ScalarPlaceholder"
 alias dadalearn="cd ~/Projects/DadaLearn/dadalearn"
 alias sortd="cd ~/Projects/sortd"
+alias ngrok-sortd="ngrok http --domain=bug-sure-moray.ngrok-free.app 8000"
 alias sploot="cd ~/Projects/sploot"
 
 alias codacy="codacy-analysis-cli analyze --verbose"
