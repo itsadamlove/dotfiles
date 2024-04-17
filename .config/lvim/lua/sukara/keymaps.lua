@@ -23,7 +23,12 @@ lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Project
 lvim.builtin.which_key.mappings["bt"] = { ":enew<CR>", "New Buffer " }
 lvim.builtin.which_key.mappings["gL"] = { ":Git blame<CR>", "Blame file" }
 lvim.builtin.which_key.mappings["sg"] = { ":Telescope git_status<CR>", "Git Status" }
-lvim.builtin.which_key.mappings["sF"] = { ":Telescope git_status<CR>", "Find Tracked Files" }
+-- Can remove the following, but nice to have a little bit of customisation
+lvim.builtin.which_key.mappings["sf"] = {
+	"<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
+	"Find all files",
+}
+
 lvim.builtin.which_key.mappings["sb"] = { ":Telescope buffers<CR>", "Buffers" }
 lvim.builtin.which_key.mappings["w"] = { "<cmd>lua vim.lsp.buf.format()<CR>:w<CR>", "Format & Save" }
 lvim.builtin.which_key.mappings["v"] = {
