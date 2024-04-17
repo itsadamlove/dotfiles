@@ -95,6 +95,12 @@ alias sequel-cms-site="Open https://cms.trysequel.com/admin/"
 alias scalar="cd ~/Projects/ScalarPlaceholder"
 alias dadalearn="cd ~/Projects/DadaLearn/dadalearn"
 alias sortd="cd ~/Projects/sortd"
+alias instabug-sourcemap="npx react-native bundle --platform ios \
+        --entry-file index.js \
+        --dev false \
+        --bundle-output ./ios/main.jsbundle \
+        --sourcemap-output ./ios-sourcemap.json && 
+        zip ./ios-sourcemap.zip ./ios-sourcemap.json"
 alias ngrok-sortd="ngrok http --domain=bug-sure-moray.ngrok-free.app 8000"
 alias sploot="cd ~/Projects/sploot"
 
