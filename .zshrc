@@ -102,6 +102,7 @@ alias instabug-sourcemap="npx react-native bundle --platform ios \
         --sourcemap-output ./ios-sourcemap.json && 
         zip ./ios-sourcemap.zip ./ios-sourcemap.json"
 alias ngrok-sortd="ngrok http --domain=bug-sure-moray.ngrok-free.app 8000"
+alias ngrok-sequel="ngrok http --domain=bug-sure-moray.ngrok-free.app 3000"
 alias sploot="cd ~/Projects/sploot"
 
 alias codacy="codacy-analysis-cli analyze --verbose"
