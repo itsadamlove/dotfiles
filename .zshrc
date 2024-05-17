@@ -26,6 +26,7 @@ plugins=(git rails zeus zsh-syntax-highlighting zsh-autosuggestions ssh-agent)
 # ====================== Alias Settings ========================
 
 #alias lvh="zeus s -p 3000 -b lvh.me"
+alias gs="git status"
 alias cdf="cd ~/projects/foodi/"
 alias cda="cd ~/projects/ajay/"
 #alias foreman="bundle exec foreman start"

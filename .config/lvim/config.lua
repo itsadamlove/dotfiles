@@ -1,28 +1,7 @@
--- TODO
--- Somethings still arent working
--- 1. Formatting on save (prettier in js files)
--- 2. Snippets in react (typing p tags is a nightmare)
--- 3. The filedraw on start up is horrible
--- 4. Code actions take a really long time
--- 5. PHP CS Fixer is still a nightmare and not working
--- 6. OrganiseImports is not bound - need to figure this out
--- 7. Maybe I want to re-enable the warnings inline because the gutter warnings might not be enough
--- 8. Bufferbar styling
--- 9. Tmux line styling
--- 10. Fuzzy search within project
--- 11. React specific linting - highlighting useCallback Errors
--- 12. Debugging
--- 13. Co pilot
-
---[[
- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
- `lvim` is the global options object
-]]
 --------
 -------- Vim Options
 --------
 require("sukara.options")
-require("sukara.keymaps")
 require("sukara.plugins")
 
 -- Icons
@@ -130,35 +109,6 @@ lspconfig.tsserver.setup({
 	},
 })
 
--- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
-
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "zsh",
---   callback = function()
---     -- let treesitter use bash highlight for zsh files as well
---     require("nvim-treesitter.highlight").attach(0, "bash")
---   end,
--- })
-
--- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
--- require("null-ls").setup({
--- 	-- you can reuse a shared lspconfig on_attach callback here
--- 	on_attach = function(client, bufnr)
--- 		if client.supports_method("textDocument/formatting") then
--- 			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
--- 			vim.api.nvim_create_autocmd("BufWritePre", {
--- 				group = augroup,
--- 				buffer = bufnr,
--- 				callback = function()
--- 					-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
--- 					-- vim.lsp.buf.formatting_sync()
--- 					vim.lsp.buf.format({ bufnr = bufnr })
--- 				end,
--- 			})
--- 		end
--- 	end,
--- })
-
 -- Require snippets
 require("luasnip/loaders/from_vscode").load({
 	paths = {
@@ -168,3 +118,6 @@ require("luasnip/loaders/from_vscode").load({
 })
 
 lvim.format_on_save.enabled = true
+
+-- Note: Keymaps should come after plugins so that our custom mapping applies
+require("sukara.keymaps")

@@ -1,9 +1,12 @@
 lvim.leader = "space"
 -- Saving
 vim.opt.confirm = true
--- vim.keymap.set("", "<leader>s", ":w<CR>")
 -- Create / open a file in the current foleder
 vim.api.nvim_set_keymap("n", "<c-e>", ":e " .. vim.fn.escape(vim.fn.expand("%:p:h"), " ") .. "/", { noremap = true })
+
+-- Disabling how we move lines around so that we can give that key to yabai
+lvim.keys.normal_mode["<A-k>"] = false
+lvim.keys.normal_mode["<A-j>"] = false
 
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
@@ -19,7 +22,6 @@ lvim.builtin.which_key.mappings["n"] = { ":nohlsearch<CR>", "No Highlight" }
 lvim.builtin.which_key.mappings["h"] = { ":bp<CR>", "Left Buffer" }
 lvim.builtin.which_key.mappings["l"] = { ":bn<CR>", "Right Buffer" }
 lvim.builtin.which_key.mappings["<leader>"] = { "<c-^>", "Recent file" }
-lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["bt"] = { ":enew<CR>", "New Buffer " }
 lvim.builtin.which_key.mappings["gL"] = { ":Git blame<CR>", "Blame file" }
 lvim.builtin.which_key.mappings["sg"] = { ":Telescope git_status<CR>", "Git Status" }
@@ -29,7 +31,7 @@ lvim.builtin.which_key.mappings["sf"] = {
 	"Find all files",
 }
 
-lvim.builtin.which_key.mappings["sb"] = { ":Telescope buffers<CR>", "Buffers" }
+-- Buffers are annoying, go in through buffer -> find rather than search
 lvim.builtin.which_key.mappings["w"] = { "<cmd>lua vim.lsp.buf.format()<CR>:w<CR>", "Format & Save" }
 lvim.builtin.which_key.mappings["v"] = {
 	name = "Virtual Env",
@@ -87,11 +89,34 @@ lvim.keys.normal_mode["P"] = "gP"
 lvim.keys.normal_mode["gp"] = "p"
 lvim.keys.normal_mode["gP"] = "P"
 
---- Split Navigation
-lvim.keys.normal_mode["<C-h>"] = "<C-w>h"
-lvim.keys.normal_mode["<C-j>"] = "<C-w>j"
-lvim.keys.normal_mode["<C-k>"] = "<C-w>k"
-lvim.keys.normal_mode["<C-l>"] = "<C-w>l"
+function navi(wincmd, direction)
+	local previous_winnr = vim.fn.winnr()
+	vim.cmd("wincmd " .. wincmd)
+
+	if previous_winnr == vim.fn.winnr() then
+		vim.fn.system("tmux-yabai.sh " .. direction)
+	end
+end
+
+-- Navigating splits
+lvim.keys.normal_mode["<C-h>"] = "<cmd>lua require('smart-splits').move_cursor_left()<CR>"
+lvim.keys.normal_mode["<C-j>"] = "<cmd>lua require('smart-splits').move_cursor_down()<CR>"
+lvim.keys.normal_mode["<C-k>"] = "<cmd>lua require('smart-splits').move_cursor_up()<CR>"
+lvim.keys.normal_mode["<C-l>"] = "<cmd>lua require('smart-splits').move_cursor_right()<CR>"
+lvim.keys.normal_mode["<C-\\>"] = "<cmd>lua require('smart-splits').move_cursor_previous()<CR>"
+
+-- resizing splits
+vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
+vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
+vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
+vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
+
+-- swapping splits around
+vim.keymap.set("n", "<C-A-h>", require("smart-splits").swap_buf_left)
+vim.keymap.set("n", "<C-A-j>", require("smart-splits").swap_buf_down)
+vim.keymap.set("n", "<C-A-k>", require("smart-splits").swap_buf_up)
+vim.keymap.set("n", "<C-A-l>", require("smart-splits").swap_buf_right)
+
 lvim.keys.normal_mode["vv"] = "<C-w>v"
 lvim.keys.normal_mode["ss"] = "<C-w>s"
 
