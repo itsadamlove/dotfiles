@@ -83,8 +83,6 @@ alias orders="cd ~/Projects/FoodBomb/App/backend-orders"
 alias opencart="cd ~/Projects/FoodBomb/App/sh-foodbomb-dev"
 alias products="cd ~/Projects/FoodBomb/App/backend-products/app"
 alias pauls="ECHO 'ITS CALLED STAFF, YOU MORON!'"
-alias admin="ECHO 'ITS CALLED STAFF, YOU MORON!'"
-
 
 alias duck="cd ~/Projects/theDuck"
 alias supplier-duck="cd ~/Projects/supplier-duck"
@@ -96,6 +94,12 @@ alias sequel-cms-site="Open https://cms.trysequel.com/admin/"
 alias scalar="cd ~/Projects/ScalarPlaceholder"
 alias dadalearn="cd ~/Projects/DadaLearn/dadalearn"
 alias sortd="cd ~/Projects/sortd"
+alias customer="cd ~/Projects/sortd/svc-customer"
+alias mobile="cd ~/Projects/sortd/mobile-app"
+alias extension="cd ~/Projects/sortd/content-script-extension"
+alias extension-login="cd ~/Projects/sortd/ai-extension-login-shortcut"
+alias admin="cd ~/Projects/sortd/admin-portal/"
+
 alias instabug-sourcemap="npx react-native bundle --platform ios \
         --entry-file index.js \
         --dev false \

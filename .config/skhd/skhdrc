@@ -18,8 +18,8 @@ shift + alt - m : yabai -m window --toggle zoom-fullscreen
 
 # Change Focused window
 ctrl + shift - h : yabai -m window --focus west || yabai -m display --focus west
-ctrl + shift - j : yabai -m window --focus south
-ctrl + shift - k : yabai -m window --focus north
+ctrl + shift - j : yabai -m window --focus south || yabai -m display --focus south
+ctrl + shift - k : yabai -m window --focus north || yabai -m display --focus north
 ctrl + shift - l : yabai -m window --focus east || yabai -m display --focus east
 
 # alt + shift + h: resize window left
