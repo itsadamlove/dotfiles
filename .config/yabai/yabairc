@@ -30,7 +30,12 @@ yabai -m mouse_drop_action swap
 # Disable Apps
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Simulator" manage=off
 yabai -m rule --add label="System Preferences" app="^System Preferences$" title=".*" manage=off
+yabai -m rule --add label="Simulator" app="^Simulator$" title=".*" manage=off
+yabai -m rule --add label="CoreSimulator" app="^CoreSimulator$" title=".*" manage=off
+yabai -m rule --add label="Simulator" app="^SORTD-Dev.app$" title=".*" manage=off
+yabai -m rule --add label="Simulator" app="^SORTD-Dev$" title=".*" manage=off
 # show digital colour meter topmost and on all spaces
 yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on
 yabai -m rule --add app="^Calculator$" manage=off
