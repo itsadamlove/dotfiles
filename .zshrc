@@ -95,6 +95,7 @@ alias scalar="cd ~/Projects/ScalarPlaceholder"
 alias dadalearn="cd ~/Projects/DadaLearn/dadalearn"
 alias sortd="cd ~/Projects/sortd"
 alias customer="cd ~/Projects/sortd/svc-customer"
+alias parser="cd ~/Projects/sortd/svc-html-parser"
 alias mobile="cd ~/Projects/sortd/mobile-app"
 alias extension="cd ~/Projects/sortd/content-script-extension"
 alias extension-login="cd ~/Projects/sortd/ai-extension-login-shortcut"
@@ -162,6 +163,9 @@ fi
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+# Must be before sourcing oh-my-zsh.sh.
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 source $ZSH/oh-my-zsh.sh
 
