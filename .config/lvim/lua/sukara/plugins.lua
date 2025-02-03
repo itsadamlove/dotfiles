@@ -1,4 +1,3 @@
--- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
 lvim.plugins = {
 	{ "rebelot/kanagawa.nvim" },
 	{ "wfxr/minimap.vim" },
@@ -13,10 +12,10 @@ lvim.plugins = {
 			require("nvim-ts-autotag").setup()
 		end,
 	},
+	-- TODO:  SWAP TO FZF
 	{ "nvim-telescope/telescope-fzy-native.nvim" },
 	{ "nvim-telescope/telescope-ui-select.nvim" },
 	{ "christoomey/vim-tmux-navigator" },
-	{ "stephpy/vim-php-cs-fixer" },
 	{ "prisma/vim-prisma" },
 	-- Multi Cursors
 	{ "mg979/vim-visual-multi" },
@@ -40,15 +39,35 @@ lvim.plugins = {
 		end,
 	},
 	-- Python Virtual Environment Switcher
-	{ "AckslD/swenv.nvim" },
+	-- { "AckslD/swenv.nvim" },
 	{ "stevearc/dressing.nvim" },
 	-- {
 	--   "folke/trouble.nvim",
 	--   cmd = "TroubleToggle",
 	-- },
-	-- Vim support for VSCode remote container development
 	{
-		"jamestthompson3/nvim-remote-containers",
+		-- TODO: understand how to fix this
+		"metakirby5/codi.vim",
+		cmd = "Codi",
+	},
+	{
+		"rmagatti/goto-preview",
+		config = function()
+			require("goto-preview").setup({
+				width = 120, -- Width of the floating window
+				height = 25, -- Height of the floating window
+				-- default_mappings = false, -- Bind default mappings
+				default_mappings = true, -- Bind default mappings
+				debug = false, -- Print debug information
+				opacity = nil, -- 0-100 opacity level of the floating window where 100 is fully transparent.
+				post_open_hook = nil, -- A function taking two arguments, a buffer and a window to be ran as a hook.
+				-- You can use "default_mappings = true" setup option
+				-- Or explicitly set keybindings
+				-- vim.cmd("nnoremap gpd <cmd>lua require('goto-preview').goto_preview_definition()<CR>")
+				-- vim.cmd("nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>")
+				-- vim.cmd("nnoremap gP <cmd>lua require('goto-preview').close_all_win()<CR>")
+			})
+		end,
 	},
 	{
 		"mrjones2014/smart-splits.nvim",
@@ -61,23 +80,13 @@ lvim.plugins = {
 						up = "north",
 						right = "east",
 					}
-					if context.mux.current_pane_at_edge(context.direction) then
-						local ydirection = dmap[context.direction]
-						local command = "yabai -m window --focus " .. ydirection
-
-						if ydirection == "west" or ydirection == "east" then
-							command = command .. " || yabai -m display --focus " .. ydirection
-						end
-
-						vim.fn.system(command)
-					end
 				end,
 			})
 		end,
 	},
 }
 
--- Load snippets
+-- -- Load snippets
 require("luasnip/loaders/from_vscode").load({
 	paths = { "~/.config/lvim/snippets/vscode-es7-javascript-react-snippets" },
 })

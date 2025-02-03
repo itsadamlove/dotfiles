@@ -1,1 +1,1 @@
-require("nvim-highlight-colors").setup({})
+-- require("nvim-highlight-colors").setup({})

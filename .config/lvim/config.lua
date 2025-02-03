@@ -7,7 +7,6 @@ require("sukara.plugins")
 -- Icons
 -- lvim.use_icons = true
 
--- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 -- -- Change theme settings
 lvim.colorscheme = "kanagawa"
 -- lvim.colorscheme = "kanagawa-lotus"
@@ -27,6 +26,15 @@ lvim.builtin.project.manual_mode = true
 
 vim.diagnostic.config({ virtual_text = false })
 
+lvim.builtin.telescope.defaults = {
+	-- prompt_prefix = "🔍 ",
+	file_ignore_patterns = { "node_modules", ".git", ".cache", "Pods", "ios-sourcemap.json" },
+	layout_config = {
+		horizontal = { preview_width = 0.6 },
+	},
+}
+
+-- TOOD: might want the other version
 lvim.builtin.telescope.on_config_done = function(telescope)
 	pcall(telescope.load_extension, "fzy_native")
 	pcall(telescope.load_extension, "ui-select")
@@ -34,7 +42,7 @@ end
 
 -- Automatically install missing parsers when entering buffer
 lvim.builtin.treesitter.auto_install = true
--- lvim.builtin.treesitter.ignore_install = { "haskell" }
+
 -- -- always installed on startup, useful for parsers without a strict filetype
 lvim.builtin.treesitter.ensure_installed = {
 	"bash",
@@ -42,7 +50,7 @@ lvim.builtin.treesitter.ensure_installed = {
 	"javascript",
 	"json",
 	"lua",
-	"python",
+	-- "python",
 	"typescript",
 	"tsx",
 	"css",
@@ -55,12 +63,17 @@ lvim.builtin.treesitter.ensure_installed = {
 	"prisma",
 }
 
-lvim.builtin.nvimtree.setup.filters.custom = { "node_modules", "\\.cache", "Pods", "ios-sourcemap.json" }
-
 -- -- linters, formatters and code actions <https://www.lunarvim.org/docs/languages#lintingformatting>
+
+-- Skip pylyzer setup in favour of Ruff
+lvim.lsp.installer.setup.automatic_installation = false
+lvim.lsp.skip_setup = { "pylyzer" }
+lvim.lsp.installer.setup.ensure_installed = { "pyright", "ruff_lsp" }
+
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
-	{ name = "black" },
+	-- { name = "black" },
+	{ name = "ruff" },
 	{ name = "stylua" },
 	{
 		name = "prettier",
@@ -73,19 +86,17 @@ formatters.setup({
 
 local linters = require("lvim.lsp.null-ls.linters")
 linters.setup({
-	{ name = "flake8", filetypes = { "python" }, extra_args = { "--max-line-length", "120" } },
 	{ name = "eslint_d" },
 	{ name = "stylelint" },
+	{ name = "ruff", filetypes = { "python" } },
 })
 
 local code_actions = require("lvim.lsp.null-ls.code_actions")
 code_actions.setup({
 	{
-		-- 	name = "eslint",
 		name = "eslint_d",
 		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
 	},
-	-- { name = "phpcs" },
 })
 
 local lspconfig = require("lspconfig")
@@ -106,6 +117,40 @@ lspconfig.tsserver.setup({
 			organize_imports,
 			description = "Organize Imports",
 		},
+	},
+})
+
+lspconfig.pyright.setup({
+	settings = {
+		pyright = {
+			-- Using Ruff's import organiser
+			disableOrganizeImports = true,
+		},
+		python = {
+			analysis = {
+				-- Ignore all files for analysis to exclusively use Ruff for linting
+				ignore = { "*" },
+			},
+		},
+	},
+})
+
+lspconfig.ruff_lsp.setup({
+	on_attach = function(client, bufnr)
+		-- Enable formatting on save if the server supports it
+		if client.server_capabilities.documentFormattingProvider then
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				buffer = bufnr,
+				callback = function()
+					vim.lsp.buf.format({ bufnr = bufnr })
+				end,
+			})
+		end
+	end,
+	init_options = {
+		-- Enable “organize imports” + “fix all” on save:
+		organizeImports = true,
+		fixAll = true,
 	},
 })
 

@@ -158,7 +158,6 @@ python3 -m pip install flake8
 npm install -g sql-formatter
 ```
 
-
 Install the recursive fonts: https://www.recursive.design/
 
 ### 3. Install iTerm2 (macOS)
@@ -273,6 +272,11 @@ The final step is to install all your other dev tools that you need. I'll get ar
 - \[ ] Image Optim
 - \[ ] Figma
 - \[ ] Sketch
+
+# TODO update this file, its all wrong
+
+- \[ ] Ruff
+- \[ ] Ruff lsp
 
 ## Other helpful tools for macOS
 

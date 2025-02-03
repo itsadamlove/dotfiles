@@ -32,7 +32,25 @@ lvim.builtin.which_key.mappings["sf"] = {
 }
 
 -- Buffers are annoying, go in through buffer -> find rather than search
-lvim.builtin.which_key.mappings["w"] = { "<cmd>lua vim.lsp.buf.format()<CR>:w<CR>", "Format & Save" }
+lvim.builtin.which_key.mappings["w"] = {
+	function()
+		-- Check filetype
+		if vim.bo.filetype == "python" then
+			-- For Python: run Ruff "fixAll" via code actions, then save
+			vim.lsp.buf.code_action({
+				context = { only = { "source.fixAll" } },
+				apply = true,
+			})
+			vim.cmd("w")
+		else
+			-- For all other filetypes: do the usual format-then-save
+			vim.lsp.buf.format()
+			vim.cmd("w")
+		end
+	end,
+	"Format & Save (conditional for Python)",
+}
+
 lvim.builtin.which_key.mappings["v"] = {
 	name = "Virtual Env",
 	c = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Choose Env" },
