@@ -57,6 +57,12 @@ lvim.builtin.which_key.mappings["v"] = {
 	s = { "<cmd>lua require('swenv.api').get_current_venv()<cr>", "Show Env" },
 }
 
+lvim.builtin.which_key.mappings["\\"] = {
+	name = "Codi",
+	p = { "<cmd>enew | setfiletype python | Codi<cr>", "Scratch: Python" },
+	j = { "<cmd>enew | setfiletype javascript | Codi<cr>", "Scratch: Javascript" },
+}
+
 lvim.builtin.which_key.mappings["a"] = {
 	name = "LSP",
 	a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
