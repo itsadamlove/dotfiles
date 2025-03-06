@@ -100,6 +100,7 @@ alias mobile="cd ~/Projects/sortd/mobile-app"
 alias extension="cd ~/Projects/sortd/content-script-extension"
 alias extension-login="cd ~/Projects/sortd/ai-extension-login-shortcut"
 alias admin="cd ~/Projects/sortd/admin-portal/"
+alias web="cd ~/Projects/sortd/webapp-2.0"
 
 alias instabug-sourcemap="npx react-native bundle --platform ios \
         --entry-file index.js \
@@ -236,3 +237,8 @@ eval "$(rbenv init - zsh)"
 
 # Shopify Hydrogen alias to local projects
 alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
+
+if [ -n "$TMUX" ]; then
+  export ITERM_SESSION_ID=$(tmux show-environment ITERM_SESSION_ID 2>/dev/null || echo "iTermNotSet")
+  export TERM_PROGRAM=${TERM_PROGRAM:-iTerm.app}
+fi
