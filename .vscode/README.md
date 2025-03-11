@@ -16,11 +16,13 @@ cursor --list-extensions > cursor_extensions.txt
 To Install:
 
 ```
-cat cursor_extensions.txt | xargs -n 1 cursor --install-extensions
+cat cursor_extensions.txt | xargs -n 1 cursor --install-extension
 ```
 
 4. Symlink Configuration
 
 ```
 ln -s ~/dotfiles/.vscode/settings.json ~/Library/Application\ Support/Cursor/User/settings.json
+ln -s ~/dotfiles/.vscode/keybindings.json ~/Library/Application\ Support/Cursor/User/keybindings.json
+ln -s ~/dotfiles/.vscode/snippets.json ~/Library/Application\ Support/Cursor/User/snippets.json
 ```
