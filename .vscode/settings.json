@@ -1,0 +1,108 @@
+{
+  "window.commandCenter": 1,
+  "editor.fontSize": 13,
+  "editor.fontFamily": "'Monaspace Neon Var', 'Fira Code', Monaco, monospace",
+  "editor.inlineSuggest.fontFamily": "'Monaspace Krypton', monospace",
+  "editor.fontLigatures": "'calt', 'liga', 'ss01', 'cv01' 2, 'cv31' 1",
+  "editor.cursorStyle": "block",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "vscode_custom_css.imports": ["file:///Users/adam/dotfiles/.vscode/style.css"],
+  "vim.commandLineModeKeyBindings": [],
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "vim.neovimUseConfigFile": true,
+  "vim.enableNeovim": true,
+  "vim.leader": " ",
+  "eslint.codeActionsOnSave.rules": null,
+  "editor.formatOnSave": true,
+  "notebook.formatOnSave.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always"
+  },
+  "vim.useSystemClipboard": true,
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["leader", "w"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<C-h>"],
+      "commands": ["workbench.action.navigateLeft"]
+    },
+    {
+      "before": ["<C-l>"],
+      "commands": ["workbench.action.navigateRight"]
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["workbench.action.navigateUp"]
+    },
+    {
+      "before": ["<C-j>"],
+      "commands": ["workbench.action.navigateDown"]
+    },
+    {
+      "before": ["v", "v"],
+      "commands": ["workbench.action.splitEditor"]
+    },
+    {
+      "before": ["|"],
+      "commands": ["workbench.action.splitEditor"]
+    },
+    {
+      "before": ["H"], // Focus previous tab at the left
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["L"], // Focus next tab at the right
+      "commands": ["workbench.action.nextEditor"]
+    },
+    {
+      "before": ["Q"], // Close current tab
+      "after": ["<C-w>", "q"]
+    },
+    // {
+    //     // This conflicts with commenting. So it depends which one we want first
+    //     "before": [
+    //         "<leader>",
+    //         "c"
+    //     ],
+    //     "commands": [
+    //         "workbench.action.closeActiveEditor"
+    //     ]
+    // },
+    // Note: Multi-Cursor
+    // For Multi-cursor, we can use the vim style `gb` or the VSCodde style `Cmd d`
+    // Then, to `Shift + i` will move to the beginning of the selection and enter insert mode
+    // Then, to `Shift + a` will move to the end of the selection and enter insert mode
+    // `s` or `c` will delete the word and enter insert mode
+    {
+      // TODO: I don't quite know what this does yet.
+      "before": ["<leader>", "f"],
+      "commands": ["workbench.action.findInFiles"]
+    },
+    {
+      // TODO: I don't quite know what this does yet.
+      "before": ["<leader>", "s"],
+      "commands": ["workbench.action.showAllSymbols"]
+    },
+    {
+      "before": ["<leader>", "/"],
+      "commands": ["editor.action.commentLine"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "/"],
+      "commands": ["editor.action.commentLine"]
+    }
+  ],
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "workbench.colorTheme": "Kanagawa",
+  "editor.rulers": [120],
+  "terminal.integrated.fontLigatures": true,
+  "terminal.integrated.fontSize": 13
+}
