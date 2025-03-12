@@ -26,3 +26,9 @@ ln -s ~/dotfiles/.vscode/settings.json ~/Library/Application\ Support/Cursor/Use
 ln -s ~/dotfiles/.vscode/keybindings.json ~/Library/Application\ Support/Cursor/User/keybindings.json
 ln -s ~/dotfiles/.vscode/snippets.json ~/Library/Application\ Support/Cursor/User/snippets.json
 ```
+
+4. What if we attempt to sync the extensions.json file from the cursor folder?
+
+```
+ln -s ~/dotfiles/.vscode/extensions.json ~/.cursor/extensions/extensions.json
+```
