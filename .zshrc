@@ -102,6 +102,8 @@ alias extension-login="cd ~/Projects/sortd/ai-extension-login-shortcut"
 alias admin="cd ~/Projects/sortd/admin-portal/"
 alias web="cd ~/Projects/sortd/webapp-2.0"
 
+alias browser-tools="npx @agentdeskai/browser-tools-server@1.2.0"
+
 alias instabug-sourcemap="npx react-native bundle --platform ios \
         --entry-file index.js \
         --dev false \
@@ -242,3 +244,8 @@ if [ -n "$TMUX" ]; then
   export ITERM_SESSION_ID=$(tmux show-environment ITERM_SESSION_ID 2>/dev/null || echo "iTermNotSet")
   export TERM_PROGRAM=${TERM_PROGRAM:-iTerm.app}
 fi
+
+# Added by Windsurf
+export PATH="/Users/adam/.codeium/windsurf/bin:$PATH"
+
+bindkey -r '^K'
