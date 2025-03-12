@@ -18,11 +18,6 @@
         "command": "workbench.action.navigateUp",
     },
     {
-        "key": "ctrl+`",
-        "command": "workbench.action.closePanel",
-        "when": "panelFocus || panelVisible"
-    },
-    {
         "key": "v v",
         "command": "workbench.action.splitEditor",
         "when": "vim.mode == 'Normal' && editorTextFocus",
@@ -232,6 +227,21 @@
         "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus || !inputFocus)"
     },
     // Panels
+    {
+        "key": "ctrl+shift+k",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "panelFocus || panelVisible"
+    },
+    {
+        "key": "ctrl+shift+j",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "panelFocus || panelVisible"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "workbench.action.closePanel",
+        "when": "panelFocus || panelVisible"
+    },
     {
         "key": "ctrl+`",
         "command": "workbench.action.terminal.focus",
