@@ -102,8 +102,6 @@
         "when": "vim.mode == 'Normal' && editorTextFocus",
     },
     {
-        // TODO: potentially want to move this to another key
-        // TODO: do we want the code actions to be nested under c instead of a ?
         "key": "space a q",
         "command": "workbench.action.togglePanel",
         "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
@@ -187,8 +185,6 @@
         "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus || !inputFocus)"
     },
     {
-        // TODO: I need to be able to close this or navigate around it somehow
-        // TODO: How can I type in the letter n
         "key": "space s t",
         "command": "workbench.action.findInFiles",
         "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus || !inputFocus)"
