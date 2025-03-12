@@ -11,13 +11,16 @@
     "visual": "block",
     "replace": "underline",
   },
+  "prettier.requireConfig": true,
+  "prettier.useEditorConfig": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "workbench.editor.enablePreview": true,
-  "workbench.editor.enablePreviewFromQuickOpen": true,
-  "workbench.editor.enablePreviewFromCodeNavigation": true,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "workbench.editor.enablePreview": true,
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+  "workbench.editor.enablePreviewFromCodeNavigation": true,
+  "workbench.activityBar.location": "hidden",
   "vscode_custom_css.imports": [
     "file:///Users/adam/dotfiles/.vscode/style.css"
   ],
@@ -35,7 +38,6 @@
     "source.fixAll.eslint": "always",
     "source.fixAll.stylelint": "always"
   },
-  "prettier.requireConfig": true,
   "eslint.validate": [
     "javascript",
     "javascriptreact",
