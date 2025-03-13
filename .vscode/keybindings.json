@@ -294,10 +294,10 @@
     //     "when": "searchViewletVisible && searchInputBoxFocus"
     // },
     // {
-    //     "key": "p",
+    //     "key": "shift+n",
     //     "command": "search.action.focusPreviousSearchResult",
     //     "when": "searchViewletVisible && searchInputBoxFocus"
-    // }
+    // },
     {
         // TODO: in vim, I could search nerdTree using the slash, press enter on my search term and then cycle through my results with n & p. After that, enter would open the file, but only when I wasn't in search mode
         // Is it possible to have this functionality in vim ?
