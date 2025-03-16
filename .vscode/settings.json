@@ -20,7 +20,6 @@
   "workbench.editor.enablePreview": true,
   "workbench.editor.enablePreviewFromQuickOpen": true,
   "workbench.editor.enablePreviewFromCodeNavigation": true,
-  "workbench.activityBar.location": "hidden",
   "vscode_custom_css.imports": [
     "file:///Users/adam/dotfiles/.vscode/style.css"
   ],
@@ -64,7 +63,12 @@
       ]
     }
   },
-  "terminal.integrated.defaultProfile.osx": "zsh",
+ "terminal.integrated.profiles.osx": {
+    "Warp": {
+      "path": "/Applications/Warp.app/Contents/MacOS/warp"
+    }
+  },
+  "terminal.integrated.defaultProfile.osx": "Warp",
   "terminal.integrated.fontLigatures": true,
   "terminal.integrated.fontSize": 13,
   "terminal.integrated.fontFamily": "Monaspace Neon Var",
@@ -82,5 +86,6 @@
       "cx\\(((?:[^()]|\\([^()]*\\))*)\\)",
       "(?:'|\"|`)([^']*)(?:'|\"|`)"
     ]
-  ]
+  ],
+  "workbench.activityBar.location": "hidden"
 }

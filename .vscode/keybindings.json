@@ -126,12 +126,6 @@
         "command": "editor.action.marker.prev",
         "when": "vim.mode == 'Normal' && editorTextFocus"
     },
-    // Git
-    {
-        "key": "space g b",
-        "command": "gitlens.toggleFileBlame",
-        "when": "vim.mode == 'Normal' && editorTextFocus && gitlens:enabled"
-    },
     // Go To
     {
         "key": "space g d",
@@ -158,10 +152,48 @@
         "command": "editor.action.goToTypeDefinition",
         "when": "vim.mode == 'Normal' && editorTextFocus"
     },
+    // Git
     {
-        "key": "space g s",
-        "command": "editor.action.showHover",
+        "key": "space g b",
+        // "command": "gitlens.toggleFileBlame",
+        "command": "editor.action.dirtydiff.next",
+        "when": "vim.mode == 'Normal' && editorTextFocus && gitlens:enabled"
+    },
+    {
+        "key": "space g n",
+        "command": "editor.action.dirtydiff.next",
         "when": "vim.mode == 'Normal' && editorTextFocus"
+    },
+    {
+        "key": "space g p",
+        "command": "editor.action.dirtydiff.previous",
+        "when": "vim.mode == 'Normal' && editorTextFocus"
+    },
+    // {
+    //     "key": "space g u",
+    //     "command": "git.revertSelectedRanges",
+    //     "when": "editorFocus && !isInDiffEditor && vim.mode == 'Normal'"
+    // },
+    // {
+    //     "key": "space g s",
+    //     "command": "git.stageSelectedRanges",
+    //     "when": "editorFocus && !isInDiffEditor && vim.mode == 'Normal'"
+    // }
+    // {
+    //     "key": "space g p",
+    //     "command": "gitlens.annotations.previousChange",
+    //     "when": "vim.mode == 'Normal' && editorTextFocus && !inputFocus"
+    // },
+    // {
+    //     "key": "space g s",
+    //     "command": "gitlens.hunk.stage",
+    //     "when": "vim.mode == 'Normal' && editorTextFocus && !inputFocus"
+    // },
+    {
+        // Git undo
+        "key": "space g u",
+        "command": "gitlens.hunk.reset",
+        "when": "vim.mode == 'Normal' && editorTextFocus && !inputFocus"
     },
     // Search
     {
