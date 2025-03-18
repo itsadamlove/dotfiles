@@ -13,7 +13,7 @@
   },
   "prettier.requireConfig": true,
   "prettier.useEditorConfig": false,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -63,7 +63,7 @@
       ]
     }
   },
- "terminal.integrated.profiles.osx": {
+  "terminal.integrated.profiles.osx": {
     "Warp": {
       "path": "/Applications/Warp.app/Contents/MacOS/warp"
     }
@@ -87,5 +87,9 @@
       "(?:'|\"|`)([^']*)(?:'|\"|`)"
     ]
   ],
-  "workbench.activityBar.location": "hidden"
+  "workbench.activityBar.location": "hidden",
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "git.openRepositoryInParentFolders": "always"
 }

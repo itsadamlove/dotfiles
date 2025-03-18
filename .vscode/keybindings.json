@@ -18,12 +18,22 @@
         "command": "workbench.action.navigateUp",
     },
     {
-        "key": "v v",
+        "key": "space v",
         "command": "workbench.action.splitEditor",
         "when": "vim.mode == 'Normal' && editorTextFocus",
     },
     {
-        "key": "-",
+        "key": "ctrl+v",
+        "command": "workbench.action.splitEditor",
+        "when": "vim.mode == 'Normal' && editorTextFocus",
+    },
+    {
+        "key": "space shift+v",
+        "command": "workbench.action.splitEditorDown",
+        "when": "vim.mode == 'Normal' && editorTextFocus",
+    },
+    {
+        "key": "ctrl+shift+v",
         "command": "workbench.action.splitEditorDown",
         "when": "vim.mode == 'Normal' && editorTextFocus",
     },
