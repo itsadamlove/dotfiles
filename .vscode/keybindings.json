@@ -18,26 +18,17 @@
         "command": "workbench.action.navigateUp",
     },
     {
-        "key": "space v",
+        "key": "ctrl+shift+'",
         "command": "workbench.action.splitEditor",
         "when": "vim.mode == 'Normal' && editorTextFocus",
     },
     {
-        "key": "ctrl+v",
-        "command": "workbench.action.splitEditor",
-        "when": "vim.mode == 'Normal' && editorTextFocus",
-    },
-    {
-        "key": "space shift+v",
-        "command": "workbench.action.splitEditorDown",
-        "when": "vim.mode == 'Normal' && editorTextFocus",
-    },
-    {
-        "key": "ctrl+shift+v",
+        "key": "ctrl+shift+5",
         "command": "workbench.action.splitEditorDown",
         "when": "vim.mode == 'Normal' && editorTextFocus",
     },
     // Buffers
+    // TODO: if I don't use a tiling window manager, then I should replace this and sync with tab switching in warp
     {
         "key": "space l",
         "command": "workbench.action.nextEditorInGroup",
@@ -49,12 +40,12 @@
         "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus || !inputFocus)"
     },
     {
-        "key": "q",
+        "key": "ctrl+d",
         "command": "workbench.action.closeActiveEditor",
         "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus || !inputFocus)"
     },
     {
-        "key": "shift+q",
+        "key": "ctrl+shift+d",
         "command": "workbench.action.closeEditorsInGroup",
         "when": "vim.mode == 'Normal' && editorTextFocus",
     },
