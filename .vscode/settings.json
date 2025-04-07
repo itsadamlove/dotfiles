@@ -75,6 +75,11 @@
   ],
   "terminal.external.osxExec": "iterm2.app",
   "colorize.decoration_type": "square-dot",
+  "tailwindCSS.classFunctions": [
+    "tw",
+    "clsx",
+    "cva"
+  ],
   "tailwindCSS.experimental.classRegex": [
     [
       "cva\\(((?:[^()]|\\([^()]*\\))*)\\)",
