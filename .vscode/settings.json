@@ -1,5 +1,4 @@
 {
-  "window.commandCenter": true,
   "editor.fontSize": 13,
   "editor.fontFamily": "'Monaspace Neon Var', 'Fira Code', Monaco, monospace",
   "editor.inlineSuggest.fontFamily": "'Monaspace Krypton', monospace",
@@ -17,7 +16,6 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.editor.enablePreview": true,
   "workbench.editor.enablePreviewFromQuickOpen": true,
   "workbench.editor.enablePreviewFromCodeNavigation": true,
   "vscode_custom_css.imports": [
@@ -91,5 +89,12 @@
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
-  "git.openRepositoryInParentFolders": "always"
+  "git.openRepositoryInParentFolders": "always",
+  "workbench.navigationControl.enabled": false,
+  "workbench.layoutControl.enabled": false,
+  "vim.smartRelativeLine": true,
+  "workbench.editor.tabSizing": "shrink",
+  "window.density.editorTabHeight": "compact",
+  "workbench.editor.pinnedTabSizing": "shrink",
+  "workbench.editor.tabActionLocation": "left",
 }
