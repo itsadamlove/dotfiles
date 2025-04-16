@@ -102,4 +102,7 @@
   "window.density.editorTabHeight": "compact",
   "workbench.editor.pinnedTabSizing": "shrink",
   "workbench.editor.tabActionLocation": "left",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 }
