@@ -247,5 +247,3 @@ fi
 
 # Added by Windsurf
 export PATH="/Users/adam/.codeium/windsurf/bin:$PATH"
-
-bindkey -r '^K'

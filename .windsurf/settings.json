@@ -12,7 +12,7 @@
     "normal": "block",
     "insert": "line",
     "visual": "block",
-    "replace": "underline",
+    "replace": "underline"
   },
   "prettier.requireConfig": true,
   "prettier.useEditorConfig": false,
@@ -21,9 +21,7 @@
   },
   "workbench.editor.enablePreviewFromQuickOpen": true,
   "workbench.editor.enablePreviewFromCodeNavigation": true,
-  "vscode_custom_css.imports": [
-    "file:///Users/adam/dotfiles/.vscode/style.css"
-  ],
+  "vscode_custom_css.imports": ["file:///Users/adam/dotfiles/.vscode/style.css"],
   "vim.commandLineModeKeyBindings": [],
   "vim.neovimUseConfigFile": true,
   "vim.enableNeovim": true,
@@ -38,30 +36,18 @@
     "source.fixAll.eslint": "always",
     "source.fixAll.stylelint": "always"
   },
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "workbench.activityBar.orientation": "vertical",
   "vim.useSystemClipboard": true,
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "workbench.colorTheme": "Kanagawa",
-  "editor.rulers": [
-    120
-  ],
+  "editor.rulers": [120],
   "terminal.integrated.profiles.osx": {
     "tmux-shell": {
       "path": "tmux",
-      "args": [
-        "new-session",
-        "-A",
-        "-s",
-        "cursor:${workspaceFolder}"
-      ]
+      "args": ["new-session", "-A", "-s", "cursor:${workspaceFolder}"]
     }
   },
   "terminal.integrated.profiles.osx": {
@@ -73,25 +59,13 @@
   "terminal.integrated.fontLigatures": true,
   "terminal.integrated.fontSize": 13,
   "terminal.integrated.fontFamily": "Monaspace Neon Var",
-  "terminal.integrated.commandsToSkipShell": [
-    "workbench.action.focusActiveEditorGroup"
-  ],
+  "terminal.integrated.commandsToSkipShell": ["workbench.action.focusActiveEditorGroup"],
   "terminal.external.osxExec": "iterm2.app",
   "colorize.decoration_type": "square-dot",
-  "tailwindCSS.classFunctions": [
-    "tw",
-    "clsx",
-    "cva"
-  ],
+  "tailwindCSS.classFunctions": ["tw", "clsx", "cva"],
   "tailwindCSS.experimental.classRegex": [
-    [
-      "cva\\(((?:[^()]|\\([^()]*\\))*)\\)",
-      "[\"'`]([^\"'`]*).*?[\"'`]"
-    ],
-    [
-      "cx\\(((?:[^()]|\\([^()]*\\))*)\\)",
-      "(?:'|\"|`)([^']*)(?:'|\"|`)"
-    ]
+    ["cva\\(((?:[^()]|\\([^()]*\\))*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(((?:[^()]|\\([^()]*\\))*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
   "workbench.activityBar.location": "hidden",
   "[python]": {
@@ -113,5 +87,5 @@
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  }
 }
