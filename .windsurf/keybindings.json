@@ -18,7 +18,8 @@
   },
   {
     "key": "ctrl+l",
-    "command": "workbench.action.navigateRight"
+    "command": "workbench.action.navigateRight",
+    "when": "!inChatInput"
   },
   {
     "key": "ctrl+j",
@@ -43,17 +44,17 @@
   {
     "key": "space l",
     "command": "workbench.action.nextEditorInGroup",
-    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus || !inputFocus)"
+    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && editorTextFocus"
   },
   {
     "key": "space h",
     "command": "workbench.action.previousEditorInGroup",
-    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus || !inputFocus)"
+    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && editorTextFocus"
   },
   {
     "key": "ctrl+d",
     "command": "workbench.action.closeActiveEditor",
-    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus || !inputFocus)"
+    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && editorTextFocus"
   },
   {
     "key": "ctrl+shift+d",
@@ -64,12 +65,12 @@
   {
     "key": "space 0",
     "command": "workbench.action.evenEditorWidths",
-    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus || !inputFocus)"
+    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && editorTextFocus"
   },
   {
     "key": "ctrl+9",
     "command": "workbench.action.toggleEditorWidths",
-    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus || !inputFocus)"
+    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && editorTextFocus"
   },
   // Coding
   {
@@ -80,7 +81,7 @@
   {
     "key": "space /",
     "command": "editor.action.commentLine",
-    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus || !inputFocus)"
+    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && editorTextFocus"
   },
   {
     "key": "shift-j",
@@ -111,22 +112,22 @@
   {
     "key": "space a q",
     "command": "workbench.action.togglePanel",
-    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
+    "when": "vim.mode == 'Normal' && editorTextFocus"
   },
   {
     "key": "space a q",
     "command": "workbench.actions.view.problems",
-    "when": "vim.mode == 'Normal' && !panelVisible && (editorTextFocus || !inputFocus)"
+    "when": "vim.mode == 'Normal' && !panelVisible && editorTextFocus"
   },
   {
     "key": "space a a",
     "command": "editor.action.codeAction",
-    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus)"
+    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && editorTextFocus"
   },
   {
     "key": "space a r",
     "command": "editor.action.rename",
-    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus)"
+    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && editorTextFocus"
   },
   {
     "key": "space a n",
@@ -142,7 +143,7 @@
   {
     "key": "space g d",
     "command": "editor.action.revealDefinition",
-    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus)"
+    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && editorTextFocus"
   },
   {
     "key": "space g shift-d",
@@ -205,7 +206,7 @@
     // Git undo
     "key": "space g u",
     "command": "gitlens.hunk.reset",
-    "when": "vim.mode == 'Normal' && editorTextFocus && !inputFocus"
+    "when": "vim.mode == 'Normal' && editorTextFocus"
   },
   // Search
   {
@@ -216,17 +217,17 @@
   {
     "key": "space s b",
     "command": "workbench.action.showAllEditors",
-    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
+    "when": "vim.mode == 'Normal' && editorTextFocus"
   },
   {
     "key": "space s f",
     "command": "workbench.action.quickOpen",
-    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus || !inputFocus)"
+    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && editorTextFocus"
   },
   {
     "key": "space s t",
     "command": "workbench.action.findInFiles",
-    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus || !inputFocus)"
+    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && editorTextFocus"
   },
   {
     "key": "ctrl+p",
@@ -252,18 +253,18 @@
   {
     "key": "space s g",
     // "command": "workbench.action.showAllEditorsByMostRecentlyUsed",
-    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
+    "when": "vim.mode == 'Normal' && editorTextFocus"
   },
   {
     "key": "ctrl-n",
     "command": "editor.action.addSelectionToNextFindMatch",
-    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus || !inputFocus) && !searchViewletVisible"
+    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && editorTextFocus && !searchViewletVisible"
   },
   // Version Control
   {
     "key": "space g g",
     "command": "workbench.view.scm",
-    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && (editorTextFocus || !inputFocus)"
+    "when": "(vim.mode == 'Normal' || vim.mode =~ /Visual.*/) && editorTextFocus"
   },
   // Panels
   {
@@ -452,6 +453,56 @@
   {
     "key": "cmd+k",
     "command": "windsurf.prioritized.command.open"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "-deleteLeft",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "-extension.vim_ctrl+h",
+    "when": "editorTextFocus && vim.active && vim.use<C-h> && !inDebugRepl"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "search.action.focusPreviousSearchResult",
+    "when": "hasSearchResult || inSearchEditor"
+  },
+  {
+    "key": "shift+f4",
+    "command": "-search.action.focusPreviousSearchResult",
+    "when": "hasSearchResult || inSearchEditor"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "search.action.focusNextSearchResult",
+    "when": "hasSearchResult || inSearchEditor"
+  },
+  {
+    "key": "f4",
+    "command": "-search.action.focusNextSearchResult",
+    "when": "hasSearchResult || inSearchEditor"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "quickInput.next",
+    "when": "inQuickInput && quickInputType == 'quickPick'"
+  },
+  {
+    "key": "ctrl+down",
+    "command": "-quickInput.next",
+    "when": "inQuickInput && quickInputType == 'quickPick'"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "quickInput.previous",
+    "when": "inQuickInput && quickInputType == 'quickPick'"
+  },
+  {
+    "key": "ctrl+up",
+    "command": "-quickInput.previous",
+    "when": "inQuickInput && quickInputType == 'quickPick'"
   }
 ]
 // TODO: can we increase the speed of key-repeat
