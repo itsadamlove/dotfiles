@@ -464,21 +464,21 @@
     "command": "-extension.vim_ctrl+h",
     "when": "editorTextFocus && vim.active && vim.use<C-h> && !inDebugRepl"
   },
-  {
-    "key": "ctrl+p",
-    "command": "search.action.focusPreviousSearchResult",
-    "when": "hasSearchResult || inSearchEditor"
-  },
+  // {
+  //   "key": "ctrl+p",
+  //   "command": "search.action.focusPreviousSearchResult",
+  //   "when": "hasSearchResult || inSearchEditor"
+  // },
   {
     "key": "shift+f4",
     "command": "-search.action.focusPreviousSearchResult",
     "when": "hasSearchResult || inSearchEditor"
   },
-  {
-    "key": "ctrl+n",
-    "command": "search.action.focusNextSearchResult",
-    "when": "hasSearchResult || inSearchEditor"
-  },
+  // {
+  //   "key": "ctrl+n",
+  //   "command": "search.action.focusNextSearchResult",
+  //   "when": "hasSearchResult || inSearchEditor"
+  // },
   {
     "key": "f4",
     "command": "-search.action.focusNextSearchResult",
