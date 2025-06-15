@@ -16,6 +16,7 @@
   },
   "prettier.requireConfig": true,
   "prettier.useEditorConfig": false,
+  "prettier.singleQuoteYAML": false,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -53,17 +54,6 @@
   "editor.rulers": [
     120
   ],
-  "terminal.integrated.profiles.osx": {
-    "tmux-shell": {
-      "path": "tmux",
-      "args": [
-        "new-session",
-        "-A",
-        "-s",
-        "cursor:${workspaceFolder}"
-      ]
-    }
-  },
   "terminal.integrated.profiles.osx": {
     "Warp": {
       "path": "/Applications/Warp.app/Contents/MacOS/warp"

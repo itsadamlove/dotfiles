@@ -247,3 +247,5 @@ fi
 
 # Added by Windsurf
 export PATH="/Users/adam/.codeium/windsurf/bin:$PATH"
+
+alias dev="tmux attach -t dev || tmux new -s dev"
