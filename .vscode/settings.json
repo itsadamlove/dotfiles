@@ -104,4 +104,5 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "cursor.chat.terminalShowHoverHint": false,
 }
