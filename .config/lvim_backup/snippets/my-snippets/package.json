@@ -1,0 +1,30 @@
+{
+  "name": "my-snippets",
+  "author": "Adam Love",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": ["javascriptreact", "typescriptreact"],
+        "path": "./js-react.json"
+      },
+      {
+        "language": [
+          "javascript",
+          "typescript",
+          "javascriptreact",
+          "typescriptreact"
+        ],
+        "path": "./javascript.json"
+      },
+      {
+        "language": [
+          "scss"
+        ],
+        "path": "./scss.json"
+      }
+    ]
+  }
+}

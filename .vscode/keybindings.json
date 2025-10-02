@@ -437,6 +437,6 @@
     {
         "key": "cmd+i",
         "command": "composerMode.agent"
-    },
+    }
 ]
 // TODO: can we increase the speed of key-repeat

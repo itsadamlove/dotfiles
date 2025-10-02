@@ -1,168 +1,228 @@
---------
--------- Vim Options
---------
 require("sukara.options")
 require("sukara.plugins")
 
--- Icons
--- lvim.use_icons = true
+local lspconfig = require("lspconfig")
+lvim.lsp.null_ls.setup = { on_setup = function() end } -- no-op to stop the built-in
 
--- -- Change theme settings
 lvim.colorscheme = "kanagawa"
--- lvim.colorscheme = "kanagawa-lotus"
 
-lvim.builtin.alpha.active = true
-lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.terminal.active = true
-
+-- Tree file management
 lvim.builtin.nvimtree.active = true
-lvim.builtin.nvimtree.setup.filters.dotfiles = true
-lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
-lvim.builtin.nvimtree.setup.respect_buf_cwd = true
-lvim.builtin.nvimtree.setup.renderer.icons.show.folder = true
-lvim.builtin.nvimtree.setup.update_cwd = false
-lvim.builtin.nvimtree.setup.update_focused_file.update_cwd = false
-lvim.builtin.project.manual_mode = true
+lvim.builtin.nvimtree.setup = vim.tbl_deep_extend("force", lvim.builtin.nvimtree.setup or {}, {
+	filters = { dotfiles = true },
+	renderer = { icons = { show = { git = true, folder = true } }, group_empty = true },
+	respect_buf_cwd = true,
+	sync_root_with_cwd = true,
+	update_focused_file = { enable = true },
+})
 
-vim.diagnostic.config({ virtual_text = false })
-
-lvim.builtin.telescope.defaults = {
-	-- prompt_prefix = "🔍 ",
-	file_ignore_patterns = { "node_modules", ".git", ".cache", "Pods", "ios-sourcemap.json" },
-	layout_config = {
-		horizontal = { preview_width = 0.6 },
-	},
-}
-
--- TOOD: might want the other version
-lvim.builtin.telescope.on_config_done = function(telescope)
-	pcall(telescope.load_extension, "fzy_native")
-	pcall(telescope.load_extension, "ui-select")
-end
-
--- Automatically install missing parsers when entering buffer
+-- treesitter - installing and removing tree sitter parsers
+-- The parser that understands the code structure, powers syntax highlighting and auto tag
+-- Manage parsers per language. :TSUpdate, :checkhealth
 lvim.builtin.treesitter.auto_install = true
-
--- -- always installed on startup, useful for parsers without a strict filetype
 lvim.builtin.treesitter.ensure_installed = {
 	"bash",
 	"c",
 	"javascript",
 	"json",
 	"lua",
-	-- "python",
 	"typescript",
 	"tsx",
 	"css",
 	"rust",
 	"java",
 	"yaml",
-	"comment",
+	"markdown",
 	"markdown_inline",
 	"regex",
 	"prisma",
 }
+lvim.builtin.treesitter.highlight.enable = true
 
--- -- linters, formatters and code actions <https://www.lunarvim.org/docs/languages#lintingformatting>
+-- lspconfig
+-- Attaches LSP servers to neovim
+-- Enables def/impl/refs/hover, completion, diagnostics, organise imports
 
--- Skip pylyzer setup in favour of Ruff
-lvim.lsp.installer.setup.automatic_installation = false
-lvim.lsp.skip_setup = { "pylyzer" }
-lvim.lsp.installer.setup.ensure_installed = { "pyright", "ruff_lsp" }
-
-local formatters = require("lvim.lsp.null-ls.formatters")
-formatters.setup({
-	-- { name = "black" },
-	{ name = "ruff" },
-	{ name = "stylua" },
-	{
-		name = "prettier",
-		extra_args = { "--print-width", "120" },
-	},
-	{ name = "stylelint" },
-	{ name = "sql_formatter" },
-	{ name = "phpcsfixer" },
-})
-
-local linters = require("lvim.lsp.null-ls.linters")
-linters.setup({
-	{ name = "eslint_d" },
-	{ name = "stylelint" },
-	{ name = "ruff", filetypes = { "python" } },
-})
-
-local code_actions = require("lvim.lsp.null-ls.code_actions")
-code_actions.setup({
-	{
-		name = "eslint_d",
-		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
-	},
-})
-
-local lspconfig = require("lspconfig")
-local function organize_imports()
-	local params = {
-		command = "_typescript.organizeImports",
-		arguments = { vim.api.nvim_buf_get_name(0) },
-		title = "",
-	}
-	vim.lsp.buf.execute_command(params)
-end
-
-lspconfig.tsserver.setup({
-	-- on_attach = on_attach,
-	-- capabilities = capabilities,
-	commands = {
-		OrganizeImports = {
-			organize_imports,
-			description = "Organize Imports",
+-- TypeScript / JavaScript
+lspconfig.vtsls.setup({
+	settings = {
+		typescript = {
+			inlayHints = {
+				enumMemberValues = true,
+				functionLikeReturnTypes = true,
+				parameterNames = { enabled = "literals" },
+				parameterTypes = true,
+				propertyDeclarationTypes = true,
+				variableTypes = { enabled = true },
+			},
+			preferences = { includeCompletionsForModuleExports = true },
 		},
+		javascript = { inlayHints = { parameterTypes = true } },
 	},
 })
 
+-- Python: keep Pyright for type intelligence, disable its diagnostics;
+-- let Ruff (via ruff_lsp + none-ls) do lint/fix/format/imports.
 lspconfig.pyright.setup({
 	settings = {
-		pyright = {
-			-- Using Ruff's import organiser
-			disableOrganizeImports = true,
-		},
-		python = {
-			analysis = {
-				-- Ignore all files for analysis to exclusively use Ruff for linting
-				ignore = { "*" },
-			},
-		},
+		pyright = { disableOrganizeImports = true }, -- Ruff handles imports
+		python = { analysis = { diagnosticMode = "off" } }, -- no diagnostics from Pyright
 	},
 })
 
-lspconfig.ruff_lsp.setup({
-	on_attach = function(client, bufnr)
-		-- Enable formatting on save if the server supports it
-		if client.server_capabilities.documentFormattingProvider then
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				buffer = bufnr,
-				callback = function()
-					vim.lsp.buf.format({ bufnr = bufnr })
-				end,
-			})
-		end
-	end,
+lspconfig.ruff.setup({
 	init_options = {
-		-- Enable “organize imports” + “fix all” on save:
 		organizeImports = true,
 		fixAll = true,
 	},
+	-- no special on_attach needed unless you add keymaps
 })
 
--- Require snippets
-require("luasnip/loaders/from_vscode").load({
-	paths = {
-		"~/.config/lvim/snippets/vscode-es7-javascript-react-snippets",
-		"~/.config/lvim/snippets/my-snippets",
+-- Tell lua LSP that vim is a global
+lspconfig.lua_ls.setup({
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim", "lvim" }, -- tell LuaLS these are valid globals
+			},
+			workspace = {
+				checkThirdParty = false, -- don’t prompt for 3rd-party/unknown libs
+			},
+			telemetry = { enable = false },
+			format = { enable = false }, -- keep false; stylua will format
+		},
 	},
 })
 
-lvim.format_on_save.enabled = true
+-- Telescope extras
+lvim.builtin.telescope.on_config_done = function(telescope)
+	pcall(telescope.load_extension, "fzf")
+	pcall(telescope.load_extension, "ui-select")
+end
 
--- Note: Keymaps should come after plugins so that our custom mapping applies
+lvim.builtin.telescope.defaults = vim.tbl_deep_extend("force", lvim.builtin.telescope.defaults or {}, {
+	-- Make ripgrep the engine for live_grep with sensible flags
+	vimgrep_arguments = {
+		"rg",
+		"--color=never",
+		"--no-heading",
+		"--with-filename",
+		"--line-number",
+		"--column",
+		"--smart-case",
+		-- If you want hidden files globally for live_grep, uncomment:
+		-- "--hidden", "--glob", "!.git",
+	},
+	file_ignore_patterns = { "node_modules", ".git/", ".cache", "Pods", "ios-sourcemap.json" },
+	layout_config = { horizontal = { preview_width = 0.6 } },
+})
+
+-- ── none-ls (formatters/linters/code actions)
+local ok_null, null_ls = pcall(require, "null-ls")
+if ok_null then
+	local fmt = null_ls.builtins.formatting
+	local diag = null_ls.builtins.diagnostics
+	local acts = null_ls.builtins.code_actions
+
+	require("mason-null-ls").setup({
+		ensure_installed = { "prettier", "eslint_d", "stylelint", "stylua", "ruff", "shfmt", "sql-formatter" },
+		automatic_installation = true,
+	})
+
+	null_ls.setup({
+		sources = {
+			-- JS/TS
+			diag.eslint_d.with({
+				filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "vue", "svelte" },
+			}),
+			acts.eslint_d.with({
+				filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "vue", "svelte" },
+			}),
+			fmt.prettier.with({
+				extra_args = { "--print-width", "120" },
+				filetypes = {
+					"javascript",
+					"typescript",
+					"javascriptreact",
+					"typescriptreact",
+					"vue",
+					"svelte",
+					"json",
+					"jsonc",
+					"css",
+					"scss",
+					"less",
+					"html",
+					"markdown",
+					"markdown.mdx",
+					"yaml",
+					"graphql",
+					"handlebars",
+				},
+			}),
+			-- CSS
+			diag.stylelint,
+			fmt.stylelint,
+			-- Lua
+			fmt.stylua,
+			-- Python
+			fmt.ruff.with({ filetypes = { "python" } }),
+			-- Shell / SQL
+			fmt.shfmt.with({ filetypes = { "sh", "bash", "zsh" } }),
+			fmt.sql_formatter.with({ filetypes = { "sql" } }),
+		},
+		on_attach = function(client, bufnr)
+			-- “ESLint fix” → then format (prefer null-ls) on save
+			local grp = vim.api.nvim_create_augroup("FmtFix." .. bufnr, {})
+			vim.api.nvim_clear_autocmds({ group = grp, buffer = bufnr })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = grp,
+				buffer = bufnr,
+				callback = function()
+					-- try ESLint fix-all if available
+					local supports = client.supports_method and client:supports_method("textDocument/codeAction")
+					if supports then
+						vim.lsp.buf.code_action({
+							context = { only = { "source.fixAll.eslint" }, diagnostics = {} },
+							apply = true,
+						})
+					end
+					-- then format (prefer null-ls)
+					vim.lsp.buf.format({
+						bufnr = bufnr,
+						timeout_ms = 1000,
+						filter = function(c)
+							return c.name == "null-ls"
+						end,
+					})
+				end,
+			})
+		end,
+	})
+end
+
+-- set notify as the default notifier (after plugins load)
+local ok, notify = pcall(require, "notify")
+if ok then
+	vim.notify = notify
+	notify.setup({ stages = "fade_in_slide_out" }) -- tweak if you like
+end
+
+-- Snippet & CMP
+local cmp = require("cmp")
+cmp.setup({
+	snippet = {
+		expand = function(args)
+			require("luasnip").lsp_expand(args.body)
+		end,
+	},
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" }, -- enable snippets
+		{ name = "buffer" },
+		{ name = "path" },
+	}),
+})
+
+-- keymaps should be after plugins
 require("sukara.keymaps")

@@ -1,0 +1,22 @@
+{
+  "MinWidth XS media query": {
+    "prefix": "xs",
+    "body": ["@media (min-width: \\$xs) {", "\t${1}", "}"]
+  },
+  "MinWidth SM media query": {
+    "prefix": "sm",
+    "body": ["@media (min-width: \\$sm) {", "\t${1}", "}"]
+  },
+  "MinWidth MD media query": {
+    "prefix": "md",
+    "body": ["@media (min-width: \\$md) {", "\t${1}", "}"]
+  },
+  "MinWidth LG media query": {
+    "prefix": "lg",
+    "body": ["@media (min-width: \\$lg) {", "\t${1}", "}"]
+  },
+  "MinWidth XL media query": {
+    "prefix": "xl",
+    "body": ["@media (min-width: \\$xl) {", "\t${1}", "}"]
+  }
+}

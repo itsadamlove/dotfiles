@@ -1,0 +1,139 @@
+
+{
+  "React funtion component exported": {
+    "prefix": "rfce",
+    "body": [
+      "const ${TM_FILENAME_BASE}: React.FC = () => {",
+      "\treturn (",
+      "\t\t${1}",
+      "\t)",
+      "}",
+      "",
+      "export default ${TM_FILENAME_BASE}"
+    ],
+    "description": "React function component with export"
+  },
+  "H1 Tag": {
+    "prefix": "h1",
+    "body": ["<h1>", "\t${1}", "</h1>"],
+    "description": "H1 HTML Tag"
+  },
+  "H2 Tag": {
+    "prefix": "h2",
+    "body": ["<h2>", "\t${1}", "</h2>"],
+    "description": "H2 HTML Tag"
+  },
+  "H3 Tag": {
+    "prefix": "h3",
+    "body": ["<h3>", "\t${1}", "</h3>"],
+    "description": "H3 HTML Tag"
+  },
+  "H4 Tag": {
+    "prefix": "h4",
+    "body": ["<h4>", "\t${1}", "</h4>"],
+    "description": "H4 HTML Tag"
+  },
+  "Paragraph Tag": {
+    "prefix": "p",
+    "body": ["<p>", "\t${1}", "</p>"],
+    "description": "Paragraph HTML Tag"
+  },
+  "Unordered list": {
+    "prefix": "ul",
+    "body": ["<ul>", "\t<li>${1}</li>", "</ul>"],
+    "description": "Unordered List HTML tag"
+  },
+  "Ordered list": {
+    "prefix": "ol",
+    "body": ["<ol>", "\t<li>${1}</li>", "</ol>"],
+    "description": "Ordered List HTML tag"
+  },
+  "List item": {
+    "prefix": "li",
+    "body": ["<li>", "${1}", "</li>"],
+    "description": "List item"
+  },
+  "Div Tag": {
+    "prefix": "div",
+    "body": ["<div>", "\t${1}", "</div>"],
+    "description": "Div HTML Tag"
+  },
+  "HR Tag": {
+    "prefix": "hr",
+    "body": ["<hr/>"],
+    "description": "HR HTML Tag"
+  },
+  "BR Tag": {
+    "prefix": "br",
+    "body": ["<br/>"],
+    "description": "BR HTML Tag"
+  },
+  "Section Tag": {
+    "prefix": "section",
+    "body": ["<section>", "\t${1}", "</section>"],
+    "description": "Section HTML Tag"
+  },
+  "Body Tag": {
+    "prefix": "body",
+    "body": ["<body>", "\t${1}", "</body>"],
+    "description": "Body HTML Tag"
+  },
+  "Footer Tag": {
+    "prefix": "footer",
+    "body": ["<footer>", "\t${1}", "</footer>"],
+    "description": "Footer HTML Tag"
+  },
+  "Code Tag": {
+    "prefix": "code",
+    "body": ["<code>", "\t${1}", "</code>"],
+    "description": "Code HTML Tag"
+  },
+  "Span Tag": {
+    "prefix": "span",
+    "body": ["<span>", "${1}", "</span>"],
+    "description": "Span HTML Tag"
+  },
+  "Em Tag": {
+    "prefix": "em",
+    "body": ["<em>", "${1}", "</em>"],
+    "description": "EM HTML Tag"
+  },
+  "Link Tag": {
+    "prefix": "a",
+    "body": ["<a hfref=${1}>", "${2}", "</a>"],
+    "description": "Link HTML Tag"
+  },
+  "Table Tag": {
+    "prefix": "table",
+    "body": [
+      "<table>",
+      "\t<thead>",
+      "\t\t<tr>",
+      "\t\t\t<th>${1}</th>",
+      "\t\t</tr>",
+      "\t</thead>",
+      "\t<tbody>",
+      "\t\t<tr>",
+      "\t\t\t<td>${2}</td>",
+      "\t\t</tr>",
+      "\t</tbody>",
+      "</table>"
+    ],
+    "description": "Table html tag"
+  },
+  "Td Tag": {
+    "prefix": "td",
+    "body": ["<td>", "${1}", "</td>"],
+    "description": "td HTML Tag"
+  },
+  "th Tag": {
+    "prefix": "th",
+    "body": ["<th>", "${1}", "</th>"],
+    "description": "th HTML Tag"
+  },
+  "tr Tag": {
+    "prefix": "tr",
+    "body": ["<tr>", "\t${1}", "</tr>"],
+    "description": "tr HTML Tag"
+  }
+}

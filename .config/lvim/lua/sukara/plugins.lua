@@ -1,93 +1,131 @@
 lvim.plugins = {
 	{ "rebelot/kanagawa.nvim" },
-	{ "wfxr/minimap.vim" },
-	{ "jose-elias-alvarez/null-ls.nvim" },
-	{ "kazhala/close-buffers.nvim" },
-	{ "tpope/vim-surround" },
-	{ "tpope/vim-fugitive" },
-	-- Autoclose and autorename html tag
+	-- Core LSP & tools (eager so command exist)
+	{
+		"williamboman/mason.nvim",
+		lazy = false, -- ensure it loads immediately
+		config = function()
+			require("mason").setup() -- run setup at the right time
+		end,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		lazy = false,
+		dependencies = { "williamboman/mason.nvim" },
+		config = function()
+			require("mason-lspconfig").setup({
+				ensure_installed = {
+					"vtsls",
+					"tailwindcss",
+					"html",
+					"cssls",
+					"jsonls",
+					"pyright",
+					"ruff",
+					"lua_ls",
+					"bashls",
+					"yamlls",
+					"dockerls",
+					"graphql",
+					"prismals",
+					"emmet_ls",
+					"marksman",
+				},
+				automatic_installation = true,
+			})
+		end,
+	},
+	{
+		"nvimtools/none-ls.nvim",
+		name = "none-ls.nvim",
+		lazy = false,
+		version = false, -- or pin a specific commit if you like
+	},
+	{
+		"jay-babu/mason-null-ls.nvim",
+		lazy = false,
+		dependencies = { "nvimtools/none-ls.nvim", "williamboman/mason.nvim" },
+		config = function()
+			require("mason-null-ls").setup({
+				ensure_installed = { "prettier", "eslint_d", "stylelint", "stylua", "ruff", "shfmt", "sql-formatter" },
+				automatic_installation = true,
+			})
+		end,
+	},
+
+	-- Telescope faster sorter
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	{ "nvim-telescope/telescope-ui-select.nvim" },
+
+	-- Splits
+	{ "mrjones2014/smart-splits.nvim" },
+
+	-- QoL
+	{ "numToStr/Comment.nvim" },
+	{ "kylechui/nvim-surround" },
+	{ "windwp/nvim-autopairs" },
+	{ "lewis6991/gitsigns.nvim" },
+	{ "moll/vim-bbye" },
+
+	-- Diagnostics
+	{ "folke/trouble.nvim", opts = {} },
+
+	-- Indent guides
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+
+	-- Auto close tags
 	{
 		"windwp/nvim-ts-autotag",
 		config = function()
 			require("nvim-ts-autotag").setup()
 		end,
 	},
-	-- TODO:  SWAP TO FZF
-	{ "nvim-telescope/telescope-fzy-native.nvim" },
-	{ "nvim-telescope/telescope-ui-select.nvim" },
-	{ "christoomey/vim-tmux-navigator" },
-	{ "prisma/vim-prisma" },
-	-- Multi Cursors
-	{ "mg979/vim-visual-multi" },
-	-- Co Pilot
-	{ "zbirenbaum/copilot.lua" },
-	{
-		"zbirenbaum/copilot-cmp",
-		config = function()
-			require("copilot_cmp").setup()
-		end,
-	},
-	{
-		"brenoprata10/nvim-highlight-colors",
-	},
+
+	-- Markdown preview
 	{
 		"iamcco/markdown-preview.nvim",
-		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		ft = { "markdown" },
 		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
+		cmd = { "MarkdownPreview", "MarkdownPreviewToggle", "MarkdownPreviewStop" },
 	},
-	-- Python Virtual Environment Switcher
-	-- { "AckslD/swenv.nvim" },
-	{ "stevearc/dressing.nvim" },
-	-- {
-	--   "folke/trouble.nvim",
-	--   cmd = "TroubleToggle",
-	-- },
+
+	-- Notifications
+	{ "rcarriga/nvim-notify" },
+
+	-- Snippets
+	{ "L3MON4D3/LuaSnip" },
+	{ "rafamadriz/friendly-snippets" },
+	{ "saadparwaiz1/cmp_luasnip" },
+
+	-- Pretty input fields
 	{
-		-- TODO: understand how to fix this
-		"metakirby5/codi.vim",
-		cmd = "Codi",
-	},
-	{
-		"rmagatti/goto-preview",
-		config = function()
-			require("goto-preview").setup({
-				width = 120, -- Width of the floating window
-				height = 25, -- Height of the floating window
-				-- default_mappings = false, -- Bind default mappings
-				default_mappings = true, -- Bind default mappings
-				debug = false, -- Print debug information
-				opacity = nil, -- 0-100 opacity level of the floating window where 100 is fully transparent.
-				post_open_hook = nil, -- A function taking two arguments, a buffer and a window to be ran as a hook.
-				-- You can use "default_mappings = true" setup option
-				-- Or explicitly set keybindings
-				-- vim.cmd("nnoremap gpd <cmd>lua require('goto-preview').goto_preview_definition()<CR>")
-				-- vim.cmd("nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>")
-				-- vim.cmd("nnoremap gP <cmd>lua require('goto-preview').close_all_win()<CR>")
-			})
-		end,
-	},
-	{
-		"mrjones2014/smart-splits.nvim",
-		config = function()
-			require("smart-splits").setup({
-				at_edge = function(context)
-					local dmap = {
-						left = "west",
-						down = "south",
-						up = "north",
-						right = "east",
-					}
-				end,
-			})
-		end,
+		"folke/snacks.nvim",
+		priority = 1000,
+		opts = {
+			-- enable only the bits you want
+			input = { enabled = true }, -- replaces vim.ui.input
+			select = { enabled = true }, -- replaces vim.ui.select
+			-- everything else stays off by default
+		},
 	},
 }
-
--- -- Load snippets
-require("luasnip/loaders/from_vscode").load({
-	paths = { "~/.config/lvim/snippets/vscode-es7-javascript-react-snippets" },
+-- Load snippets
+require("luasnip")
+require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").load({
+	paths = { "~/.config/lvim/snippets" }, -- your old VSCode packs if you want
 })
-require("luasnip/loaders/from_vscode").load({ paths = { "~/.config/lvim/snippets/my-snippets" } })
+
+-- TODO:  do i need these?
+pcall(function()
+	require("Comment").setup()
+end)
+pcall(function()
+	require("nvim-surround").setup()
+end)
+-- TODO: how does this play with leader slash?
+pcall(function()
+	require("nvim-autopairs").setup()
+end)
