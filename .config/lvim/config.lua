@@ -224,5 +224,7 @@ cmp.setup({
 	}),
 })
 
+lvim.builtin.treesitter.autotag = { enable = false }
+
 -- keymaps should be after plugins
 require("sukara.keymaps")
