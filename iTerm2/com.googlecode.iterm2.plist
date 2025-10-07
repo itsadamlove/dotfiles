@@ -33694,6 +33694,8 @@
 	<string>Rails &amp; Zeus</string>
 	<key>Default Bookmark Guid</key>
 	<string>A42FB2F1-7EE8-449A-B55B-FE057498EAE3</string>
+	<key>Default Browser Profile Guid</key>
+	<string>963B696D-B7D8-4D32-80DD-F311E161F36A</string>
 	<key>DimBackgroundWindows</key>
 	<false/>
 	<key>DimInactiveSplitPanes</key>
@@ -43566,6 +43568,8 @@
 	<integer>0</integer>
 	<key>WordCharacters</key>
 	<string>&lt;</string>
+	<key>com.apple.WebPrivacy.ResourceMonitorURLsVersion</key>
+	<string>qrsAAAGXnXBrwGxMO6s=</string>
 	<key>findIgnoreCase_iTerm</key>
 	<true/>
 	<key>findMode_iTerm</key>

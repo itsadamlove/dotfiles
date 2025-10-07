@@ -110,6 +110,8 @@ lvim.plugins = {
 			-- everything else stays off by default
 		},
 	},
+
+	{ "sindrets/diffview.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 }
 -- Load snippets
 require("luasnip")
