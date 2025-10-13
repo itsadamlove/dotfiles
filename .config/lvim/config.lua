@@ -1,7 +1,12 @@
 require("sukara.options")
 require("sukara.plugins")
 
-local lspconfig = require("lspconfig")
+local ok_lsp, lspconfig = pcall(require, "lspconfig")
+if not ok_lsp then
+	vim.notify("nvim-lspconfig not found", vim.log.levels.ERROR)
+	return
+end
+
 lvim.lsp.null_ls.setup = { on_setup = function() end } -- no-op to stop the built-in
 
 lvim.colorscheme = "kanagawa"
@@ -39,14 +44,100 @@ lvim.builtin.treesitter.ensure_installed = {
 }
 lvim.builtin.treesitter.highlight.enable = true
 
--- lspconfig
--- Attaches LSP servers to neovim
--- Enables def/impl/refs/hover, completion, diagnostics, organise imports
+-- === TS/JS: vtsls silent actions on save (no popups) ===
+local function collect_code_actions(bufnr, kinds, timeout)
+	local params = vim.lsp.util.make_range_params()
+	params.context = { only = kinds, diagnostics = {} }
+	local responses = vim.lsp.buf_request_sync(bufnr, "textDocument/codeAction", params, timeout or 800)
+	local out = {}
+	if not responses then
+		return out
+	end
+	for _, resp in pairs(responses) do
+		local res = resp.result
+		if type(res) == "table" then
+			for _, a in ipairs(res) do
+				table.insert(out, a)
+			end
+		end
+	end
+	return out
+end
 
--- TypeScript / JavaScript
+local function apply_action(client, action)
+	local function apply_edits(a)
+		if a and a.edit then
+			vim.lsp.util.apply_workspace_edit(a.edit, client.offset_encoding or "utf-16")
+			return true
+		end
+		return false
+	end
+	if apply_edits(action) then
+		return
+	end
+	if client.supports_method and client:supports_method("codeAction/resolve") then
+		client.request("codeAction/resolve", action, function(_, resolved)
+			if resolved then
+				if apply_edits(resolved) then
+					return
+				end
+				if resolved.command then
+					vim.lsp.buf.execute_command(resolved.command)
+				end
+			end
+		end)
+		return
+	end
+	if action.command then
+		vim.lsp.buf.execute_command(action.command)
+	end
+end
+
+-- ask for both generic and .ts/.js variants
+local ADD_MISSING = { "source.addMissingImports", "source.addMissingImports.ts", "source.addMissingImports.js" }
+local REMOVE_UNUSED = { "source.removeUnused", "source.removeUnused.ts", "source.removeUnused.js" }
+local ORGANIZE = { "source.organizeImports", "source.organizeImports.ts", "source.organizeImports.js" }
+
+local function vtsls_actions_on_save(bufnr)
+	local client = (vim.lsp.get_clients({ bufnr = bufnr, name = "vtsls" }) or {})[1]
+	if not client then
+		return
+	end
+	for _, kinds in ipairs({ ADD_MISSING, REMOVE_UNUSED, ORGANIZE }) do
+		local acts = collect_code_actions(bufnr, kinds)
+		if acts[1] then
+			apply_action(client, acts[1])
+		end
+	end
+end
+
+local function enable_vtsls_actions_on_save(_, bufnr)
+	local ft = vim.bo[bufnr].filetype
+	if ft ~= "typescript" and ft ~= "typescriptreact" and ft ~= "javascript" and ft ~= "javascriptreact" then
+		return
+	end
+	local grp = vim.api.nvim_create_augroup("TSJS.VTSLS.OnSave." .. bufnr, { clear = true })
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		group = grp,
+		buffer = bufnr,
+		callback = function()
+			vtsls_actions_on_save(bufnr)
+		end,
+		desc = "TS/JS: vtsls add/remove/organize imports (silent)",
+	})
+end
+
 lspconfig.vtsls.setup({
+	on_attach = enable_vtsls_actions_on_save,
 	settings = {
 		typescript = {
+			suggest = { autoImports = true },
+			preferences = {
+				includeCompletionsForModuleExports = true,
+				includeCompletionsForImportStatements = true,
+				importModuleSpecifierPreference = "non-relative",
+				quoteStyle = "auto",
+			},
 			inlayHints = {
 				enumMemberValues = true,
 				functionLikeReturnTypes = true,
@@ -55,11 +146,24 @@ lspconfig.vtsls.setup({
 				propertyDeclarationTypes = true,
 				variableTypes = { enabled = true },
 			},
-			preferences = { includeCompletionsForModuleExports = true },
 		},
-		javascript = { inlayHints = { parameterTypes = true } },
+		javascript = {
+			suggest = { autoImports = true },
+			preferences = {
+				includeCompletionsForModuleExports = true,
+				includeCompletionsForImportStatements = true,
+				quoteStyle = "auto",
+			},
+			inlayHints = { parameterTypes = true },
+		},
 	},
 })
+
+-- Optional: a manual test command you can run in a TS/JS buffer
+vim.api.nvim_create_user_command("VtslsFixImports", function()
+	vtsls_actions_on_save(0)
+	vim.notify("vtsls: imports fixed (silent)")
+end, {})
 
 -- Python: keep Pyright for type intelligence, disable its diagnostics;
 -- let Ruff (via ruff_lsp + none-ls) do lint/fix/format/imports.
@@ -125,19 +229,12 @@ if ok_null then
 	local acts = null_ls.builtins.code_actions
 
 	require("mason-null-ls").setup({
-		ensure_installed = { "prettier", "eslint_d", "stylelint", "stylua", "ruff", "shfmt", "sql-formatter" },
+		ensure_installed = { "prettier", "stylelint", "stylua", "ruff", "shfmt", "sql-formatter" },
 		automatic_installation = true,
 	})
 
 	null_ls.setup({
 		sources = {
-			-- JS/TS
-			diag.eslint_d.with({
-				filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "vue", "svelte" },
-			}),
-			acts.eslint_d.with({
-				filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "vue", "svelte" },
-			}),
 			fmt.prettier.with({
 				extra_args = { "--print-width", "120" },
 				filetypes = {
@@ -172,30 +269,20 @@ if ok_null then
 			fmt.sql_formatter.with({ filetypes = { "sql" } }),
 		},
 		on_attach = function(client, bufnr)
-			-- “ESLint fix” → then format (prefer null-ls) on save
-			local grp = vim.api.nvim_create_augroup("FmtFix." .. bufnr, {})
-			vim.api.nvim_clear_autocmds({ group = grp, buffer = bufnr })
+			local grp = vim.api.nvim_create_augroup("FormatOnSave." .. bufnr, { clear = true })
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				group = grp,
 				buffer = bufnr,
 				callback = function()
-					-- try ESLint fix-all if available
-					local supports = client.supports_method and client:supports_method("textDocument/codeAction")
-					if supports then
-						vim.lsp.buf.code_action({
-							context = { only = { "source.fixAll.eslint" }, diagnostics = {} },
-							apply = true,
-						})
-					end
-					-- then format (prefer null-ls)
 					vim.lsp.buf.format({
 						bufnr = bufnr,
-						timeout_ms = 1000,
+						timeout_ms = 1500,
 						filter = function(c)
 							return c.name == "null-ls"
 						end,
 					})
 				end,
+				desc = "null-ls: Prettier before write",
 			})
 		end,
 	})
@@ -226,5 +313,6 @@ cmp.setup({
 
 lvim.builtin.treesitter.autotag = { enable = false }
 
+require("sukara.eslint")
 -- keymaps should be after plugins
 require("sukara.keymaps")

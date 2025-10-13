@@ -16,6 +16,7 @@ lvim.plugins = {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"vtsls",
+					"eslint",
 					"tailwindcss",
 					"html",
 					"cssls",
