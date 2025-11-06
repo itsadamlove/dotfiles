@@ -113,6 +113,76 @@ lvim.plugins = {
 	},
 
 	{ "sindrets/diffview.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {},
+	},
+
+	-- AI Things
+	-- 	{
+	-- 		"yetone/avante.nvim",
+	-- 		-- build from source on Unix, or the provided PowerShell on Windows
+	-- 		build = vim.fn.has("win32") ~= 0
+	-- 				and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+	-- 			or "make",
+	-- 		event = "VeryLazy",
+	-- 		version = false, -- do NOT set to "*" (per docs)
+	-- 		opts = {
+	-- 			-- optional: a per-project instruction file (looked up from project root)
+	-- 			instructions_file = "avante.md",
+
+	-- 			-- choose which provider to use by name (must exist in `providers` below)
+	-- 			provider = "claude",
+
+	-- 			providers = {
+	-- 				-- Anthropic (Claude)
+	-- 				claude = {
+	-- 					endpoint = "https://api.anthropic.com",
+	-- 					model = "claude-sonnet-4-20250514",
+	-- 					timeout = 30000, -- ms
+	-- 					extra_request_body = {
+	-- 						temperature = 0.75,
+	-- 						max_tokens = 20480,
+	-- 					},
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 		dependencies = {
+	-- 			"nvim-lua/plenary.nvim",
+	-- 			"MunifTanjim/nui.nvim",
+	-- 			-- you already have telescope & snacks; list them only if you want Avante to use them for pickers/inputs:
+	-- 			"nvim-telescope/telescope.nvim", -- file selector provider
+	-- 			"folke/snacks.nvim", -- input provider
+	-- 			"nvim-tree/nvim-web-devicons",
+
+	-- 			-- Optional niceties:
+	-- 			-- "ibhagwan/fzf-lua",                 -- alternative file picker
+	-- 			-- "hrsh7th/nvim-cmp",                 -- completion for Avante commands/@mentions
+	-- 			{
+	-- 				"HakonHarnes/img-clip.nvim",
+	-- 				event = "VeryLazy",
+	-- 				opts = {
+	-- 					default = {
+	-- 						embed_image_as_base64 = false,
+	-- 						prompt_for_file_name = false,
+	-- 						drag_and_drop = { insert_mode = true },
+	-- 						use_absolute_path = true, -- helpful on Windows
+	-- 					},
+	-- 				},
+	-- 			},
+	-- 			{
+	-- 				"MeanderingProgrammer/render-markdown.nvim",
+	-- 				opts = { file_types = { "markdown", "Avante" } },
+	-- 				ft = { "markdown", "Avante" },
+	-- 			},
+	-- 		},
+	-- 	},
 }
 -- Load snippets
 require("luasnip")

@@ -182,6 +182,21 @@ lvim.builtin.which_key.on_config_done = function(wk)
 		}),
 	}, { prefix = "<leader>" })
 
+	-- Avante
+	-- wk.register({
+	-- 	i = {
+	-- 		name = "+AI (Avante)",
+	-- 		a = { "<cmd>AvanteAsk<CR>", "Ask (selection/line)" },
+	-- 		e = { "<cmd>AvanteEdit<CR>", "Edit (apply diff)" },
+	-- 		f = { "<cmd>AvanteFix<CR>", "Fix issues" },
+	-- 		x = { "<cmd>AvanteExplain<CR>", "Explain code" },
+	-- 		d = { "<cmd>AvanteDoc<CR>", "Add docs" },
+	-- 		c = { "<cmd>AvanteChatNew<CR>", "New chat" },
+	-- 		A = { "<cmd>AvanteAccept<CR>", "Accept diff" },
+	-- 		R = { "<cmd>AvanteReject<CR>", "Reject diff" },
+	-- 	},
+	-- }, { prefix = "<leader>" })
+
 	-- Display toggles
 	wk.register({
 		d = vim.tbl_deep_extend("force", lvim.builtin.which_key.mappings["d"] or { name = "+Display" }, {
