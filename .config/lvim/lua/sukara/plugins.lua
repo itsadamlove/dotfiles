@@ -54,6 +54,11 @@ lvim.plugins = {
 		end,
 	},
 
+	-- Multi-line select
+	{
+		"mg979/vim-visual-multi",
+	},
+
 	-- Telescope faster sorter
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{ "nvim-telescope/telescope-ui-select.nvim" },
