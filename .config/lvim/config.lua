@@ -42,6 +42,8 @@ lvim.builtin.treesitter.ensure_installed = {
 	"regex",
 	"prisma",
 }
+-- NOTE: swift treesitter parser is manually compiled (not in ensure_installed)
+-- To rebuild: see after/ftplugin/swift.lua for instructions
 lvim.builtin.treesitter.highlight.enable = true
 
 -- === TS/JS: vtsls silent actions on save (no popups) ===
@@ -182,6 +184,36 @@ lspconfig.ruff.setup({
 	-- no special on_attach needed unless you add keymaps
 })
 
+-- Swift: sourcekit-lsp (ships with Xcode, not managed by Mason)
+lspconfig.sourcekit.setup({
+	cmd = { "xcrun", "sourcekit-lsp" },
+	filetypes = { "swift", "objective-c", "objective-cpp" },
+	root_dir = lspconfig.util.root_pattern(
+		"Package.swift",
+		".git",
+		"*.xcodeproj",
+		"*.xcworkspace"
+	),
+	capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), {
+		textDocument = {
+			-- enable inlay hints (type annotations, parameter names)
+			inlayHint = { dynamicRegistration = true },
+		},
+	}),
+	settings = {
+		swift = {
+			-- diagnostics from sourcekit-lsp
+			diagnostics = { enabled = true },
+		},
+	},
+	on_attach = function(client, bufnr)
+		-- enable inlay hints if supported (Neovim 0.10+)
+		if client.supports_method("textDocument/inlayHint") and vim.lsp.inlay_hint then
+			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+		end
+	end,
+})
+
 -- Tell lua LSP that vim is a global
 lspconfig.lua_ls.setup({
 	settings = {
@@ -264,6 +296,9 @@ if ok_null then
 			fmt.stylua,
 			-- Python
 			fmt.ruff.with({ filetypes = { "python" } }),
+			-- Swift
+			fmt.swiftformat,
+			diag.swiftlint,
 			-- Shell / SQL
 			fmt.shfmt.with({ filetypes = { "sh", "bash", "zsh" } }),
 			fmt.sql_formatter.with({ filetypes = { "sql" } }),

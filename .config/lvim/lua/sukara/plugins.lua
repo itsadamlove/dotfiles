@@ -97,6 +97,9 @@ lvim.plugins = {
 		cmd = { "MarkdownPreview", "MarkdownPreviewToggle", "MarkdownPreviewStop" },
 	},
 
+	-- Swift
+	{ "keith/swift.vim" },
+
 	-- Notifications
 	{ "rcarriga/nvim-notify" },
 
