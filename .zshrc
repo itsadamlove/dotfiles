@@ -8,15 +8,13 @@ export ZSH=/Users/adam/.oh-my-zsh
 export DYLD_FORCE_FLAT_NAMESPACE=1
 # export PATH="/Users/adam/anaconda3/bin:$PATH"  # commented out by conda initialize
 
-
 # ====================== General Settings ========================
 
 # Set name of the theme to load.
 ZSH_THEME="avit"
 
 # Display dots while waiting for completion
- COMPLETION_WAITING_DOTS="true"
-
+COMPLETION_WAITING_DOTS="true"
 
 # ====================== Plugin Settings ========================
 
@@ -76,7 +74,7 @@ alias sendInvoices="curl -X POST -H 'Content-type: application/json' -H 'Authori
 alias sendOrderEmails="curl -X POST -H 'Content-type: application/json' -H 'Authorization: FAKE_INTERNAL_API_KEY' http://localhost:9000/api/internal/jobs/send-new-order-email-to-venue && curl -X POST -H 'Content-type: application/json' -H 'Authorization: FAKE_INTERNAL_API_KEY' http://localhost:9000/api/internal/jobs/send-new-order-email-to-supplier"
 
 alias reporting="cd ~/Projects/FoodBomb/App/frontend-reporting/reporting"
-alias infra="cd ~/Projects/FoodBomb/App/backend-infrastructure"
+alias infra="cd /Users/adam/Projects/sortd/infra-api-gateway"
 alias mumv-infra="cd ~/Projects/FoodBomb/App/mumv-infra"
 alias backend-lib="cd ~/Projects/FoodBomb/App/foodbomb-backend-lib"
 alias orders="cd ~/Projects/FoodBomb/App/backend-orders"
@@ -100,6 +98,7 @@ alias mobile="cd ~/Projects/sortd/mobile-app"
 alias extension="cd ~/Projects/sortd/chrome-extension"
 alias admin="cd ~/Projects/sortd/admin-portal/"
 alias web="cd ~/Projects/sortd/webapp-2.0"
+alias mcp="cd ~/Projects/sortd/mcp-sortd"
 
 alias browser-tools="npx @agentdeskai/browser-tools-server@1.2.0"
 
@@ -140,28 +139,28 @@ eval $(thefuck --alias)
 # fi
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # Automatically call nvm use to load correct nvm settings when changing directory
 # place this after nvm initialization!
 autoload -U add-zsh-hook
 load-nvmrc() {
-local node_version="$(nvm version)"
-local nvmrc_path="$(nvm_find_nvmrc)"
+	local node_version="$(nvm version)"
+	local nvmrc_path="$(nvm_find_nvmrc)"
 
-if [ -n "$nvmrc_path" ]; then
-  local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+	if [ -n "$nvmrc_path" ]; then
+		local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
 
-  if [ "$nvmrc_node_version" = "N/A" ]; then
-    nvm install
-  elif [ "$nvmrc_node_version" != "$node_version" ]; then
-    nvm use
-  fi
-elif [ "$node_version" != "$(nvm version default)" ]; then
-  echo "Reverting to nvm default version"
-  nvm use default
-fi
+		if [ "$nvmrc_node_version" = "N/A" ]; then
+			nvm install
+		elif [ "$nvmrc_node_version" != "$node_version" ]; then
+			nvm use
+		fi
+	elif [ "$node_version" != "$(nvm version default)" ]; then
+		echo "Reverting to nvm default version"
+		nvm use default
+	fi
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
@@ -174,21 +173,21 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=/Users/adam/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+HEROKU_AC_ZSH_SETUP_PATH=/Users/adam/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/adam/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/adam/anaconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+	eval "$__conda_setup"
 else
-    if [ -f "/Users/adam/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/adam/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/adam/anaconda3/bin:$PATH"
-    fi
+	if [ -f "/Users/adam/anaconda3/etc/profile.d/conda.sh" ]; then
+		. "/Users/adam/anaconda3/etc/profile.d/conda.sh"
+	else
+		export PATH="/Users/adam/anaconda3/bin:$PATH"
+	fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
@@ -203,19 +202,19 @@ export PATH=/usr/local/bin:$PATH
 # firewall is blocking mosh
 alias firepower='sudo /usr/libexec/ApplicationFirewall/socketfilterfw'
 fix_mosh_server() {
-  # temporarily shut firewall off
-  firepower --setglobalstate off
+	# temporarily shut firewall off
+	firepower --setglobalstate off
 
-  # add symlinked location to firewall
-  firepower --add $(which mosh-server)
-  firepower --unblockapp $(which mosh-server)
+	# add symlinked location to firewall
+	firepower --add $(which mosh-server)
+	firepower --unblockapp $(which mosh-server)
 
-  # add homebrew location to firewall
-  firepower --add $(brew --prefix)/Cellar/mosh/1.3.2_18/bin/mosh-server
-  firepower --unblockapp $(brew --prefix)/Cellar/mosh/1.3.2_18/bin/mosh-server
+	# add homebrew location to firewall
+	firepower --add $(brew --prefix)/Cellar/mosh/1.3.2_18/bin/mosh-server
+	firepower --unblockapp $(brew --prefix)/Cellar/mosh/1.3.2_18/bin/mosh-server
 
-  # re-enable firewall
-  firepower --setglobalstate on
+	# re-enable firewall
+	firepower --setglobalstate on
 }
 
 # Created by `pipx` on 2022-03-04 02:58:30
@@ -240,8 +239,8 @@ eval "$(rbenv init - zsh)"
 alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
 
 if [ -n "$TMUX" ]; then
-  export ITERM_SESSION_ID=$(tmux show-environment ITERM_SESSION_ID 2>/dev/null || echo "iTermNotSet")
-  export TERM_PROGRAM=${TERM_PROGRAM:-iTerm.app}
+	export ITERM_SESSION_ID=$(tmux show-environment ITERM_SESSION_ID 2>/dev/null || echo "iTermNotSet")
+	export TERM_PROGRAM=${TERM_PROGRAM:-iTerm.app}
 fi
 
 # Added by Windsurf
