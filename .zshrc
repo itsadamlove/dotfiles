@@ -82,6 +82,7 @@ alias opencart="cd ~/Projects/FoodBomb/App/sh-foodbomb-dev"
 alias products="cd ~/Projects/FoodBomb/App/backend-products/app"
 alias pauls="ECHO 'ITS CALLED STAFF, YOU MORON!'"
 
+alias telex="cd ~/Projects/telex"
 alias duck="cd ~/Projects/theDuck"
 alias supplier-duck="cd ~/Projects/supplier-duck"
 alias venue-duck="cd ~/Projects/venue-duck"
